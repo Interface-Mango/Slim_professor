@@ -27,7 +27,7 @@ namespace Slim_professor
 
 		}
 		
-		
+		// Git 연습 주석
 		// 로그인 창과 호환되기 위한 함수
 		protected override void OnClosed(EventArgs e)
 		{
