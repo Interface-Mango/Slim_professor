@@ -20,8 +20,6 @@ namespace Slim_professor
 		public EditLog()
 		{
 			this.InitializeComponent();
-			
-			
 		}
 		
 		protected override void OnClosed(EventArgs e)
