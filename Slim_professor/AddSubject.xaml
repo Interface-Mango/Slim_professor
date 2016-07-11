@@ -1,0 +1,39 @@
+﻿<Page
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	x:Class="Slim_professor.AddSubject"
+	x:Name="Page"
+	WindowTitle="Page"
+	FlowDirection="LeftToRight"
+	Width="972" Height="629"
+	WindowWidth="640" WindowHeight="480" ShowsNavigationUI="False">
+
+	<Grid x:Name="MainPanel">
+		<Canvas x:Name="Title" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="972" Background="#FFC671D8">
+			<TextBlock TextWrapping="Wrap" Text="수업추가" Canvas.Top="10" VerticalAlignment="Center" Canvas.Left="80" Height="20" Width="93" FontSize="14.667" FontWeight="Bold"/>
+		</Canvas>
+		<Grid x:Name="MainGrid" HorizontalAlignment="Left" Height="589" VerticalAlignment="Top" Width="972" Margin="0,40,0,0" Background="#FFF4F5E0">
+			<Grid x:Name="TableGrid" HorizontalAlignment="Center" Height="500" VerticalAlignment="Center" Width="600" Margin="186,48.511,207.575,58.469" Background="#B2E4BAE8">
+				<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="식별번호" VerticalAlignment="Top" Margin="110,150,0,0" Width="130" Height="40" TextAlignment="Center" FontSize="25.333" FontWeight="Bold"/>
+				<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="110,201.6,0,0" Width="130" Height="40" TextAlignment="Center" FontSize="25.333" Text="수업이름" FontWeight="Bold"/>
+				<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="110,253.2,0,0" Width="130" Height="40" TextAlignment="Center" FontSize="25.333" FontWeight="Bold"><Run Text="강사이름"/><LineBreak/><Run/></TextBlock>
+				<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="110,304.8,0,0" Width="130" Height="40" TextAlignment="Center" FontSize="25.333" FontWeight="Bold"><Run Text="학생명단"/><LineBreak/><Run/></TextBlock>
+				<TextBox x:Name="IdentifyNumBox" HorizontalAlignment="Left" Height="35" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" Margin="258.902,150,0,0" Background="#FFFBFBFB" BorderBrush="{x:Null}" SelectionBrush="#FFFFBE33" FontSize="20"/>
+				<TextBox x:Name="SubjectNameBox" HorizontalAlignment="Left" Height="35" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" Margin="258.902,201.6,0,0" Background="#FFFBFBFB" BorderBrush="{x:Null}" SelectionBrush="#FFFFBE33" FontSize="20"/>
+				<TextBox x:Name="ProfessorNameBox" HorizontalAlignment="Left" Height="35" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" Margin="258.902,253.2,0,0" Background="#FFFBFBFB" BorderBrush="{x:Null}" SelectionBrush="#FFFFBE33" FontSize="20" Text="Default" IsEnabled="False"/>
+				<Border BorderThickness="1" HorizontalAlignment="Left" Height="43.32" VerticalAlignment="Top" Width="110" Margin="258.902,303.14,0,0" Background="#FFE6CDAA" CornerRadius="15">
+					<Button x:Name="FromDB" Content="받아오기" BorderBrush="{x:Null}" Background="{x:Null}" FontSize="18.667"/>
+				</Border>
+				<Border BorderThickness="1" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="110" Margin="378.902,304.8,0,0" Background="#FFE6CDAA" CornerRadius="15">
+					<Button x:Name="DirectRegBtn" Content="직접등록" BorderBrush="{x:Null}" Background="{x:Null}" FontSize="18.667"/>
+				</Border>
+				<Border BorderThickness="1" HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="130" Margin="418.902,364.8,0,0" Background="#FFCB6991" CornerRadius="15">
+					<Border.Effect>
+						<DropShadowEffect/>
+					</Border.Effect>
+					<Button x:Name="RegisterBtn" Content="등록" BorderBrush="{x:Null}" Background="{x:Null}" FontSize="18.667" FontWeight="Bold"/>
+				</Border>
+			</Grid>
+		</Grid>
+	</Grid>
+</Page>
