@@ -3,20 +3,57 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Slim" Height="700" Width="1200" WindowStartupLocation="CenterScreen">
 	<Window.Resources>
-		<Storyboard x:Key="LoginOpacity">
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="grid">
-				<EasingDoubleKeyFrame KeyTime="0:0:2.3" Value="1"/>
-			</DoubleAnimationUsingKeyFrames>
-		</Storyboard>
+		<Storyboard x:Key="LoginOpacity"/>
 		<Storyboard x:Key="LoginLogo"/>
+		<Storyboard x:Key="OnAnimation">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Effect).(BlurEffect.Radius)" Storyboard.TargetName="LogoCanvas">
+				<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+			<ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="LogoCanvas">
+				<EasingThicknessKeyFrame KeyTime="0:0:1.6" Value="454.144,220,458.144,0"/>
+				<EasingThicknessKeyFrame KeyTime="0:0:2.2" Value="454.144,220,458.144,0"/>
+				<EasingThicknessKeyFrame KeyTime="0:0:2.3" Value="454,110,458,0"/>
+			</ThicknessAnimationUsingKeyFrames>
+			<ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="textBlock1">
+				<EasingThicknessKeyFrame KeyTime="0:0:2.1" Value="-110.397,59.01,1228.602,0"/>
+				<EasingThicknessKeyFrame KeyTime="0:0:2.4" Value="429,397,688,0"/>
+			</ThicknessAnimationUsingKeyFrames>
+			<ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="textBlock2">
+				<EasingThicknessKeyFrame KeyTime="0:0:2.4" Value="317.602,772.01,800.602,-133"/>
+				<EasingThicknessKeyFrame KeyTime="0:0:2.7" Value="429,448,688,0"/>
+			</ThicknessAnimationUsingKeyFrames>
+			<ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="border">
+				<EasingThicknessKeyFrame KeyTime="0:0:2.4" Value="968,760.441,0,-137.127"/>
+				<EasingThicknessKeyFrame KeyTime="0:0:2.7" Value="630,503,0,0"/>
+			</ThicknessAnimationUsingKeyFrames>
+			<ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="PWBox">
+				<EasingThicknessKeyFrame KeyTime="0:0:2.6" Value="1225,353.625,-225.038,0"/>
+				<EasingThicknessKeyFrame KeyTime="0:0:2.9" Value="517,443,0,0"/>
+			</ThicknessAnimationUsingKeyFrames>
+			<ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="IDTextBox">
+				<EasingThicknessKeyFrame KeyTime="0:0:2.2" Value="869,-93.01,0,0"/>
+				<EasingThicknessKeyFrame KeyTime="0:0:2.5" Value="517,393,0,0"/>
+			</ThicknessAnimationUsingKeyFrames>
+		</Storyboard>
 	</Window.Resources>
 	<Window.Triggers>
-		<EventTrigger RoutedEvent="FrameworkElement.Loaded" SourceName="Login">
-			<BeginStoryboard Storyboard="{StaticResource LoginOpacity}"/>
+		<EventTrigger RoutedEvent="FrameworkElement.Loaded">
+			<BeginStoryboard Storyboard="{StaticResource OnAnimation}"/>
 		</EventTrigger>
 	</Window.Triggers>
 	<Grid x:Name="logPanel" Background="#FFDFE6B3">
-		<Canvas x:Name="LogoCanvas" Margin="454.366,109.876,457.923,0" RenderTransformOrigin="0.5,0.5" Height="278.75" VerticalAlignment="Top">
+		<TextBlock x:Name="textBlock1" HorizontalAlignment="Center" TextWrapping="Wrap" Text="ID" VerticalAlignment="Top" Margin="-110.397,59,1228.602,0" Height="30" Width="73.795" FontWeight="Bold" FontSize="18.667" TextAlignment="Center"/>
+		<TextBlock x:Name="textBlock2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="PW" VerticalAlignment="Top" Margin="317.602,772,800.602,-133" Height="30" Width="73.796" FontWeight="Bold" FontSize="18.667" TextAlignment="Center"/>
+		<TextBox x:Name="IDTextBox" HorizontalAlignment="Left" Height="35" TextWrapping="Wrap" VerticalAlignment="Top" Width="192.038" Margin="869,-93,0,0" BorderBrush="{x:Null}" FontSize="18.667"/>
+		<PasswordBox x:Name="PWBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="192.038" Margin="1225,353.626,-225.038,0" Height="35" BorderBrush="{x:Null}" FontSize="18.667"/>
+		<Border x:Name="border" BorderThickness="1" HorizontalAlignment="Left" Height="45.687" VerticalAlignment="Top" Width="126.605" Margin="968,760.44,0,-137.127" CornerRadius="20" Background="#FFE8D0A7">
+			<Button x:Name="loginBtn" Content="Login" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="/Slim_professor;component/Fonts/#Malgun Gothic" FontSize="21.333" FontWeight="Bold" Click="loginBtnClick"/>
+		</Border>
+		<Canvas x:Name="LogoCanvas" Margin="454.144,220,458.144,0" RenderTransformOrigin="0.5,0.5" Height="278.75" VerticalAlignment="Top" Width="279.711">
+			<Canvas.Effect>
+				<BlurEffect Radius="30" KernelType="Box"/>
+			</Canvas.Effect>
 			<Canvas.RenderTransform>
 				<TransformGroup>
 					<ScaleTransform/>
@@ -46,14 +83,5 @@
 				</TextBlock.RenderTransform>
 			</TextBlock>
 		</Canvas>
-		<Grid x:Name="grid" Margin="419.806,379.332,407.194,89.668" HorizontalAlignment="Center" Width="365">
-			<TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="ID" VerticalAlignment="Top" Margin="17.561,27.812,273.644,0" Height="30" Width="73.795" FontWeight="Bold" FontSize="18.667" TextAlignment="Center"/>
-			<TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="PW" VerticalAlignment="Top" Margin="17.561,78.5,273.644,0" Height="30" Width="73.795" FontWeight="Bold" FontSize="18.667" TextAlignment="Center"/>
-			<TextBox x:Name="IDTextBox" HorizontalAlignment="Left" Height="35" TextWrapping="Wrap" VerticalAlignment="Top" Width="192.038" Margin="105.377,22.812,0,0" BorderBrush="{x:Null}" FontSize="18.667"/>
-			<PasswordBox x:Name="PWBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="192.038" Margin="105.377,73.5,0,0" Height="35" BorderBrush="{x:Null}" FontSize="18.667"/>
-			<Border BorderThickness="1" HorizontalAlignment="Left" Height="45.687" VerticalAlignment="Top" Width="126.605" Margin="218.086,133.436,0,0" CornerRadius="20" Background="#FFE8D0A7">
-				<Button x:Name="loginBtn" Content="Login" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="/Slim_professor;component/Fonts/#Malgun Gothic" FontSize="21.333" FontWeight="Bold" Click="loginBtnClick"/>
-			</Border>
-		</Grid>
 	</Grid>
 </Window>
