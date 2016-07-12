@@ -9,20 +9,18 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Navigation;
 
 namespace Slim_professor
 {
 	/// <summary>
 	/// MainFrame.xaml에 대한 상호 작용 논리
 	/// </summary>
-	public partial class MainFrame : Window
+	public partial class MainFrame : NavigationWindow
 	{
 		public MainFrame()
 		{
 			this.InitializeComponent();
-			
-			SubjectList sl = new SubjectList(MainMenu);
-			ChangePageFrame.NavigationService.Navigate(sl);
 			
 
 		}
@@ -35,18 +33,7 @@ namespace Slim_professor
 			Application.Current.Shutdown();
 		}
 
-		// 수업리스트버튼 클릭시
-		private void SubListBtnClick(object sender, System.Windows.RoutedEventArgs e)
-		{
-			//SubjectList sl = new SubjectList();
-			ChangePageFrame.NavigationService.Navigate( new Uri("SubjectList.xaml",UriKind.Relative));
-		}
-
-		// 수업추가버튼 클릭시
-		private void AddSubBtnClick(object sender, System.Windows.RoutedEventArgs e)
-		{
-			AddSubject addsub = new AddSubject();
-			ChangePageFrame.NavigationService.Navigate(addsub);
-		}
+		
+		
 	}
 }

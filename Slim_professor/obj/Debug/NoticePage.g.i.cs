@@ -112,6 +112,102 @@ namespace Slim_professor {
         #line default
         #line hidden
         
+        
+        #line 25 "..\..\NoticePage.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.Canvas TitleCanvas;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 28 "..\..\NoticePage.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.TextBlock SubName;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 30 "..\..\NoticePage.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.Canvas ProfileCanvas;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 31 "..\..\NoticePage.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.Image ProfilePicture;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 32 "..\..\NoticePage.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.TextBlock ProfileGroup;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 33 "..\..\NoticePage.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.TextBlock ProfileName;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 35 "..\..\NoticePage.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.Grid MainMenu;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 36 "..\..\NoticePage.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.Button StudentStateBtn;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 41 "..\..\NoticePage.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.Button HiddenTalkBtn;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 46 "..\..\NoticePage.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.Button SubjectStatsBtn;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 51 "..\..\NoticePage.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.Button QnABtn;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 56 "..\..\NoticePage.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.Button NoticeBtn;
+        
+        #line default
+        #line hidden
+        
         private bool _contentLoaded;
         
         /// <summary>
@@ -177,6 +273,72 @@ namespace Slim_professor {
             
             #line 23 "..\..\NoticePage.xaml"
             this.RegBtn.Click += new System.Windows.RoutedEventHandler(this.RegBtnClick);
+            
+            #line default
+            #line hidden
+            return;
+            case 10:
+            this.TitleCanvas = ((System.Windows.Controls.Canvas)(target));
+            return;
+            case 11:
+            this.SubName = ((System.Windows.Controls.TextBlock)(target));
+            return;
+            case 12:
+            this.ProfileCanvas = ((System.Windows.Controls.Canvas)(target));
+            return;
+            case 13:
+            this.ProfilePicture = ((System.Windows.Controls.Image)(target));
+            return;
+            case 14:
+            this.ProfileGroup = ((System.Windows.Controls.TextBlock)(target));
+            return;
+            case 15:
+            this.ProfileName = ((System.Windows.Controls.TextBlock)(target));
+            return;
+            case 16:
+            this.MainMenu = ((System.Windows.Controls.Grid)(target));
+            return;
+            case 17:
+            this.StudentStateBtn = ((System.Windows.Controls.Button)(target));
+            
+            #line 36 "..\..\NoticePage.xaml"
+            this.StudentStateBtn.Click += new System.Windows.RoutedEventHandler(this.StudentStateBtnClick);
+            
+            #line default
+            #line hidden
+            return;
+            case 18:
+            this.HiddenTalkBtn = ((System.Windows.Controls.Button)(target));
+            
+            #line 41 "..\..\NoticePage.xaml"
+            this.HiddenTalkBtn.Click += new System.Windows.RoutedEventHandler(this.HiddenTalkBtnClick);
+            
+            #line default
+            #line hidden
+            return;
+            case 19:
+            this.SubjectStatsBtn = ((System.Windows.Controls.Button)(target));
+            
+            #line 46 "..\..\NoticePage.xaml"
+            this.SubjectStatsBtn.Click += new System.Windows.RoutedEventHandler(this.SubjectStatsBtnClick);
+            
+            #line default
+            #line hidden
+            return;
+            case 20:
+            this.QnABtn = ((System.Windows.Controls.Button)(target));
+            
+            #line 51 "..\..\NoticePage.xaml"
+            this.QnABtn.Click += new System.Windows.RoutedEventHandler(this.QnABtnClick);
+            
+            #line default
+            #line hidden
+            return;
+            case 21:
+            this.NoticeBtn = ((System.Windows.Controls.Button)(target));
+            
+            #line 56 "..\..\NoticePage.xaml"
+            this.NoticeBtn.Click += new System.Windows.RoutedEventHandler(this.NoticeBtnClick);
             
             #line default
             #line hidden

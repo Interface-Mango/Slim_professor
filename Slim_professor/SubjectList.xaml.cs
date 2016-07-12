@@ -14,12 +14,11 @@ namespace Slim_professor
 {
 	public partial class SubjectList
 	{
-        Grid MainMenu;
-		public SubjectList(Grid _MainMenu)
+       
+		public SubjectList()
 		{
 			this.InitializeComponent();
-
-            MainMenu = _MainMenu;
+            
 		}
 
 		private void StartBtnClick(object sender, System.Windows.RoutedEventArgs e)
@@ -27,14 +26,18 @@ namespace Slim_professor
 			//MainFrame mf = new MainFrame();
 			//mf.MainMenu.Visibility = System.Windows.Visibility.Hidden;
 			//MainMenu.Visibility = System.Windows.Visibility.Collapsed;
-			
-			MainMenu.Visibility = Visibility.Hidden;
-			//SubjectList
-			//SubjectMainFrame smf = new SubjectMainFrame();
-			//smf.ShowDialog();
-			
-			
-			
+
+            //MainMenu.Visibility = Visibility.Hidden;
+			SubjectMainFrame smf = new SubjectMainFrame();
+			smf.ShowDialog();
 		}
+
+
+        private void AddSubBtnClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("AddSubject.xaml", UriKind.Relative));
+        }
+
+
 	}
 }

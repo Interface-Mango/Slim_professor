@@ -3,17 +3,16 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	x:Class="Slim_professor.SubjectList"
 	x:Name="Page"
-	WindowTitle="Page"
+	WindowTitle="Slim"
 	FlowDirection="LeftToRight"
-	Width="972" Height="629"
-	WindowWidth="640" WindowHeight="480" ShowsNavigationUI="False">
+	Width="1192" Height="669" WindowHeight="700" ShowsNavigationUI="False" WindowWidth="1200">
 	
 
 	<Grid x:Name="MainPanel" >
-		<Canvas x:Name="Title" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="972" Background="#FFEA8B8B">
+		<Canvas x:Name="Title" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="972" Background="#FFEA8B8B" Margin="220,40,0,0">
 			<TextBlock TextWrapping="Wrap" Text="수업리스트" Canvas.Top="10" VerticalAlignment="Center" Canvas.Left="80" Height="20" Width="93" FontSize="14.667" FontWeight="Bold"/>
 		</Canvas>
-		<Grid x:Name="MainGrid" HorizontalAlignment="Left" Height="589" VerticalAlignment="Top" Width="972" Margin="0,40,0,0" Background="#FFF4F5E0">
+		<Grid x:Name="MainGrid" HorizontalAlignment="Left" Height="589" VerticalAlignment="Top" Width="972" Margin="220,80,0,0" Background="#FFF4F5E0">
 			<Grid x:Name="SubTableGrid" Margin="150,50" Background="#4CD69595">
 				<Canvas x:Name="canvas" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="652" Margin="10,78.028,0,0" Background="#FFEAEAB7">
 					<TextBlock x:Name="SubjectName" TextWrapping="Wrap" Text="컴퓨터 활용 능력 1급" Height="30" Width="300" Canvas.Left="103.506" Canvas.Top="13.408" FontSize="21.333" FontWeight="Bold" TextAlignment="Center"/>
@@ -23,5 +22,26 @@
 				</Canvas>
 			</Grid>
 		</Grid>
-	</Grid>
+        <Canvas x:Name="TitleCanvas" Height="40" VerticalAlignment="Top" Margin="0" Background="#FF71C563">
+            <Image Height="39.336" Width="39.336" Canvas.Left="18.96" Source="Images/smallmango.jpg"/>
+            <TextBlock TextWrapping="Wrap" Text="Slim" Canvas.Top="1.891" Canvas.Left="60.64" Height="37.445" Width="112.093" FontSize="24" Foreground="White"/>
+            <Canvas x:Name="ProfileCanvas" HorizontalAlignment="Left" Height="80" VerticalAlignment="Top" Width="220" Background="#FFE0E4B9" Canvas.Top="40">
+                <Image x:Name="ProfilePicture" Source="Images/basicprofile.jpg" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Height="60" Canvas.Left="14.272" Canvas.Top="10.48"/>
+                <TextBlock x:Name="ProfileGroup" TextWrapping="Wrap" Text="세종대학교" Canvas.Top="11.365" Canvas.Left="79.59" Height="25.439" Width="130.41" FontSize="20" Foreground="#FF741616" TextAlignment="Center"/>
+                <TextBlock x:Name="ProfileName" TextWrapping="Wrap" Text="장인혁" Canvas.Top="41.804" Canvas.Left="79.59" Height="25.439" Width="130.41" FontSize="20" Foreground="#FF741616" TextAlignment="Center" FontWeight="Bold"/>
+            </Canvas>
+            <Grid x:Name="MainMenu" HorizontalAlignment="Left" Width="220" Background="#FFBBCB8F" Height="549" VerticalAlignment="Top" Canvas.Top="120">
+                <Button x:Name="SubListBtn" HorizontalAlignment="Left" VerticalAlignment="Top" Width="220" Height="60" Background="#FFD9EEEE" Margin="0,15.688,0,0" BorderBrush="{x:Null}">
+                    <Canvas Height="60" Width="220">
+                        <TextBlock TextWrapping="Wrap" Text="수업리스트" Canvas.Left="82.064" Canvas.Top="15.688" Height="35" Width="127.936" FontSize="20" TextAlignment="Center" FontWeight="Bold"/>
+                    </Canvas>
+                </Button>
+                <Button x:Name="AddSubBtn" HorizontalAlignment="Left" VerticalAlignment="Top" Width="220" Height="60" Background="#FFD9EEEE" Margin="0,87.736,0,0" BorderBrush="{x:Null}" Click="AddSubBtnClick">
+                    <Canvas Height="60" Width="220">
+                        <TextBlock TextWrapping="Wrap" Text="수업추가" Canvas.Left="82.064" Canvas.Top="15.688" Height="35" Width="127.936" FontSize="20" TextAlignment="Center" FontWeight="Bold"/>
+                    </Canvas>
+                </Button>
+            </Grid>
+        </Canvas>
+    </Grid>
 </Page>
