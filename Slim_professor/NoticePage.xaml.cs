@@ -33,5 +33,27 @@ namespace Slim_professor
 			EditNotice en = new EditNotice();
 			en.ShowDialog();
 		}
+
+
+
+        private void HiddenTalkBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("HiddenTalkPage.xaml", UriKind.Relative));
+        }
+
+        private void StudentStateBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("StudentStatePage.xaml", UriKind.Relative));
+        }
+
+        private void SubjectStatsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("SubjectStatsPage.xaml", UriKind.Relative));
+        }
+
+        private void QnABtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("QnAPage.xaml", UriKind.Relative));
+        }
 	}
 }

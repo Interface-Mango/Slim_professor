@@ -3,24 +3,61 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	x:Class="Slim_professor.StudentStatePage"
 	x:Name="Page"
-	WindowTitle="Page"
+	WindowTitle="Slim"
 	FlowDirection="LeftToRight"
-	Width="972" Height="627"
-	WindowWidth="640" WindowHeight="480">
-	<Grid x:Name="MainPanel" Margin="0,0,0,-2" >
-		<Canvas x:Name="Title" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="972" Background="#FFEADD8B">
-			<TextBlock TextWrapping="Wrap" Text="학생현황" Canvas.Top="10" VerticalAlignment="Center" Canvas.Left="80" Height="20" Width="93" FontSize="14.667" FontWeight="Bold"/>
-		</Canvas>
-		<Grid x:Name="MainGrid" HorizontalAlignment="Left" Height="589" VerticalAlignment="Top" Width="972" Margin="0,40,0,0" Background="#FFE0F5EB">
-			<StackPanel Height="50" VerticalAlignment="Top" Margin="80,50,80,0" Orientation="Horizontal" Background="#FFAA8C57">
-				<TextBlock TextWrapping="Wrap" Text="이름" Width="150" FontSize="20" TextAlignment="Center" Margin="0,7.5,0,2.5" FontWeight="Bold" Foreground="#FFF9F1F1"/>
-				<TextBlock TextWrapping="Wrap" Text="학번" Width="150" FontSize="20" TextAlignment="Center" Margin="0,7.5,0,2.5" FontWeight="Bold" Foreground="#FFF9F1F1"/>
-				<TextBlock TextWrapping="Wrap" Text="출석상태" Width="150" FontSize="20" TextAlignment="Center" Margin="0,7.5,0,2.5" FontWeight="Bold" Foreground="#FFF9F1F1"/>
-				<TextBlock TextWrapping="Wrap" Text="신호등 상태" Width="336" FontSize="20" TextAlignment="Center" Margin="0,7.5,0,2.5" FontWeight="Bold" Foreground="#FFF9F1F1"/>
-			</StackPanel>
-			<Grid x:Name="StudentTableGrid" Margin="80,0,80,50" Background="#4CD6B095" Height="439" VerticalAlignment="Bottom">
-				<ScrollBar HorizontalAlignment="Left" VerticalAlignment="Top" Margin="795,0,0,0" Height="439"/>
-			</Grid>
-		</Grid>
-	</Grid>
+	Width="1192" Height="669"
+	WindowWidth="1200" WindowHeight="700">
+    <Grid x:Name="MainPanel" Margin="0,0,0,-2" >
+        <Canvas x:Name="Title" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="972" Background="#FFEADD8B" Margin="220,40,0,0">
+            <TextBlock TextWrapping="Wrap" Text="학생현황" Canvas.Top="10" VerticalAlignment="Center" Canvas.Left="80" Height="20" Width="93" FontSize="14.667" FontWeight="Bold"/>
+        </Canvas>
+        <Grid x:Name="MainGrid" HorizontalAlignment="Left" Height="589" VerticalAlignment="Top" Width="972" Margin="220,80,0,0" Background="#FFE0F5EB">
+            <StackPanel Height="50" VerticalAlignment="Top" Margin="80,50,80,0" Orientation="Horizontal" Background="#FFAA8C57">
+                <TextBlock TextWrapping="Wrap" Text="이름" Width="150" FontSize="20" TextAlignment="Center" Margin="0,7.5,0,2.5" FontWeight="Bold" Foreground="#FFF9F1F1"/>
+                <TextBlock TextWrapping="Wrap" Text="학번" Width="150" FontSize="20" TextAlignment="Center" Margin="0,7.5,0,2.5" FontWeight="Bold" Foreground="#FFF9F1F1"/>
+                <TextBlock TextWrapping="Wrap" Text="출석상태" Width="150" FontSize="20" TextAlignment="Center" Margin="0,7.5,0,2.5" FontWeight="Bold" Foreground="#FFF9F1F1"/>
+                <TextBlock TextWrapping="Wrap" Text="신호등 상태" Width="336" FontSize="20" TextAlignment="Center" Margin="0,7.5,0,2.5" FontWeight="Bold" Foreground="#FFF9F1F1"/>
+            </StackPanel>
+            <Grid x:Name="StudentTableGrid" Margin="80,0,80,50" Background="#4CD6B095" Height="439" VerticalAlignment="Bottom">
+                <ScrollBar HorizontalAlignment="Left" VerticalAlignment="Top" Margin="795,0,0,0" Height="439"/>
+            </Grid>
+        </Grid>
+        <Canvas x:Name="TitleCanvas" Height="40" VerticalAlignment="Top" Background="#FF71C563">
+            <Image Height="39.336" Width="39.336" Canvas.Left="18.96" Source="Images/smallmango.jpg"/>
+            <TextBlock TextWrapping="Wrap" Text="Slim" Canvas.Top="2" Canvas.Left="61" Height="37" Width="53" FontSize="24" Foreground="White"/>
+            <TextBlock x:Name ="SubName" TextWrapping="Wrap" Canvas.Left="132" Width="250" Height="30" FontSize="20" Foreground="White" Canvas.Top="6" Text="컴퓨터 활용 능력 1급"/>
+        </Canvas>
+        <Canvas x:Name="ProfileCanvas" HorizontalAlignment="Left" Height="80" VerticalAlignment="Top" Width="220" Margin="0,40,0,0" Background="#FFE0E4B9">
+            <Image x:Name="ProfilePicture" Source="Images/basicprofile.jpg" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Height="60" Canvas.Left="14.272" Canvas.Top="10.48"/>
+            <TextBlock x:Name="ProfileGroup" TextWrapping="Wrap" Text="세종대학교" Canvas.Top="11.365" Canvas.Left="79.59" Height="25.439" Width="130.41" FontSize="20" Foreground="#FF741616" TextAlignment="Center"/>
+            <TextBlock x:Name="ProfileName" TextWrapping="Wrap" Text="장인혁" Canvas.Top="41.804" Canvas.Left="79.59" Height="25.439" Width="130.41" FontSize="20" Foreground="#FF741616" TextAlignment="Center" FontWeight="Bold"/>
+        </Canvas>
+        <Grid x:Name="MainMenu" HorizontalAlignment="Left" Width="220" Margin="0,120,0,0" Background="#FFCBAD8F" Height="549" VerticalAlignment="Top">
+            <Button x:Name="StudentStateBtn" HorizontalAlignment="Left" VerticalAlignment="Top" Width="220" Height="60" Background="#FFD9E1EE" Margin="0,35.558,0,0" BorderBrush="{x:Null}">
+                <Canvas Height="60" Width="220">
+                    <TextBlock TextWrapping="Wrap" Text="학생현황" Canvas.Left="82.064" Canvas.Top="15.688" Height="35" Width="127.936" FontSize="20" TextAlignment="Center" FontWeight="Bold"/>
+                </Canvas>
+            </Button>
+            <Button x:Name="HiddenTalkBtn" HorizontalAlignment="Left" VerticalAlignment="Top" Width="220" Height="60" Background="#FFD9E1EE" Margin="0,113.441,0,0" BorderBrush="{x:Null}" Click="HiddenTalkBtn_Click">
+                <Canvas Height="60" Width="220">
+                    <TextBlock TextWrapping="Wrap" Text="익명 단체 대화방" Canvas.Left="46.302" Canvas.Top="15.688" Height="35" Width="163.698" FontSize="20" TextAlignment="Center" FontWeight="Bold"/>
+                </Canvas>
+            </Button>
+            <Button x:Name="SubjectStatsBtn" HorizontalAlignment="Left" VerticalAlignment="Top" Width="220" Height="60" Background="#FFD9E1EE" Margin="0,191.324,0,0" BorderBrush="{x:Null}" Click="SubjectStatsBtn_Click">
+                <Canvas Height="60" Width="220">
+                    <TextBlock TextWrapping="Wrap" Text="수업통계" Canvas.Left="82.064" Canvas.Top="15.688" Height="35" Width="127.936" FontSize="20" TextAlignment="Center" FontWeight="Bold"/>
+                </Canvas>
+            </Button>
+            <Button x:Name="QnABtn" HorizontalAlignment="Left" VerticalAlignment="Top" Width="220" Height="60" Background="#FFD9E1EE" Margin="0,269.207,0,0" BorderBrush="{x:Null}" Click="QnABtn_Click">
+                <Canvas Height="60" Width="220">
+                    <TextBlock TextWrapping="Wrap" Text="Q&amp;A 게시판" Canvas.Left="82.064" Canvas.Top="15.688" Height="35" Width="127.936" FontSize="20" TextAlignment="Center" FontWeight="Bold"/>
+                </Canvas>
+            </Button>
+            <Button x:Name="NoticeBtn" HorizontalAlignment="Left" VerticalAlignment="Top" Width="220" Height="60" Background="#FFD9E1EE" Margin="0,347.09,0,0" BorderBrush="{x:Null}" Click="NoticeBtn_Click">
+                <Canvas Height="60" Width="220">
+                    <TextBlock TextWrapping="Wrap" Text="공지사항" Canvas.Left="82.064" Canvas.Top="15.688" Height="35" Width="127.936" FontSize="20" TextAlignment="Center" FontWeight="Bold"/>
+                </Canvas>
+            </Button>
+        </Grid>
+    </Grid>
 </Page>

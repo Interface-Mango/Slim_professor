@@ -87,9 +87,6 @@
     <Compile Include="SubjectList.xaml.cs">
       <DependentUpon>SubjectList.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SubjectMainFrame.xaml.cs">
-      <DependentUpon>SubjectMainFrame.xaml</DependentUpon>
-    </Compile>
     <Compile Include="SubjectStatsPage.xaml.cs">
       <DependentUpon>SubjectStatsPage.xaml</DependentUpon>
     </Compile>
@@ -146,10 +143,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="SubjectList.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="SubjectMainFrame.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

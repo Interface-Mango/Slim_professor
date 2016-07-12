@@ -23,13 +23,7 @@ namespace Slim_professor
 
 		private void StartBtnClick(object sender, System.Windows.RoutedEventArgs e)
 		{
-			//MainFrame mf = new MainFrame();
-			//mf.MainMenu.Visibility = System.Windows.Visibility.Hidden;
-			//MainMenu.Visibility = System.Windows.Visibility.Collapsed;
-
-            //MainMenu.Visibility = Visibility.Hidden;
-			SubjectMainFrame smf = new SubjectMainFrame();
-			smf.ShowDialog();
+            NavigationService.Navigate(new Uri("NoticePage.xaml", UriKind.Relative));
 		}
 
 

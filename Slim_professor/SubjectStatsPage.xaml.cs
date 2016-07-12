@@ -32,5 +32,26 @@ namespace Slim_professor
 			EditLog editlog = new EditLog();
 			editlog.ShowDialog();
 		}
+
+
+        private void StudentStateBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("StudentStatePage.xaml", UriKind.Relative));
+        }
+
+        private void HiddenTalkBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("HiddenTalkPage.xaml", UriKind.Relative));
+        }
+
+        private void QnABtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("QnAPage.xaml", UriKind.Relative));
+        }
+
+        private void NoticeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("NoticePage.xaml", UriKind.Relative));
+        }
 	}
 }

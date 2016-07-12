@@ -4,23 +4,60 @@
 	xmlns:ee="http://schemas.microsoft.com/expression/2010/effects"
 	x:Class="Slim_professor.NoticePage"
 	x:Name="Page"
-	WindowTitle="Page"
+	WindowTitle="Slim"
 	FlowDirection="LeftToRight"
-	Width="972" Height="629"
-	WindowWidth="640" WindowHeight="480">
-	<Grid x:Name="MainPanel" >
-		<Canvas x:Name="Title" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="972" Background="#FF8B94EA">
-			<TextBlock TextWrapping="Wrap" Text="공지사항" Canvas.Top="10" VerticalAlignment="Center" Canvas.Left="80" Height="20" Width="93" FontSize="14.667" FontWeight="Bold"/>
-		</Canvas>
-		<Grid x:Name="MainGrid" HorizontalAlignment="Left" Height="589" VerticalAlignment="Top" Width="972" Margin="0,40,0,0" Background="#FFE0F5EB">
-			<Grid x:Name="NoticeTableGrid" Margin="150,50" Background="#4CBED695">
-				<Canvas x:Name="canvas" HorizontalAlignment="Left" Height="52.804" VerticalAlignment="Top" Width="625.984" Margin="10,79.126,0,0" Background="#FFF3ECE5">
-					<Button x:Name="NoticeTitleBtn" Content="이번 과제는 없습니당" Width="475.305" Canvas.Left="140.679" Canvas.Top="10" Height="32.804" Background="{x:Null}" FontSize="16" FontWeight="Bold" BorderBrush="{x:Null}" Click="TitleClick"/>
-					<TextBlock x:Name="DateTb" TextWrapping="Wrap" Text="2016.07.10" Canvas.Left="45.689" Canvas.Top="11.742" Height="29" Width="94.99" TextAlignment="Center" FontSize="17.333" Foreground="#FF0E22EA"/>
-				</Canvas>
-				<ScrollBar HorizontalAlignment="Left" VerticalAlignment="Top" Margin="655,0,0,0" Height="489"/>
-			</Grid>
-			<Button x:Name="RegBtn" Content="등록하기" HorizontalAlignment="Left" VerticalAlignment="Top" Width="95.908" Margin="844.424,515.555,0,0" Height="44.354" BorderBrush="{x:Null}" Background="#FFDDBFE2" FontSize="16" FontWeight="Bold" Click="RegBtnClick"/>
-		</Grid>
-	</Grid>
+	Width="1192" Height="669"
+	WindowWidth="1200" WindowHeight="700">
+    <Grid x:Name="MainPanel" >
+        <Canvas x:Name="Title" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="972" Background="#FF8B94EA" Margin="220,40,0,0">
+            <TextBlock TextWrapping="Wrap" Text="공지사항" Canvas.Top="10" VerticalAlignment="Center" Canvas.Left="80" Height="20" Width="93" FontSize="14.667" FontWeight="Bold"/>
+        </Canvas>
+        <Grid x:Name="MainGrid" HorizontalAlignment="Left" Height="589" VerticalAlignment="Top" Width="972" Margin="220,80,0,0" Background="#FFE0F5EB">
+            <Grid x:Name="NoticeTableGrid" Margin="150,50" Background="#4CBED695">
+                <Canvas x:Name="canvas" HorizontalAlignment="Left" Height="52.804" VerticalAlignment="Top" Width="625.984" Margin="10,79.126,0,0" Background="#FFF3ECE5">
+                    <Button x:Name="NoticeTitleBtn" Content="이번 과제는 없습니당" Width="475.305" Canvas.Left="140.679" Canvas.Top="10" Height="32.804" Background="{x:Null}" FontSize="16" FontWeight="Bold" BorderBrush="{x:Null}" Click="TitleClick"/>
+                    <TextBlock x:Name="DateTb" TextWrapping="Wrap" Text="2016.07.10" Canvas.Left="45.689" Canvas.Top="11.742" Height="29" Width="94.99" TextAlignment="Center" FontSize="17.333" Foreground="#FF0E22EA"/>
+                </Canvas>
+                <ScrollBar HorizontalAlignment="Left" VerticalAlignment="Top" Margin="655,0,0,0" Height="489"/>
+            </Grid>
+            <Button x:Name="RegBtn" Content="등록하기" HorizontalAlignment="Left" VerticalAlignment="Top" Width="95.908" Margin="844.424,515.555,0,0" Height="44.354" BorderBrush="{x:Null}" Background="#FFDDBFE2" FontSize="16" FontWeight="Bold" Click="RegBtnClick"/>
+        </Grid>
+        <Canvas x:Name="TitleCanvas" Height="40" VerticalAlignment="Top" Background="#FF71C563">
+            <Image Height="39.336" Width="39.336" Canvas.Left="18.96" Source="Images/smallmango.jpg"/>
+            <TextBlock TextWrapping="Wrap" Text="Slim" Canvas.Top="2" Canvas.Left="61" Height="37" Width="53" FontSize="24" Foreground="White"/>
+            <TextBlock x:Name ="SubName" TextWrapping="Wrap" Canvas.Left="132" Width="250" Height="30" FontSize="20" Foreground="White" Canvas.Top="6" Text="컴퓨터 활용 능력 1급"/>
+        </Canvas>
+        <Canvas x:Name="ProfileCanvas" HorizontalAlignment="Left" Height="80" VerticalAlignment="Top" Width="220" Margin="0,40,0,0" Background="#FFE0E4B9">
+            <Image x:Name="ProfilePicture" Source="Images/basicprofile.jpg" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Height="60" Canvas.Left="14.272" Canvas.Top="10.48"/>
+            <TextBlock x:Name="ProfileGroup" TextWrapping="Wrap" Text="세종대학교" Canvas.Top="11.365" Canvas.Left="79.59" Height="25.439" Width="130.41" FontSize="20" Foreground="#FF741616" TextAlignment="Center"/>
+            <TextBlock x:Name="ProfileName" TextWrapping="Wrap" Text="장인혁" Canvas.Top="41.804" Canvas.Left="79.59" Height="25.439" Width="130.41" FontSize="20" Foreground="#FF741616" TextAlignment="Center" FontWeight="Bold"/>
+        </Canvas>
+        <Grid x:Name="MainMenu" HorizontalAlignment="Left" Width="220" Margin="0,120,0,0" Background="#FFCBAD8F" Height="549" VerticalAlignment="Top">
+            <Button x:Name="StudentStateBtn" HorizontalAlignment="Left" VerticalAlignment="Top" Width="220" Height="60" Background="#FFD9E1EE" Margin="0,35.558,0,0" BorderBrush="{x:Null}" Click="StudentStateBtn_Click">
+                <Canvas Height="60" Width="220">
+                    <TextBlock TextWrapping="Wrap" Text="학생현황" Canvas.Left="82.064" Canvas.Top="15.688" Height="35" Width="127.936" FontSize="20" TextAlignment="Center" FontWeight="Bold"/>
+                </Canvas>
+            </Button>
+            <Button x:Name="HiddenTalkBtn" HorizontalAlignment="Left" VerticalAlignment="Top" Width="220" Height="60" Background="#FFD9E1EE" Margin="0,113.441,0,0" BorderBrush="{x:Null}" Click="HiddenTalkBtn_Click">
+                <Canvas Height="60" Width="220">
+                    <TextBlock TextWrapping="Wrap" Text="익명 단체 대화방" Canvas.Left="46.302" Canvas.Top="15.688" Height="35" Width="163.698" FontSize="20" TextAlignment="Center" FontWeight="Bold"/>
+                </Canvas>
+            </Button>
+            <Button x:Name="SubjectStatsBtn" HorizontalAlignment="Left" VerticalAlignment="Top" Width="220" Height="60" Background="#FFD9E1EE" Margin="0,191.324,0,0" BorderBrush="{x:Null}" Click="SubjectStatsBtn_Click">
+                <Canvas Height="60" Width="220">
+                    <TextBlock TextWrapping="Wrap" Text="수업통계" Canvas.Left="82.064" Canvas.Top="15.688" Height="35" Width="127.936" FontSize="20" TextAlignment="Center" FontWeight="Bold"/>
+                </Canvas>
+            </Button>
+            <Button x:Name="QnABtn" HorizontalAlignment="Left" VerticalAlignment="Top" Width="220" Height="60" Background="#FFD9E1EE" Margin="0,269.207,0,0" BorderBrush="{x:Null}" Click="QnABtn_Click">
+                <Canvas Height="60" Width="220">
+                    <TextBlock TextWrapping="Wrap" Text="Q&amp;A 게시판" Canvas.Left="82.064" Canvas.Top="15.688" Height="35" Width="127.936" FontSize="20" TextAlignment="Center" FontWeight="Bold"/>
+                </Canvas>
+            </Button>
+            <Button x:Name="NoticeBtn" HorizontalAlignment="Left" VerticalAlignment="Top" Width="220" Height="60" Background="#FFD9E1EE" Margin="0,347.09,0,0" BorderBrush="{x:Null}">
+                <Canvas Height="60" Width="220">
+                    <TextBlock TextWrapping="Wrap" Text="공지사항" Canvas.Left="82.064" Canvas.Top="15.688" Height="35" Width="127.936" FontSize="20" TextAlignment="Center" FontWeight="Bold"/>
+                </Canvas>
+            </Button>
+        </Grid>
+    </Grid>
 </Page>
