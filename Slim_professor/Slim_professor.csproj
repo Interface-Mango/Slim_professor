@@ -66,29 +66,32 @@
     <Compile Include="EditNotice.xaml.cs">
       <DependentUpon>EditNotice.xaml</DependentUpon>
     </Compile>
-    <Compile Include="HiddenTalkPage.xaml.cs">
-      <DependentUpon>HiddenTalkPage.xaml</DependentUpon>
+    <Compile Include="PageHiddenTalk.xaml.cs">
+      <DependentUpon>PageHiddenTalk.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NoticePage.xaml.cs">
-      <DependentUpon>NoticePage.xaml</DependentUpon>
+    <Compile Include="PageNotice.xaml.cs">
+      <DependentUpon>PageNotice.xaml</DependentUpon>
     </Compile>
-    <Compile Include="QnAPage.xaml.cs">
-      <DependentUpon>QnAPage.xaml</DependentUpon>
+    <Compile Include="PageMainSubject.xaml.cs">
+      <DependentUpon>PageMainSubject.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ShowLog.xaml.cs">
-      <DependentUpon>ShowLog.xaml</DependentUpon>
+    <Compile Include="PageQnA.xaml.cs">
+      <DependentUpon>PageQnA.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ShowNotice.xaml.cs">
-      <DependentUpon>ShowNotice.xaml</DependentUpon>
+    <Compile Include="DialogLog.xaml.cs">
+      <DependentUpon>DialogLog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StudentStatePage.xaml.cs">
-      <DependentUpon>StudentStatePage.xaml</DependentUpon>
+    <Compile Include="DialogNotice.xaml.cs">
+      <DependentUpon>DialogNotice.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageStudentState.xaml.cs">
+      <DependentUpon>PageStudentState.xaml</DependentUpon>
     </Compile>
     <Compile Include="SubjectList.xaml.cs">
       <DependentUpon>SubjectList.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SubjectStatsPage.xaml.cs">
-      <DependentUpon>SubjectStatsPage.xaml</DependentUpon>
+    <Compile Include="PageSubjectStatistic.xaml.cs">
+      <DependentUpon>PageSubjectStatistic.xaml</DependentUpon>
     </Compile>
     <Page Include="AddSubject.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -102,7 +105,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="HiddenTalkPage.xaml">
+    <Page Include="PageHiddenTalk.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -122,23 +125,27 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="NoticePage.xaml">
+    <Page Include="PageNotice.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="QnAPage.xaml">
+    <Page Include="PageMainSubject.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageQnA.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ShowLog.xaml">
+    <Page Include="DialogLog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ShowNotice.xaml">
+    <Page Include="DialogNotice.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="StudentStatePage.xaml">
+    <Page Include="PageStudentState.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -146,7 +153,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="SubjectStatsPage.xaml">
+    <Page Include="PageSubjectStatistic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

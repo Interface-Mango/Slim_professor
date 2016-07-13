@@ -24,8 +24,7 @@ namespace Slim_professor
 			
 
 		}
-		
-		
+
 		// 로그인 창과 호환되기 위한 함수
 		protected override void OnClosed(EventArgs e)
 		{
@@ -33,7 +32,5 @@ namespace Slim_professor
 			Application.Current.Shutdown();
 		}
 
-		
-		
 	}
 }

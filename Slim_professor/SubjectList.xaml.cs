@@ -23,7 +23,7 @@ namespace Slim_professor
 
 		private void StartBtnClick(object sender, System.Windows.RoutedEventArgs e)
 		{
-            NavigationService.Navigate(new Uri("NoticePage.xaml", UriKind.Relative));
+            NavigationService.Navigate(new Uri("PageMainSubject.xaml", UriKind.Relative));
 		}
 
 
