@@ -1,0 +1,18 @@
+﻿<Window
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	x:Class="Slim_professor.View.DialogNotice"
+	Title="공지사항"
+	Width="640" Height="480" WindowStartupLocation="CenterScreen">
+	<Grid Margin="0">
+		<Grid Margin="40,46.398,40,70" Background="#B2D4EAAE">
+			<Border BorderThickness="1" Height="46.314" VerticalAlignment="Top" Background="#B2B1D2EE" Margin="25,29.343,25,0" CornerRadius="20">
+				<TextBlock TextWrapping="Wrap" Text="이번 과제는 없습니당" TextAlignment="Center" Margin="10,9,10,0" FontSize="18.667" FontWeight="Bold"/>
+			</Border>
+			<Border BorderThickness="1" Background="#B2B1D2EE" Margin="25,99.814,25,25" CornerRadius="20">
+				<TextBlock TextWrapping="Wrap" FontSize="16" Padding="0" Margin="10" Text="알겠져?? "/>
+			</Border>
+		</Grid>
+		<Button Content="수정하기" HorizontalAlignment="Left" VerticalAlignment="Top" Width="101.593" Margin="502.637,390.65,0,0" Height="34.189" BorderBrush="{x:Null}" Background="#FFF1C5C5" FontSize="16" FontWeight="Bold" Click="EditBtnClick"/>
+	</Grid>
+</Window>

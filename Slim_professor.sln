@@ -1,7 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slim_professor", "Slim_professor\Slim_professor.csproj", "{B525F025-40F0-4EFF-A892-333182DAACFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVMBase", "MVVMBase\MVVMBase.csproj", "{3118C2D5-C6E6-48A2-8B34-ECF80EFA987B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,5 +17,12 @@ Global
 		{B525F025-40F0-4EFF-A892-333182DAACFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B525F025-40F0-4EFF-A892-333182DAACFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B525F025-40F0-4EFF-A892-333182DAACFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3118C2D5-C6E6-48A2-8B34-ECF80EFA987B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3118C2D5-C6E6-48A2-8B34-ECF80EFA987B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3118C2D5-C6E6-48A2-8B34-ECF80EFA987B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3118C2D5-C6E6-48A2-8B34-ECF80EFA987B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal

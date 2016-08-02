@@ -1,9 +1,0 @@
-﻿<NavigationWindow
-	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing"
-	x:Class="Slim_professor.MainFrame"
-	x:Name="Main"
-	Title="Slim"
-	Width="1200" Height="700" WindowStartupLocation="CenterScreen" Background="{x:Null}" 
-    Source="SubjectList.xaml"/>

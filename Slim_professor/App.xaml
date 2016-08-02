@@ -2,8 +2,13 @@
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	x:Class="Slim_professor.App"
-	StartupUri="LoginWindow.xaml">
-	<Application.Resources>
-		<!-- 응용 프로그램 수준의 리소스를 여기에 정의해야 합니다. -->
-	</Application.Resources>
+    xmlns:local="clr-namespace:Slim_professor"
+	StartupUri="View/LoginWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="View/Template/Styles.ListBox.Vertical.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
 </Application>

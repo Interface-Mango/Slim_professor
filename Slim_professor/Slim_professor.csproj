@@ -38,6 +38,7 @@
     <Reference Include="Microsoft.Expression.Drawing" />
     <Reference Include="Microsoft.Expression.Effects" />
     <Reference Include="Microsoft.Expression.Interactions" />
+    <Reference Include="MySql.Data, Version=6.9.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Interactivity" />
@@ -57,59 +58,71 @@
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
-    <Compile Include="AddSubject.xaml.cs">
-      <DependentUpon>AddSubject.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="EditLog.xaml.cs">
+    <Compile Include="Model\DBManager.cs" />
+    <Compile Include="Model\DB_Announcement.cs" />
+    <Compile Include="Model\DB_AnonymousBoard.cs" />
+    <Compile Include="Model\DB_MyQuestion.cs" />
+    <Compile Include="Model\DB_QnA.cs" />
+    <Compile Include="Model\DB_Signal.cs" />
+    <Compile Include="Model\DB_Subject.cs" />
+    <Compile Include="Model\DB_User.cs" />
+    <Compile Include="ViewModel\ViewModelDialogNotice.cs" />
+    <Compile Include="ViewModel\ViewModelLoginWindow.cs" />
+    <Compile Include="ViewModel\ViewModelMainSubject.cs" />
+    <Compile Include="ViewModel\ViewModelPageHiddenTalk.cs" />
+    <Compile Include="ViewModel\ViewModelPageNotice.cs" />
+    <Compile Include="ViewModel\ViewModelPageQnA.cs" />
+    <Compile Include="ViewModel\ViewModelPageSignalLightMonitor.cs" />
+    <Compile Include="ViewModel\ViewModelSubjectList.cs" />
+    <Compile Include="View\EditLog.xaml.cs">
       <DependentUpon>EditLog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EditNotice.xaml.cs">
+    <Compile Include="View\EditNotice.xaml.cs">
       <DependentUpon>EditNotice.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PageHiddenTalk.xaml.cs">
+    <Compile Include="View\PageHiddenTalk.xaml.cs">
       <DependentUpon>PageHiddenTalk.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PageNotice.xaml.cs">
+    <Compile Include="View\PageNotice.xaml.cs">
       <DependentUpon>PageNotice.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PageMainSubject.xaml.cs">
+    <Compile Include="View\PageMainSubject.xaml.cs">
       <DependentUpon>PageMainSubject.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PageQnA.xaml.cs">
+    <Compile Include="View\PageQnA.xaml.cs">
       <DependentUpon>PageQnA.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DialogLog.xaml.cs">
+    <Compile Include="View\DialogLog.xaml.cs">
       <DependentUpon>DialogLog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DialogNotice.xaml.cs">
+    <Compile Include="View\DialogNotice.xaml.cs">
       <DependentUpon>DialogNotice.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PageStudentState.xaml.cs">
+    <Compile Include="View\PageStudentState.xaml.cs">
       <DependentUpon>PageStudentState.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SubjectList.xaml.cs">
+    <Compile Include="View\SubjectList.xaml.cs">
       <DependentUpon>SubjectList.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PageSubjectStatistic.xaml.cs">
+    <Compile Include="View\PageSubjectStatistic.xaml.cs">
       <DependentUpon>PageSubjectStatistic.xaml</DependentUpon>
     </Compile>
-    <Page Include="AddSubject.xaml">
+    <Compile Include="View\Widget.xaml.cs">
+      <DependentUpon>Widget.xaml</DependentUpon>
+    </Compile>
+    <Page Include="View\EditLog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="EditLog.xaml">
+    <Page Include="View\EditNotice.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="EditNotice.xaml">
+    <Page Include="View\PageHiddenTalk.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="PageHiddenTalk.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="LoginWindow.xaml">
+    <Page Include="View\LoginWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -117,49 +130,57 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="LoginWindow.xaml.cs">
+    <Compile Include="View\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="MainFrame.xaml">
+    <Page Include="View\MainFrame.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="PageNotice.xaml">
+    <Page Include="View\PageNotice.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="PageMainSubject.xaml">
+    <Page Include="View\PageMainSubject.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PageQnA.xaml">
+    <Page Include="View\PageQnA.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="DialogLog.xaml">
+    <Page Include="View\DialogLog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="DialogNotice.xaml">
+    <Page Include="View\DialogNotice.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="PageStudentState.xaml">
+    <Page Include="View\PageStudentState.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="SubjectList.xaml">
+    <Page Include="View\SubjectList.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="PageSubjectStatistic.xaml">
+    <Page Include="View\PageSubjectStatistic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Template\Styles.ListBox.Vertical.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Widget.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MainFrame.xaml.cs">
+    <Compile Include="View\MainFrame.xaml.cs">
       <DependentUpon>MainFrame.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -201,10 +222,17 @@
     </BlendEmbeddedFont>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\basicprofile.jpg" />
-    <Resource Include="Images\mangoLogo.jpg" />
-    <Resource Include="Images\smallmango.jpg" />
+    <Resource Include="View\Images\basicprofile.jpg" />
+    <Resource Include="View\Images\mangoLogo.jpg" />
+    <Resource Include="View\Images\smallmango.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MVVMBase\MVVMBase.csproj">
+      <Project>{3118c2d5-c6e6-48a2-8b34-ecf80efa987b}</Project>
+      <Name>MVVMBase</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Expression\Blend\.NETFramework\v4.5\Microsoft.Expression.Blend.WPF.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
