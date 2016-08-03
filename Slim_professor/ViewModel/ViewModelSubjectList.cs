@@ -94,10 +94,7 @@ namespace Slim_professor.ViewModel
          */
         public void makeList()
         {
-            object[] items = MainFrame.UserInfo;    // 1. 유저(학생) 정보 가져오기
-            string[] sub_ids = items[(int)DB_User.FIELD.sub_ids].ToString().Split('_');
-            for (int k = 0; k < sub_ids.Length; k++)
-                ItemList.Add(dbSubject.SelectSubjectListForStudent(Convert.ToInt32(sub_ids[k]))); // 2. 해당 학생이 듣는 교과목 정보 가져오기 (sub_ids속성을 참고)
+            ItemList = dbSubject.SelectSubjectList(Convert.ToInt32(MainFrame.UserInfo[(int)DB_User.FIELD.user_id])); // 2. 해당 학생이 듣는 교과목 정보 가져오기 (sub_ids속성을 참고)
 
             SubjectItemList = SubjectInfo.Data(ItemList);
         }

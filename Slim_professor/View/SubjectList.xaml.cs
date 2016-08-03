@@ -20,9 +20,9 @@ namespace Slim_professor
 		{
             this.InitializeComponent();
 
-            //ViewModelSubjectList viewModelSubjectList = new ViewModelSubjectList(this);
-            //viewModelSubjectList.makeList();
-            DataContext = new ViewModelSubjectList(this);
+            ViewModelSubjectList viewModelSubjectList = new ViewModelSubjectList(this);
+            viewModelSubjectList.makeList();
+            DataContext = viewModelSubjectList;
 		}
 
 		private void StartBtnClick(object sender, System.Windows.RoutedEventArgs e)

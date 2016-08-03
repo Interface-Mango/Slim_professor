@@ -20,17 +20,17 @@ namespace Slim_professor.Model
             db = _dbm;
         }
 
-        public object[] SelectSubjectListForStudent(int sub_id)
+        public List<object[]> SelectSubjectList(int lec_id)
         {
-            string sql = "SELECT * FROM subject WHERE sub_id=@arg1";   
+            string sql = "SELECT * FROM subject WHERE lectureler_id=@arg1";   
             List<object> args = new List<object>();
-            args.Add(sub_id);
+            args.Add(lec_id);
 
             List<object[]> result = SearchDatas(sql, args);
             if (result.Count == 0)
                 return null;
             else 
-                return result[0];
+                return result;
         }
 
 
