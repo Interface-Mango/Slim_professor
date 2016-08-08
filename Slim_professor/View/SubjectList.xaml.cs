@@ -25,17 +25,5 @@ namespace Slim_professor
             DataContext = viewModelSubjectList;
 		}
 
-		private void StartBtnClick(object sender, System.Windows.RoutedEventArgs e)
-		{
-            NavigationService.Navigate(new Uri("View/PageMainSubject.xaml", UriKind.Relative));
-		}
-
-
-        private void AddSubBtnClick(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Uri("AddSubject.xaml", UriKind.Relative));
-        }
-
-
 	}
 }
