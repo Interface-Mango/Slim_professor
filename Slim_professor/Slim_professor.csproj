@@ -58,6 +58,7 @@
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Compile Include="MessageEventArgs.cs" />
     <Compile Include="Model\DBManager.cs" />
     <Compile Include="Model\DB_Announcement.cs" />
     <Compile Include="Model\DB_AnonymousBoard.cs" />
@@ -66,6 +67,7 @@
     <Compile Include="Model\DB_Signal.cs" />
     <Compile Include="Model\DB_Subject.cs" />
     <Compile Include="Model\DB_User.cs" />
+    <Compile Include="SocketUser.cs" />
     <Compile Include="ViewModel\ViewModelDialogNotice.cs" />
     <Compile Include="ViewModel\ViewModelLoginWindow.cs" />
     <Compile Include="ViewModel\ViewModelMainSubject.cs" />
@@ -230,6 +232,10 @@
     <ProjectReference Include="..\MVVMBase\MVVMBase.csproj">
       <Project>{3118c2d5-c6e6-48a2-8b34-ecf80efa987b}</Project>
       <Name>MVVMBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SocketGlobal\SocketGlobal.csproj">
+      <Project>{6bc18475-618b-467b-803b-057c8eba8114}</Project>
+      <Name>SocketGlobal</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
