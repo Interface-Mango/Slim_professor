@@ -150,6 +150,7 @@ namespace Slim_professor.ViewModel
                     {
                         UI_Setting(typeState.Connecting);
                         pht.DisplayLog("* [ " + portBox.Text + " ] 서버 종료 * \n");
+                        pht.DisplayMsg("* [Server DisConnecting] *\n");
                         pht.Dispatcher.BeginInvoke(new Action(
                         delegate()
                         {
@@ -375,7 +376,7 @@ namespace Slim_professor.ViewModel
                 //받음 보냄
                 m_socketMe.ReceiveAsync(saeaReceiveArgs);
 
-                pht.DisplayMsg("*** 서버 연결 성공 ***");
+                pht.DisplayMsg("* [Server Starting] *");
                 //서버 연결이 성공하면 id체크를 시작한다.
                 Login(NickName);
             }
@@ -471,10 +472,7 @@ namespace Slim_professor.ViewModel
         {
             String Nick1 = randomID();
             Login(Nick1);
-            /////////////////////////
-            //pht.DisplayMsg("로그인 실패 : 다른 아이디를 이용해 주세요.");
-            //연결 끊기
-            //Disconnection();
+
         }
 
         /// 접속이 끊겼다.
@@ -482,7 +480,7 @@ namespace Slim_professor.ViewModel
         {
             //접속 끊김
             m_socketMe = null;
-            pht.DisplayMsg("*** 서버 연결 끊김 ***");
+            pht.DisplayMsg("* [Server DisConnecting] *\n");
         }
 
         // 서버에 접속시 랜덤으로 아이디 부여
