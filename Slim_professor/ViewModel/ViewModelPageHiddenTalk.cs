@@ -65,6 +65,7 @@ namespace Slim_professor.ViewModel
             pht = _pht;
             txtMsg = _txtMsg;
             portBox = _portBox;
+
             IDText = _IDText;
             NickName = randomID();
             ServerConnectingBtn = _ServerConnectingBtn;
@@ -78,6 +79,7 @@ namespace Slim_professor.ViewModel
         {
             //들어온 값을 세팅하고
             m_typeState = typeSet;
+            
 
             switch (typeSet)
             {
@@ -98,6 +100,7 @@ namespace Slim_professor.ViewModel
                     ServerConnectingBtn.IsEnabled = true;
                     break;
             }
+            
         }
 
         // ------------------------
@@ -105,8 +108,6 @@ namespace Slim_professor.ViewModel
         // 서버지역
         // ------------------------
         #region Server
-
-
 
         #region ServerConnect
         private ICommand _ServerConnect;
@@ -117,15 +118,19 @@ namespace Slim_professor.ViewModel
 
         private void ServerConnectFunc(Object o)
         {
-            
+            switch (m_typeState)
+            {
+                case typeState.Connecting:
+                    {
+                        //UI 세팅
                         UI_Setting(typeState.DisConnecting);
+
                         //서버 세팅
                         socketServer = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                         IPEndPoint ipepServer = new IPEndPoint(IPAddress.Any, Convert.ToInt32(portBox.Text));
                         socketServer.Bind(ipepServer);
                         socketServer.Listen(20);
-                        
-                        Socket accepted = socketServer.Accept();
+
 
                         System.Net.Sockets.SocketAsyncEventArgs saeaUser = new System.Net.Sockets.SocketAsyncEventArgs();
                         //유저가 연결되었을때 이벤트
@@ -133,36 +138,60 @@ namespace Slim_professor.ViewModel
                         //유저 접속 대기 시작
                         socketServer.AcceptAsync(saeaUser);
 
+
                         //유저 리스트 생성
                         m_listUser = new List<SocketUser>();
                         //서버 시작 로그 표시
-                        pht.DisplayLog("* Port : [ " + portBox.Text + " ] *");
-                        pht.DisplayLog("* 서버시작 *");
-                     
-
-            
+                        pht.DisplayLog("* Port : [ " + portBox.Text + " ] ");
+                        pht.DisplayLog("* 서버 시작 ");
+                        break;
+                    }
+                case typeState.DisConnecting:
+                    {
+                        UI_Setting(typeState.Connecting);
+                        pht.DisplayLog("* [ " + portBox.Text + " ] 서버 종료 * \n");
+                        pht.Dispatcher.BeginInvoke(new Action(
+                        delegate()
+                        {
+                            IDText.Text = "ID";
+                        }));
+                        socketServer.Close();
+                        break;
+                    }
+            }
         }
         #endregion
 
         /// 클라이언트가 연결되면 발생
         private void Accept_Completed(object sender, System.Net.Sockets.SocketAsyncEventArgs e)
         {
-            //클라이언트 접속
-            //유저 객체를 만든다.
-            SocketUser insUser = new SocketUser(e.AcceptSocket);
+            try
+            {
 
-            //각 이벤트 연결
-            insUser.OnDisconnected += insUser_OnDisconnected;
-            insUser.OnMessaged += insUser_OnMessaged;
+                //클라이언트 접속
+                //유저 객체를 만든다.
+                SocketUser insUser = new SocketUser(e.AcceptSocket);
 
-            //리스트에 클라이언트 추가
-            m_listUser.Add(insUser);
+                //각 이벤트 연결
+                insUser.OnDisconnected += insUser_OnDisconnected;
+                insUser.OnMessaged += insUser_OnMessaged;
 
-            //다시 클라이언트 접속을 기다린다.
-            Socket socketServer = (Socket)sender;
-            e.AcceptSocket = null;
-            socketServer.AcceptAsync(e);
+                //리스트에 클라이언트 추가
+                m_listUser.Add(insUser);
+
+                //다시 클라이언트 접속을 기다린다.
+                Socket socketServer = (Socket)sender;
+                e.AcceptSocket = null;
+                socketServer.AcceptAsync(e);
+            }
+
+            catch(ObjectDisposedException)
+            {
+                // 소켓종료 탈출구
+            }
+
         }
+
 
         /// 유저 끊김 이벤트
         private void insUser_OnDisconnected(SocketUser sender)
@@ -483,7 +512,6 @@ namespace Slim_professor.ViewModel
             SendMsg(sbData.ToString());
         }
 
-
         /// 서버로 메시지를 전달 합니다.
         private void SendMsg(string sMsg)
         {
@@ -504,7 +532,6 @@ namespace Slim_professor.ViewModel
             m_socketMe.SendAsync(saeaServer);
         }
 
-
         /// 메시지 보내기 완료
         private void Send_Completed(object sender, SocketAsyncEventArgs e)
         {
@@ -513,7 +540,6 @@ namespace Slim_professor.ViewModel
             //데이터 보내기 마무리
             socketSend.Send(mdMsg.Data);
         }
-
         #endregion
     }
 }
