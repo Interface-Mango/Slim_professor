@@ -18,13 +18,16 @@ namespace Slim_professor.View
 		public PageHiddenTalk()
 		{
 			this.InitializeComponent();
-            DataContext = new ViewModelPageHiddenTalk(this, msgTextBox2, PortBox);
+            DataContext = new ViewModelPageHiddenTalk
+                (this, msgTextBox2, PortBox, IDText, ServerConnectingBtn, ServerConnectBtn);
             msgTextBox.IsReadOnly = true;
             msgTextBox1.IsReadOnly = true;
             PortBox.MaxLength = 4;
 		}
 
         private delegate void SetTextCallback(String nMessage);
+      
+        // 서버 Log 기록
         public void DisplayLog(String nMessage)
         {
             //TODO : 선생이름 가져오기
@@ -41,6 +44,7 @@ namespace Slim_professor.View
             }
         }
 
+        //Client 내용 기록
         public void DisplayMsg(String nMessage)
         {
             if (msgTextBox1.Dispatcher.CheckAccess())
@@ -55,6 +59,38 @@ namespace Slim_professor.View
                 msgTextBox1.Dispatcher.BeginInvoke(d, new Object[] { nMessage });
             }
         }
-        
-	}
+
+        #region portBox를 숫자만 입력하게
+        private string prevText;
+        private void PortBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+
+            double value;
+            
+            if (double.TryParse(textBox.Text, out value))
+            {
+                this.prevText = textBox.Text;
+            }
+            else
+            {
+                textBox.Text = this.prevText;
+                textBox.SelectionLength = this.prevSelectionLength;
+                textBox.SelectionStart = this.prevSelectionStart;
+            }
+
+        }
+
+        int prevSelectionStart;
+        int prevSelectionLength;
+        private void PortBox_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            TextBox textbox = sender as TextBox;
+            this.prevSelectionStart = textbox.SelectionStart;
+            this.prevSelectionLength = textbox.SelectionLength;
+        }
+
+        #endregion
+
+    }
 }

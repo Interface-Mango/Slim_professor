@@ -13,15 +13,20 @@
         <Grid HorizontalAlignment="Left" Height="589" VerticalAlignment="Top" Width="972" Margin="0,40,0,0" Background="#FFE0F5EB">
             <TextBox x:Name="msgTextBox" TextWrapping="Wrap" Margin="30,28,776,142" Background="#FF3F5740" Foreground="#FFFBF9F9"/>
             <TextBox x:Name="msgTextBox1" HorizontalAlignment="Left" Height="465" TextWrapping="Wrap" VerticalAlignment="Top" Width="726" Margin="226,28,0,0"/>
-            <TextBox x:Name="msgTextBox2" HorizontalAlignment="Left" Height="46" TextWrapping="Wrap" VerticalAlignment="Top" Width="606" Margin="226,508,0,0">
+            <TextBox x:Name="msgTextBox2" HorizontalAlignment="Left" Height="46" TextWrapping="Wrap" VerticalAlignment="Top" Width="510" Margin="322,508,0,0" IsEnabled="False">
                 <TextBox.InputBindings>
                     <KeyBinding Key="Enter" Command="{Binding msgSend}"/>
                 </TextBox.InputBindings>
             </TextBox>
-            <Button Content="서버접속" Command="{Binding ServerConnecting}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="94" Margin="858,508,0,0" Height="46" RenderTransformOrigin="1.067,0.623"/>
-            <Button Content="서버연결" Command="{Binding ServerConnect}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="163" Margin="30,508,0,0" Height="46"/>
-            <TextBox x:Name="PortBox"  HorizontalAlignment="Left" Height="33" TextWrapping="Wrap" VerticalAlignment="Top" Width="89" Margin="104,460,0,0"/>
+            <Button x:Name="ServerConnectingBtn" Content="서버접속" Command="{Binding ServerConnecting}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="94" Margin="858,508,0,0" Height="46" RenderTransformOrigin="1.067,0.623" IsEnabled="False"/>
+            <Button x:Name="ServerConnectBtn" Content="서버연결" Command="{Binding ServerConnect}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="163" Margin="30,508,0,0" Height="46"/>
+            <TextBox x:Name="PortBox"  HorizontalAlignment="Left" Height="33" TextWrapping="Wrap" VerticalAlignment="Top" Width="89" Margin="104,460,0,0" TextChanged="PortBox_TextChanged">
+                <TextBox.InputBindings>
+                    <KeyBinding Key="Enter" Command="{Binding ServerConnect}"/>
+                </TextBox.InputBindings>
+            </TextBox>
             <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="PortNumber" VerticalAlignment="Top" Margin="10,464,0,0" Height="21" Width="89" FontSize="15"/>
+            <TextBlock x:Name="IDText" HorizontalAlignment="Left" TextWrapping="Wrap" Text="ID" VerticalAlignment="Top" Margin="228,520,0,0" Height="28" Width="78" FontSize="18" Foreground="#FF0D21F1" FontWeight="Bold" TextAlignment="Center"/>
         </Grid>
     </Grid>
 </Page>

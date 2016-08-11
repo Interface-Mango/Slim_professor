@@ -28,32 +28,85 @@ namespace Slim_professor.ViewModel
     #endregion
 
     class ViewModelPageHiddenTalk : ViewModelBase
-    {/// 접속한 유저 리스트(로그인 완료전 포함)
+    {
+        /// 접속한 유저 리스트(로그인 완료전 포함)
         private List<SocketUser> m_listUser = null;
+
         /// 서버 소켓
         private Socket socketServer;
         private PageHiddenTalk pht;
         private TextBox txtMsg;
         private TextBox portBox;
+        private TextBlock IDText;
+        private String NickName;
+        private Button ServerConnectingBtn, ServerConnectBtn;
 
         /// 명령어 클래스
         private claCommand m_insCommand = new claCommand();
         /// 내 소켓
         private Socket m_socketMe = null;
 
-        public ViewModelPageHiddenTalk(PageHiddenTalk _pht, TextBox _txtMsg, TextBox _portBox)
+        /// ServerConnectBtn 버튼 상태
+        enum typeState
+        {
+            /// 연결하세요
+            Connecting,
+
+            /// 끊으세요
+            DisConnecting,
+        }
+
+        /// 나의 상태
+        private typeState m_typeState = typeState.Connecting;
+
+        public ViewModelPageHiddenTalk
+            (PageHiddenTalk _pht, TextBox _txtMsg, TextBox _portBox, TextBlock _IDText, Button _ServerConnectingBtn, Button _ServerConnectBtn)
         {
             pht = _pht;
             txtMsg = _txtMsg;
             portBox = _portBox;
+            IDText = _IDText;
+            NickName = randomID();
+            ServerConnectingBtn = _ServerConnectingBtn;
+            ServerConnectBtn = _ServerConnectBtn;
+
+            UI_Setting(typeState.Connecting);
         }
 
+        // UI 세팅
+        private void UI_Setting(typeState typeSet)
+        {
+            //들어온 값을 세팅하고
+            m_typeState = typeSet;
+
+            switch (typeSet)
+            {
+                case typeState.Connecting:	// 연결 전
+                    ServerConnectBtn.Content = "서버 연결";
+                    txtMsg.IsEnabled = false;
+                    ServerConnectingBtn.IsEnabled = false;
+                    portBox.IsEnabled = true;
+                    break;
+
+                case typeState.DisConnecting:	// 연결완료
+                    pht.Dispatcher.BeginInvoke(new Action(
+                        delegate()
+                        {
+                            ServerConnectBtn.Content = "서버 종료";
+                        }));
+                    portBox.IsEnabled = false;
+                    ServerConnectingBtn.IsEnabled = true;
+                    break;
+            }
+        }
 
         // ------------------------
         // professor에는 서버와 클라이언트 2개가 존재.
         // 서버지역
         // ------------------------
         #region Server
+
+
 
         #region ServerConnect
         private ICommand _ServerConnect;
@@ -64,27 +117,30 @@ namespace Slim_professor.ViewModel
 
         private void ServerConnectFunc(Object o)
         {
-            //서버 세팅
-            socketServer = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            IPEndPoint ipepServer = new IPEndPoint(IPAddress.Any, Convert.ToInt32(portBox.Text));
-            socketServer.Bind(ipepServer);
-            socketServer.Listen(20);
+            
+                        UI_Setting(typeState.DisConnecting);
+                        //서버 세팅
+                        socketServer = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                        IPEndPoint ipepServer = new IPEndPoint(IPAddress.Any, Convert.ToInt32(portBox.Text));
+                        socketServer.Bind(ipepServer);
+                        socketServer.Listen(20);
+                        
+                        Socket accepted = socketServer.Accept();
 
-            System.Net.Sockets.SocketAsyncEventArgs saeaUser = new System.Net.Sockets.SocketAsyncEventArgs();
-            //유저가 연결되었을때 이벤트
-            saeaUser.Completed += new EventHandler<System.Net.Sockets.SocketAsyncEventArgs>(Accept_Completed);
-            //유저 접속 대기 시작
-            socketServer.AcceptAsync(saeaUser);
+                        System.Net.Sockets.SocketAsyncEventArgs saeaUser = new System.Net.Sockets.SocketAsyncEventArgs();
+                        //유저가 연결되었을때 이벤트
+                        saeaUser.Completed += new EventHandler<System.Net.Sockets.SocketAsyncEventArgs>(Accept_Completed);
+                        //유저 접속 대기 시작
+                        socketServer.AcceptAsync(saeaUser);
 
-            //유저 리스트 생성
-            m_listUser = new List<SocketUser>();
-            //서버 시작 로그 표시
-            pht.DisplayLog("* Port : [ " + portBox.Text + " ] *");
-            pht.DisplayLog("* 서버시작 *");
+                        //유저 리스트 생성
+                        m_listUser = new List<SocketUser>();
+                        //서버 시작 로그 표시
+                        pht.DisplayLog("* Port : [ " + portBox.Text + " ] *");
+                        pht.DisplayLog("* 서버시작 *");
+                     
 
-            //버튼 표시
-            //btnStart.IsEnabled = false;
-
+            
         }
         #endregion
 
@@ -212,6 +268,7 @@ namespace Slim_professor.ViewModel
             {
                 insUser.SendMsg_User(sMsg);
             }
+
             //로그 출력
             //pht.DisplayLog(sMsg);
         }
@@ -252,6 +309,9 @@ namespace Slim_professor.ViewModel
         }
         private void ServerConnectingFunc(Object o)
         {
+            txtMsg.IsEnabled = true;
+            ServerConnectingBtn.IsEnabled = false;
+
             //소켓 생성
             Socket socketServer = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             IPEndPoint ipepServer = new IPEndPoint(IPAddress.Parse("127.0.0.1"), Convert.ToInt32(portBox.Text));
@@ -288,7 +348,7 @@ namespace Slim_professor.ViewModel
 
                 pht.DisplayMsg("*** 서버 연결 성공 ***");
                 //서버 연결이 성공하면 id체크를 시작한다.
-                Login();
+                Login(NickName);
             }
             else
             {
@@ -363,21 +423,29 @@ namespace Slim_professor.ViewModel
         /// 아이디 성공
         private void SendMeg_IDCheck_Ok()
         {
+            pht.Dispatcher.BeginInvoke(new Action(
+                        delegate()
+                        {
+                            IDText.Text = NickName;
+                        }));
 
             //아이디확인이 되었으면 서버에 로그인 요청을 하여 로그인을 끝낸다.
             StringBuilder sbData = new StringBuilder();
             sbData.Append(claCommand.Command.Login.GetHashCode());
             sbData.Append(claGlobal.g_Division);
-
             SendMsg(sbData.ToString());
+
         }
 
         /// 아이디체크 실패
         private void SendMeg_IDCheck_Fail()
         {
-            pht.DisplayMsg("로그인 실패 : 다른 아이디를 이용해 주세요.");
+            String Nick1 = randomID();
+            Login(Nick1);
+            /////////////////////////
+            //pht.DisplayMsg("로그인 실패 : 다른 아이디를 이용해 주세요.");
             //연결 끊기
-            Disconnection();
+            //Disconnection();
         }
 
         /// 접속이 끊겼다.
@@ -385,27 +453,32 @@ namespace Slim_professor.ViewModel
         {
             //접속 끊김
             m_socketMe = null;
-
             pht.DisplayMsg("*** 서버 연결 끊김 ***");
         }
 
+        // 서버에 접속시 랜덤으로 아이디 부여
         private string randomID()
         {
-            string[] NickName = { "asd", "zxc", "qwe", "nvb", "fdv", "4rf", "123" };
+            string[] NickNames = 
+                { "Apple ", "Banana ", "Korea ", "Babo ", "Mouse ",
+                "Book ", "Lemon ", "Orange ", "멍청이 ", "이순신 ",
+                "장영실 ", "Melon ", "Moon ", "Star ", "Cloud ",
+                "Winter ", "Spring ", "Summer ","Fall ","광해군 ",
+                "연산군 ", "논개 ", "장희빈 "
+            };
             Random rand = new Random();
-
-            int r = rand.Next(0, NickName.Length);
-            return NickName[r];
+            int r = rand.Next(0, NickNames.Length);
+            return NickNames[r];
         }
 
         /// 아이디 체크 요청
-        private void Login()
+        private void Login(String Nick)
         {
             StringBuilder sbData = new StringBuilder();
             sbData.Append(claCommand.Command.ID_Check.GetHashCode());
             sbData.Append(claGlobal.g_Division);
 
-            sbData.Append(randomID().ToString());
+            sbData.Append(Nick);
 
             SendMsg(sbData.ToString());
         }
