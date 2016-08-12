@@ -125,25 +125,26 @@ namespace Slim_professor.ViewModel
                         //UI 세팅
                         UI_Setting(typeState.DisConnecting);
 
-                        //서버 세팅
-                        socketServer = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                        IPEndPoint ipepServer = new IPEndPoint(IPAddress.Any, Convert.ToInt32(portBox.Text));
-                        socketServer.Bind(ipepServer);
-                        socketServer.Listen(20);
+                            //서버 세팅
+                            socketServer = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                            IPEndPoint ipepServer = new IPEndPoint(IPAddress.Any, Convert.ToInt32(portBox.Text));
+                            socketServer.Bind(ipepServer);
+                            socketServer.Listen(20);
 
 
-                        System.Net.Sockets.SocketAsyncEventArgs saeaUser = new System.Net.Sockets.SocketAsyncEventArgs();
-                        //유저가 연결되었을때 이벤트
-                        saeaUser.Completed += new EventHandler<System.Net.Sockets.SocketAsyncEventArgs>(Accept_Completed);
-                        //유저 접속 대기 시작
-                        socketServer.AcceptAsync(saeaUser);
+                            System.Net.Sockets.SocketAsyncEventArgs saeaUser = new System.Net.Sockets.SocketAsyncEventArgs();
+                            //유저가 연결되었을때 이벤트
+                            saeaUser.Completed += new EventHandler<System.Net.Sockets.SocketAsyncEventArgs>(Accept_Completed);
+                            //유저 접속 대기 시작
+                            socketServer.AcceptAsync(saeaUser);
 
 
-                        //유저 리스트 생성
-                        m_listUser = new List<SocketUser>();
-                        //서버 시작 로그 표시
-                        pht.DisplayLog("* Port : [ " + portBox.Text + " ] ");
-                        pht.DisplayLog("* 서버 시작 ");
+                            //유저 리스트 생성
+                            m_listUser = new List<SocketUser>();
+                            //서버 시작 로그 표시
+                            pht.DisplayLog("* Port : [ " + portBox.Text + " ] ");
+                            pht.DisplayLog("* 서버 시작 ");
+                            
                         break;
                     }
                 case typeState.DisConnecting:
@@ -156,7 +157,10 @@ namespace Slim_professor.ViewModel
                         {
                             IDText.Text = "ID";
                         }));
+                        Commd_Server_Disconnetion();
                         socketServer.Close();
+                        m_listUser.Clear();
+                        
                         break;
                     }
             }
@@ -219,7 +223,26 @@ namespace Slim_professor.ViewModel
                 case claCommand.Command.ID_Check:	//id체크
                     Commd_IDCheck(sender, e.m_strMsg);
                     break;
+
+                //case claCommand.Command.Server_Disconnection: // 서버에서 접속 끊을때
+                   // Commd_Server_Disconnetion();
+                    //break;
+                    
             }
+        }
+
+        // 명령처리 - 서버 접속 종료를 모든 유저들에게 알림
+        private void Commd_Server_Disconnetion()
+        {
+            StringBuilder sbMsg = new StringBuilder();
+
+            //명령어 부착
+            sbMsg.Append(claCommand.Command.Server_Disconnection.GetHashCode().ToString());
+            //구분자 부착
+            sbMsg.Append(claGlobal.g_Division);
+
+            //전체 유저에게 메시지 전송
+            AllUser_Send(sbMsg.ToString());
         }
 
 
@@ -293,10 +316,13 @@ namespace Slim_professor.ViewModel
         /// 접속중인 모든 유저에게 메시지를 보냅니다.
         private void AllUser_Send(string sMsg)
         {
-            //모든 유저에게 메시지를 전송 한다.
-            foreach (SocketUser insUser in m_listUser)
+            if (m_listUser != null)
             {
-                insUser.SendMsg_User(sMsg);
+                //모든 유저에게 메시지를 전송 한다.
+                foreach (SocketUser insUser in m_listUser)
+                {
+                    insUser.SendMsg_User(sMsg);
+                }
             }
 
             //로그 출력

@@ -19,11 +19,8 @@
                 </TextBox.InputBindings>
             </TextBox>
             <Button x:Name="ServerConnectingBtn" Content="서버접속" Command="{Binding ServerConnecting}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="94" Margin="858,508,0,0" Height="46" RenderTransformOrigin="1.067,0.623" IsEnabled="False"/>
-            <Button x:Name="ServerConnectBtn" Content="서버연결" Command="{Binding ServerConnect}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="163" Margin="30,508,0,0" Height="46"/>
-            <TextBox x:Name="PortBox"  HorizontalAlignment="Left" Height="33" TextWrapping="Wrap" VerticalAlignment="Top" Width="89" Margin="104,460,0,0" TextChanged="PortBox_TextChanged">
-                <TextBox.InputBindings>
-                    <KeyBinding Key="Enter" Command="{Binding ServerConnect}"/>
-                </TextBox.InputBindings>
+            <Button x:Name="ServerConnectBtn" Content="서버연결" Command="{Binding ServerConnect}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="163" Margin="30,508,0,0" Height="46" IsEnabled="False"/>
+            <TextBox x:Name="PortBox"  HorizontalAlignment="Left" Height="33" TextWrapping="Wrap" VerticalAlignment="Top" Width="89" Margin="104,460,0,0" TextChanged="PortBox_TextChanged" KeyDown="PortBox_KeyDown">
             </TextBox>
             <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="PortNumber" VerticalAlignment="Top" Margin="10,464,0,0" Height="21" Width="89" FontSize="15"/>
             <TextBlock x:Name="IDText" HorizontalAlignment="Left" TextWrapping="Wrap" Text="ID" VerticalAlignment="Top" Margin="228,520,0,0" Height="28" Width="78" FontSize="18" Foreground="#FF0D21F1" FontWeight="Bold" TextAlignment="Center"/>

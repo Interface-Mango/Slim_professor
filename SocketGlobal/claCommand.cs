@@ -25,17 +25,6 @@ namespace SocketGlobal
 			/// 아이디 체크 실패
 			ID_Check_Fail,
 
-			/// 접속한 유저가 있다.
-			User_Connect,
-
-			/// 접속을 끊은 유저가 있다.
-			User_Disonnect,
-
-			/// 유저 리스트를 보냅니다.
-			User_List,
-
-			/// 유저 리스트를 갱신을 요청 합니다.
-			User_List_Get,
 
 			/// 아이디 무결성이 확인 된후 호출함
 			Login,
@@ -43,8 +32,8 @@ namespace SocketGlobal
 			/// 서버에서 모든 로그인 과정이 완료 되었다고 클라이언트에게 알림
 			Login_Complete,
 
-			/// 로그아웃
-			Logout,
+			/// 서버에서 연결을 끊을 때
+            Server_Disconnection,
 
 			/// 메시지 전송
 			Msg,

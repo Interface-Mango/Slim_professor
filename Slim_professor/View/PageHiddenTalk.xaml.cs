@@ -92,5 +92,10 @@ namespace Slim_professor.View
 
         #endregion
 
+        private void PortBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            ServerConnectBtn.IsEnabled = true;
+        }
+
     }
 }
