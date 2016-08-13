@@ -32,7 +32,7 @@
               Margin="220,80,0,0"
               HorizontalAlignment="Left"
               VerticalAlignment="Top"
-              Background="#FFF4F5E0">
+              Background="#FFFFE406">
             <Grid Margin="150,50" Background="#4CD69595">
                 <ListBox Name="SubjectListBox"
                          ItemsSource="{Binding SubjectItemList}"
@@ -53,38 +53,13 @@
                         Foreground="#ffffff" />
             </Grid>
         </Grid>
-        <Canvas Height="40"
-                Margin="0"
-                VerticalAlignment="Top"
-                Background="#FF71C563">
-            <Image Canvas.Left="18.96"
-                   Width="39.336"
-                   Height="39.336"
-                   Source="Images/smallmango.jpg" />
-            <TextBlock Canvas.Left="60.64"
-                       Canvas.Top="1.891"
-                       Width="112.093"
-                       Height="37.445"
-                       FontSize="24"
-                       Foreground="White"
-                       Text="Slim"
-                       TextWrapping="Wrap" />
-            <Button Content="위젯 모드" Canvas.Left="1100" Canvas.Top="8" Width="80"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            Background="#276a51"
-                            Command="{Binding MinimizeCommand}"
-                            FontSize="11"
-                            FontWeight="Bold"
-                            Foreground="#ffffff" />
-        </Canvas>
         <Canvas x:Name="SubPanel" Grid.Row="1">
                 <Canvas Canvas.Top="40"
                     Width="220"
                     Height="80"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
-                    Background="#FFE0E4B9">
+                    Background="#FFFFF8CA">
                     <Image Canvas.Left="14.272"
                        Canvas.Top="10.48"
                        Width="60"
@@ -118,20 +93,43 @@
                   Height="549"
                   HorizontalAlignment="Left"
                   VerticalAlignment="Top"
-                  Background="#FFBBCB8F">
+                  Background="#FFFFF8CA">
                 <Button Width="220"
-                        Height="60"
-                        Margin="0,15,0,0"
+                        Height="70"
+                        Margin="0,30,0,0"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
                         HorizontalContentAlignment="Right"
-                        Background="#FFD9EEEE"
+                        Background="White"
                         BorderBrush="{x:Null}"
                         Content="수업리스트"
-                        FontSize="20"
+                        FontSize="22.667"
                         FontWeight="Bold"
-                        Padding="0 5 10 5" />
+                        Padding="0 5 10 5" FontFamily="나눔 고딕" />
             </Grid>
+            <Button Content="위젯 모드" Canvas.Left="1102" Canvas.Top="640.37" Width="80"
+            	HorizontalAlignment="Center"
+            	VerticalAlignment="Center"
+            	Background="#276a51"
+            	Command="{Binding MinimizeCommand}"
+            	FontSize="11"
+            	FontWeight="Bold"
+            	Foreground="#ffffff" />
+        </Canvas>
+        <Canvas Height="40"
+        	VerticalAlignment="Top"
+        	Background="#FF524500">
+        	<TextBlock Canvas.Left="569.205"
+        		Canvas.Top="2.555"
+        		Width="54.473"
+        		Height="37.445"
+        		FontSize="24"
+        		Foreground="White"
+        		Text="Slim"
+        		TextWrapping="Wrap" HorizontalAlignment="Center" />
+        	<Canvas x:Name="CloseBtn" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="24" Background="#FFEC5C5C" Canvas.Left="1158" Canvas.Top="9">
+        		<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="X" VerticalAlignment="Top" Width="24" Foreground="White" FontWeight="Bold" Height="16" TextAlignment="Center" Canvas.Top="4"/>
+        	</Canvas>
         </Canvas>
     </Grid>
 </Page>

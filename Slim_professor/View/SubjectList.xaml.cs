@@ -25,5 +25,6 @@ namespace Slim_professor
             DataContext = viewModelSubjectList;
 		}
 
+
 	}
 }

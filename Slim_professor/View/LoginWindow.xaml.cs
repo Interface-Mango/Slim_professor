@@ -28,5 +28,25 @@ namespace Slim_professor.View
             IDTextBox.Focus();
             DataContext = new ViewModelLoginWindow(this);   
         }
+
+        private void Canvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
+
+
+        private void Canvas_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
+        {
+            this.Close();
+        }
+
+
+
+
+
+
+
+
+
     }
 }
