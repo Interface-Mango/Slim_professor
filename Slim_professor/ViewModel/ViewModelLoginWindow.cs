@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows;
 using Slim_professor.Model;
 using Slim_professor.View;
+using System.IO;
 
 namespace Slim_professor.ViewModel
 {
@@ -71,7 +72,14 @@ namespace Slim_professor.ViewModel
                 MainFrame mf = new MainFrame(obj);
 
                 parentWindow.Hide();
-                mf.ShowDialog(); 
+                try
+                {
+                    mf.ShowDialog();
+                }
+                catch(IOException)
+                {
+                    //
+                }
             }
         }
         #endregion

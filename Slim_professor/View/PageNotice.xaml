@@ -8,18 +8,9 @@
 	Width="972" Height="629"
 	WindowWidth="1200" WindowHeight="700">
     <Grid>
-        <Canvas HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="972" Background="#FF8B94EA">
-            <TextBlock TextWrapping="Wrap" Text="공지사항" Canvas.Top="10" VerticalAlignment="Center" Canvas.Left="80" Height="20" Width="93" FontSize="14.667" FontWeight="Bold"/>
+        <Grid HorizontalAlignment="Left" Height="629" VerticalAlignment="Top" Width="972" Background="#FFFEE505"/>
+        <Canvas HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="972" Background="#FFEADD8B">
+        	<TextBlock TextWrapping="Wrap" Text="공지사항" Canvas.Top="10" VerticalAlignment="Center" Canvas.Left="80" Height="20" Width="93" FontSize="14.667" FontWeight="Bold"/>
         </Canvas>
-        <Grid HorizontalAlignment="Left" Height="589" VerticalAlignment="Top" Width="972" Margin="0,40,0,0" Background="#FFE0F5EB">
-            <Grid Margin="150,50" Background="#4CBED695">
-                <Canvas HorizontalAlignment="Left" Height="52.804" VerticalAlignment="Top" Width="625.984" Margin="10,79.126,0,0" Background="#FFF3ECE5">
-                    <Button Content="이번 과제는 없습니당" Width="475.305" Canvas.Left="140.679" Canvas.Top="10" Height="32.804" Background="{x:Null}" FontSize="16" FontWeight="Bold" BorderBrush="{x:Null}" Click="TitleClick"/>
-                    <TextBlock TextWrapping="Wrap" Text="2016.07.10" Canvas.Left="45.689" Canvas.Top="11.742" Height="29" Width="94.99" TextAlignment="Center" FontSize="17.333" Foreground="#FF0E22EA"/>
-                </Canvas>
-                <ScrollBar HorizontalAlignment="Left" VerticalAlignment="Top" Margin="655,0,0,0" Height="489"/>
-            </Grid>
-            <Button Content="등록하기" HorizontalAlignment="Left" VerticalAlignment="Top" Width="95.908" Margin="844.424,515.555,0,0" Height="44.354" BorderBrush="{x:Null}" Background="#FFDDBFE2" FontSize="16" FontWeight="Bold" Click="RegBtnClick"/>
-        </Grid>
     </Grid>
 </Page>

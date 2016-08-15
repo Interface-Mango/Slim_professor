@@ -7,11 +7,8 @@
 	Width="972" Height="629"
 	WindowWidth="1200" WindowHeight="700">
     <Grid x:Name="MainPanel" >
-        <Canvas HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="972" Background="#FF94EA8B">
-            <TextBlock TextWrapping="Wrap" Text="익명 단체 대화방" Canvas.Top="10" VerticalAlignment="Center" Canvas.Left="80" Height="20" Width="127.5" FontSize="14.667" FontWeight="Bold"/>
-        </Canvas>
-        <Grid HorizontalAlignment="Left" Height="589" VerticalAlignment="Top" Width="972" Margin="0,40,0,0" Background="#FFE0F5EB">
-            <TextBox x:Name="msgTextBox" TextWrapping="Wrap" Margin="30,28,776,142" Background="#FF3F5740" Foreground="#FFFBF9F9"/>
+        <Grid HorizontalAlignment="Left" Height="589" VerticalAlignment="Top" Width="972" Margin="0,40,0,0" Background="#FFFEE505">
+            <TextBox x:Name="msgTextBox" TextWrapping="Wrap" Margin="30,28,776,142" Background="#FF827201" Foreground="#FFFBF9F9"/>
             <TextBox x:Name="msgTextBox1" HorizontalAlignment="Left" Height="465" TextWrapping="Wrap" VerticalAlignment="Top" Width="726" Margin="226,28,0,0"/>
             <TextBox x:Name="msgTextBox2" HorizontalAlignment="Left" Height="46" TextWrapping="Wrap" VerticalAlignment="Top" Width="510" Margin="322,508,0,0" IsEnabled="False">
                 <TextBox.InputBindings>
@@ -25,5 +22,8 @@
             <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="PortNumber" VerticalAlignment="Top" Margin="10,464,0,0" Height="21" Width="89" FontSize="15"/>
             <TextBlock x:Name="IDText" HorizontalAlignment="Left" TextWrapping="Wrap" Text="ID" VerticalAlignment="Top" Margin="228,520,0,0" Height="28" Width="78" FontSize="18" Foreground="#FF0D21F1" FontWeight="Bold" TextAlignment="Center"/>
         </Grid>
+        <Canvas HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="972" Background="#FFEADD8B">
+            <TextBlock TextWrapping="Wrap" Text="익명 단체 대화방" Canvas.Top="10" VerticalAlignment="Center" Canvas.Left="80" Height="20" Width="177" FontSize="14.667" FontWeight="Bold"/>
+        </Canvas>
     </Grid>
 </Page>

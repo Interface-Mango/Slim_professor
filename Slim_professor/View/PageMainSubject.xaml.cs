@@ -31,34 +31,47 @@ namespace Slim_professor.View
             SubName.Text = param.ElementAt(1).ToString();
         }
 
-        private void StudentStateBtn_Click(object sender, RoutedEventArgs e)
+        #region 메뉴 버튼들
+
+        private void CloseBtn_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            FramePanel.Source = new Uri("PageStudentState.xaml", UriKind.Relative);
+            MainFrame.Frame.Close();
         }
 
-        private void HiddenTalkBtn_Click(object sender, RoutedEventArgs e)
+        private void canvas_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            FramePanel.Source = new Uri("PageHiddenTalk.xaml", UriKind.Relative);
+        	FramePanel.Source = new Uri("PageStudentState.xaml", UriKind.Relative);
         }
 
-        private void SubjectStatsBtn_Click(object sender, RoutedEventArgs e)
+        private void canvas1_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+        	 FramePanel.Source = new Uri("PageHiddenTalk.xaml", UriKind.Relative);
+        }
+
+        private void canvas2_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             FramePanel.Source = new Uri("PageSubjectStatistic.xaml", UriKind.Relative);
         }
 
-        private void QnABtn_Click(object sender, RoutedEventArgs e)
-        {
-            FramePanel.Source = new Uri("PageQnA.xaml", UriKind.Relative);
-        }
-
-        private void NoticeBtn_Click(object sender, RoutedEventArgs e)
+        private void canvas3_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             FramePanel.Source = new Uri("PageNotice.xaml", UriKind.Relative);
         }
 
-       
+        private void WidgetBtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Widget widget = new Widget();
+            widget.Show();
+            MainFrame.Frame.Hide();
+        }
+
+        #endregion
+
+        private void HomeBtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            // To do 나중에
+        }
 
 
-       
     }
 }

@@ -36,5 +36,10 @@ namespace Slim_professor.View
 			Application.Current.Shutdown();
 		}
 
+        private void Main_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
+
 	}
 }

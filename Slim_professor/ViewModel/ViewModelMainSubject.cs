@@ -102,6 +102,20 @@ namespace Slim_professor.ViewModel
         }
         #endregion
 
+        #region GoHome
+        private ICommand _GoHome;
+        public ICommand GoHome
+        {
+            get { return _GoHome ?? (_GoHome = new AppCommand(GoHomeFunc)); }
+        }
+        private void GoHomeFunc(Object o)
+        {
+            _FrameSource = new Uri("SubjectList.xaml", UriKind.Relative);
+            Console.WriteLine(_FrameSource.OriginalString);
+            OnPropertyChanged("FrameSource");
+        }
+        #endregion
+
 
         #region Profile
         public string UserGroup

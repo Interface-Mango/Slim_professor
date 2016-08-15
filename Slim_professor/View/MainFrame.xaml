@@ -5,5 +5,5 @@
 	x:Class="Slim_professor.View.MainFrame"
 	x:Name="Main"
 	Title="Slim"
-	Width="1200" Height="700" WindowStartupLocation="CenterScreen" Background="{x:Null}" 
-    Source="SubjectList.xaml"/>
+	Width="1200" Height="700" WindowStartupLocation="CenterOwner" Background="{x:Null}" 
+    Source="SubjectList.xaml" WindowStyle="None" SizeToContent="WidthAndHeight" MouseLeftButtonDown="Main_MouseLeftButtonDown"/>

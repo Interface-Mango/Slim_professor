@@ -53,22 +53,6 @@ namespace Slim_professor.ViewModel
         }
         #endregion
 
-        #region MinimizeCommand
-        private ICommand _MinimizeCommand;
-        public ICommand MinimizeCommand
-        {
-            get
-            {
-                return _MinimizeCommand ?? (_MinimizeCommand = new AppCommand(MinimizeCommandFunc));
-            }
-        }
-        public void MinimizeCommandFunc(Object o)
-        {
-            Widget widget = new Widget();
-            widget.Show();
-            MainFrame.Frame.Hide();
-        }
-        #endregion
 
         #region EnterSubjectCommand
         private ICommand _EnterSubjectCommand;

@@ -8,55 +8,79 @@
       WindowHeight="700"
       WindowTitle="Slim"
       WindowWidth="1200">
+	<Page.Resources>
+		<Storyboard x:Key="MouseEnterInBtn">
+			<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="WidgetBtn">
+				<EasingColorKeyFrame KeyTime="0" Value="White"/>
+			</ColorAnimationUsingKeyFrames>
+			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.FontWeight)" Storyboard.TargetName="textBlock">
+				<DiscreteObjectKeyFrame KeyTime="0">
+					<DiscreteObjectKeyFrame.Value>
+						<FontWeight>Bold</FontWeight>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+			</ObjectAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.FontSize)" Storyboard.TargetName="textBlock">
+				<EasingDoubleKeyFrame KeyTime="0" Value="22.667"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="MouseLeaveInBtn">
+			<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="WidgetBtn">
+				<EasingColorKeyFrame KeyTime="0" Value="#FFFFF8CA"/>
+			</ColorAnimationUsingKeyFrames>
+			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.FontWeight)" Storyboard.TargetName="textBlock">
+				<DiscreteObjectKeyFrame KeyTime="0">
+					<DiscreteObjectKeyFrame.Value>
+						<FontWeight>Normal</FontWeight>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+			</ObjectAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.FontSize)" Storyboard.TargetName="textBlock">
+				<EasingDoubleKeyFrame KeyTime="0" Value="20"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+	</Page.Resources>
+	<Page.Triggers>
+		<EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="WidgetBtn">
+			<BeginStoryboard Storyboard="{StaticResource MouseEnterInBtn}"/>
+		</EventTrigger>
+		<EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="WidgetBtn">
+			<BeginStoryboard Storyboard="{StaticResource MouseLeaveInBtn}"/>
+		</EventTrigger>
+	</Page.Triggers>
 
 
     <Grid>
-        <Canvas Width="972"
-                Height="40"
-                Margin="220,40,0,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                Background="#FFEA8B8B">
-            <TextBlock Canvas.Left="80"
-                       Canvas.Top="10"
-                       Width="93"
-                       Height="20"
-                       VerticalAlignment="Center"
-                       FontSize="14.667"
-                       FontWeight="Bold"
-                       Text="수업리스트"
-                       TextWrapping="Wrap" />
-        </Canvas>
         <Grid Width="972"
-              Height="589"
-              Margin="220,80,0,0"
+              Height="629"
+              Margin="220,40,0,0"
               HorizontalAlignment="Left"
               VerticalAlignment="Top"
               Background="#FFFFE406">
-            <Grid Margin="150,50" Background="#4CD69595">
+            <Grid Margin="150,112,150,50" Background="#4CD69595">
                 <ListBox Name="SubjectListBox"
                          ItemsSource="{Binding SubjectItemList}"
-                         Style="{DynamicResource LBX_VERTICAL}" />
+                         Style="{DynamicResource LBX_VERTICAL}" BorderBrush="{x:Null}" />
 
                 <Button Name="EnterButton"
                         Grid.Row="0"
                         Width="100"
                         Height="50"
-                        Margin="704,0,-132,459"
+                        Margin="702.5,417,-130.5,0"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        Background="#f76a51"
+                        Background="#FF524500"
                         Command="{Binding EnterSubjectCommand}"
                         Content="들어가기"
                         FontSize="11"
                         FontWeight="Bold"
-                        Foreground="#ffffff" />
+                        Foreground="White" BorderBrush="{x:Null}" />
             </Grid>
         </Grid>
         <Canvas x:Name="SubPanel" Grid.Row="1">
                 <Canvas Canvas.Top="40"
                     Width="220"
-                    Height="80"
+                    Height="83"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     Background="#FFFFF8CA">
@@ -94,27 +118,28 @@
                   HorizontalAlignment="Left"
                   VerticalAlignment="Top"
                   Background="#FFFFF8CA">
-                <Button Width="220"
-                        Height="70"
-                        Margin="0,30,0,0"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
-                        HorizontalContentAlignment="Right"
-                        Background="White"
-                        BorderBrush="{x:Null}"
-                        Content="수업리스트"
-                        FontSize="22.667"
-                        FontWeight="Bold"
-                        Padding="0 5 10 5" FontFamily="나눔 고딕" />
+                <Canvas x:Name="WidgetBtn"  HorizontalAlignment="Left" Height="70" Width="220" Margin="0,428.625,0,50" Background="#FFFFF8CA" MouseLeftButtonDown="WidgetBtn_MouseLeftButtonDown">
+                	<TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="Widget Mode" Canvas.Left="5.57" Canvas.Top="20.5" Height="30.5" Width="204.43" FontSize="20" TextAlignment="Right"/>
+                </Canvas>
+                <Canvas  HorizontalAlignment="Left" Height="70" Width="220" Margin="0,30,0,449" Background="White">
+                    <TextBlock x:Name="textBlock1" TextWrapping="Wrap" Text="수업리스트" Canvas.Left="5.57" Canvas.Top="20.5" Height="30.5" Width="204.43" FontSize="22.667" TextAlignment="Right" FontWeight="Bold"/>
+                </Canvas>
             </Grid>
-            <Button Content="위젯 모드" Canvas.Left="1102" Canvas.Top="640.37" Width="80"
-            	HorizontalAlignment="Center"
-            	VerticalAlignment="Center"
-            	Background="#276a51"
-            	Command="{Binding MinimizeCommand}"
-            	FontSize="11"
-            	FontWeight="Bold"
-            	Foreground="#ffffff" />
+            <Canvas Width="671.25"
+            	Height="40"
+            	HorizontalAlignment="Left"
+            	VerticalAlignment="Top"
+            	Background="#FF524500" Canvas.Left="371" Canvas.Top="112.787">
+            	<TextBlock
+            		Canvas.Top="10"
+            		Width="671.25"
+            		Height="20"
+            		VerticalAlignment="Center"
+            		FontSize="14.667"
+            		FontWeight="Bold"
+            		Text="수업리스트"
+            		TextWrapping="Wrap" Foreground="White" TextAlignment="Center" />
+            </Canvas>
         </Canvas>
         <Canvas Height="40"
         	VerticalAlignment="Top"
@@ -127,7 +152,7 @@
         		Foreground="White"
         		Text="Slim"
         		TextWrapping="Wrap" HorizontalAlignment="Center" />
-        	<Canvas x:Name="CloseBtn" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="24" Background="#FFEC5C5C" Canvas.Left="1158" Canvas.Top="9">
+        	<Canvas x:Name="CloseBtn" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="24" Background="#FFEC5C5C" Canvas.Left="1158" Canvas.Top="9" MouseLeftButtonDown="CloseBtn_MouseLeftButtonDown">
         		<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="X" VerticalAlignment="Top" Width="24" Foreground="White" FontWeight="Bold" Height="16" TextAlignment="Center" Canvas.Top="4"/>
         	</Canvas>
         </Canvas>

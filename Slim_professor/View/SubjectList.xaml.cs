@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Slim_professor.ViewModel;
+using Slim_professor.View;
 
 namespace Slim_professor
 {
@@ -25,6 +26,20 @@ namespace Slim_professor
             DataContext = viewModelSubjectList;
 		}
 
+        #region 위젯버튼 & 닫기버튼
+        private void WidgetBtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Widget widget = new Widget();
+            widget.Show();
+            MainFrame.Frame.Hide();
+        }
 
-	}
+        private void CloseBtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            MainFrame.Frame.Close();
+        }
+        #endregion
+
+
+    }
 }

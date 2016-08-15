@@ -12,6 +12,226 @@
       WindowTitle="Slim"
       WindowWidth="1200"
       mc:Ignorable="d">
+    <Page.Resources>
+        <Storyboard x:Key="MouseEnterInBtn">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="canvas">
+                <EasingColorKeyFrame KeyTime="0" Value="White"/>
+            </ColorAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.FontWeight)" Storyboard.TargetName="textBlock">
+                <DiscreteObjectKeyFrame KeyTime="0">
+                    <DiscreteObjectKeyFrame.Value>
+                        <FontWeight>Bold</FontWeight>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.FontSize)" Storyboard.TargetName="textBlock">
+                <EasingDoubleKeyFrame KeyTime="0" Value="22.667"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MouseLeaveInBtn">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="canvas">
+                <EasingColorKeyFrame KeyTime="0" Value="#FFFFF8CA"/>
+            </ColorAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.FontSize)" Storyboard.TargetName="textBlock">
+                <EasingDoubleKeyFrame KeyTime="0" Value="20"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.FontWeight)" Storyboard.TargetName="textBlock">
+                <DiscreteObjectKeyFrame KeyTime="0">
+                    <DiscreteObjectKeyFrame.Value>
+                        <FontWeight>Normal</FontWeight>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MouseEnterInBtn1">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="canvas1">
+                <EasingColorKeyFrame KeyTime="0" Value="White"/>
+            </ColorAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.FontSize)" Storyboard.TargetName="textBlock1">
+                <EasingDoubleKeyFrame KeyTime="0" Value="22.667"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.FontWeight)" Storyboard.TargetName="textBlock1">
+                <DiscreteObjectKeyFrame KeyTime="0">
+                    <DiscreteObjectKeyFrame.Value>
+                        <FontWeight>Bold</FontWeight>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MouseLeaveInBtn1">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="canvas1">
+                <EasingColorKeyFrame KeyTime="0" Value="#FFFFF8CA"/>
+            </ColorAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.FontSize)" Storyboard.TargetName="textBlock1">
+                <EasingDoubleKeyFrame KeyTime="0" Value="20"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.FontWeight)" Storyboard.TargetName="textBlock1">
+                <DiscreteObjectKeyFrame KeyTime="0">
+                    <DiscreteObjectKeyFrame.Value>
+                        <FontWeight>Normal</FontWeight>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MouseEnterInBtn2">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="canvas2">
+                <EasingColorKeyFrame KeyTime="0" Value="White"/>
+            </ColorAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.FontSize)" Storyboard.TargetName="textBlock2">
+                <EasingDoubleKeyFrame KeyTime="0" Value="22.667"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.FontWeight)" Storyboard.TargetName="textBlock2">
+                <DiscreteObjectKeyFrame KeyTime="0">
+                    <DiscreteObjectKeyFrame.Value>
+                        <FontWeight>Bold</FontWeight>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MouseLeaveInBtn2">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="canvas2">
+                <EasingColorKeyFrame KeyTime="0" Value="#FFFFF8CA"/>
+            </ColorAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.FontSize)" Storyboard.TargetName="textBlock2">
+                <EasingDoubleKeyFrame KeyTime="0" Value="20"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.FontWeight)" Storyboard.TargetName="textBlock2">
+                <DiscreteObjectKeyFrame KeyTime="0">
+                    <DiscreteObjectKeyFrame.Value>
+                        <FontWeight>Normal</FontWeight>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MouseEnterInBtn3">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="canvas3">
+                <EasingColorKeyFrame KeyTime="0" Value="White"/>
+            </ColorAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.FontSize)" Storyboard.TargetName="textBlock3">
+                <EasingDoubleKeyFrame KeyTime="0" Value="22.667"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.FontWeight)" Storyboard.TargetName="textBlock3">
+                <DiscreteObjectKeyFrame KeyTime="0">
+                    <DiscreteObjectKeyFrame.Value>
+                        <FontWeight>Bold</FontWeight>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MouseLeaveInBtn3">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="canvas3">
+                <EasingColorKeyFrame KeyTime="0" Value="#FFFFF8CA"/>
+            </ColorAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.FontSize)" Storyboard.TargetName="textBlock3">
+                <EasingDoubleKeyFrame KeyTime="0" Value="20"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.FontWeight)" Storyboard.TargetName="textBlock3">
+                <DiscreteObjectKeyFrame KeyTime="0">
+                    <DiscreteObjectKeyFrame.Value>
+                        <FontWeight>Normal</FontWeight>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MouseEnterInBtn4">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="WidgetBtn">
+                <EasingColorKeyFrame KeyTime="0" Value="White"/>
+            </ColorAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.FontSize)" Storyboard.TargetName="textBlock4">
+                <EasingDoubleKeyFrame KeyTime="0" Value="22.667"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.FontWeight)" Storyboard.TargetName="textBlock4">
+                <DiscreteObjectKeyFrame KeyTime="0">
+                    <DiscreteObjectKeyFrame.Value>
+                        <FontWeight>Bold</FontWeight>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MouseLeaveInBtn4">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="WidgetBtn">
+                <EasingColorKeyFrame KeyTime="0" Value="#FFFFF8CA"/>
+            </ColorAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.FontSize)" Storyboard.TargetName="textBlock4">
+                <EasingDoubleKeyFrame KeyTime="0" Value="20"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.FontWeight)" Storyboard.TargetName="textBlock4">
+                <DiscreteObjectKeyFrame KeyTime="0">
+                    <DiscreteObjectKeyFrame.Value>
+                        <FontWeight>Normal</FontWeight>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MouseEnterInBtn5">
+        	<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="HomeBtn">
+        		<EasingColorKeyFrame KeyTime="0" Value="White"/>
+        	</ColorAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.FontSize)" Storyboard.TargetName="textBlock5">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="22.667"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.FontWeight)" Storyboard.TargetName="textBlock5">
+        		<DiscreteObjectKeyFrame KeyTime="0">
+        			<DiscreteObjectKeyFrame.Value>
+        				<FontWeight>Bold</FontWeight>
+        			</DiscreteObjectKeyFrame.Value>
+        		</DiscreteObjectKeyFrame>
+        	</ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MouseLeaveInBtn5">
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.FontSize)" Storyboard.TargetName="textBlock5">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="20"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.FontWeight)" Storyboard.TargetName="textBlock5">
+        		<DiscreteObjectKeyFrame KeyTime="0">
+        			<DiscreteObjectKeyFrame.Value>
+        				<FontWeight>Normal</FontWeight>
+        			</DiscreteObjectKeyFrame.Value>
+        		</DiscreteObjectKeyFrame>
+        	</ObjectAnimationUsingKeyFrames>
+        	<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="HomeBtn">
+        		<EasingColorKeyFrame KeyTime="0" Value="#FFFFF8BF"/>
+        	</ColorAnimationUsingKeyFrames>
+        </Storyboard>
+    </Page.Resources>
+    <Page.Triggers>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="canvas">
+            <BeginStoryboard x:Name="MouseEnterInBtn_BeginStoryboard" Storyboard="{StaticResource MouseEnterInBtn}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="canvas">
+            <BeginStoryboard x:Name="MouseLeaveInBtn_BeginStoryboard" Storyboard="{StaticResource MouseLeaveInBtn}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="canvas1">
+            <BeginStoryboard x:Name="MouseEnterInBtn1_BeginStoryboard" Storyboard="{StaticResource MouseEnterInBtn1}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="canvas1">
+            <BeginStoryboard x:Name="MouseLeaveInBtn1_BeginStoryboard" Storyboard="{StaticResource MouseLeaveInBtn1}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="canvas2">
+            <BeginStoryboard Storyboard="{StaticResource MouseEnterInBtn2}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="canvas2">
+            <BeginStoryboard Storyboard="{StaticResource MouseLeaveInBtn2}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="canvas3">
+            <BeginStoryboard Storyboard="{StaticResource MouseEnterInBtn3}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="canvas3">
+            <BeginStoryboard Storyboard="{StaticResource MouseLeaveInBtn3}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="WidgetBtn">
+            <BeginStoryboard Storyboard="{StaticResource MouseEnterInBtn4}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="WidgetBtn">
+            <BeginStoryboard Storyboard="{StaticResource MouseLeaveInBtn4}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="HomeBtn">
+        	<BeginStoryboard Storyboard="{StaticResource MouseEnterInBtn5}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="HomeBtn">
+        	<BeginStoryboard Storyboard="{StaticResource MouseLeaveInBtn5}"/>
+        </EventTrigger>
+    </Page.Triggers>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -22,45 +242,13 @@
             <ColumnDefinition Width="220" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <Canvas x:Name="TitleCanvas"
-                Grid.ColumnSpan="2"
-                Height="40"
-                VerticalAlignment="Top"
-                Background="#FF71C563">
-            <Button Canvas.Right="0"
-                    Width="50"
-                    Height="30"
-                    Margin="0 5 5 5"
-                    Command="NavigationCommands.BrowseBack"
-                    Content="홈으로" />
-            <Image Canvas.Left="18.96"
-                   Width="39.336"
-                   Height="39.336"
-                   Source="Images/smallmango.jpg" />
-            <TextBlock Canvas.Left="61"
-                       Canvas.Top="2"
-                       Width="53"
-                       Height="37"
-                       FontSize="24"
-                       Foreground="White"
-                       Text="Slim"
-                       TextWrapping="Wrap" />
-            <TextBlock x:Name="SubName"
-                       Canvas.Left="132"
-                       Canvas.Top="6"
-                       Width="250"
-                       Height="30"
-                       FontSize="20"
-                       Foreground="White"
-                       TextWrapping="Wrap" />
-        </Canvas>
         <Canvas Grid.Row="1">
             <Canvas x:Name="ProfileCanvas"
                     Width="220"
-                    Height="80"
+                    Height="83"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
-                    Background="#FFE0E4B9">
+                    Background="#FFFFF8CA">
                 <Image x:Name="ProfilePicture"
                        Canvas.Left="10"
                        Canvas.Top="10"
@@ -92,87 +280,46 @@
                            TextAlignment="Center"
                            TextWrapping="Wrap" />
             </Canvas>
-            <StackPanel Width="220"
-                        Height="549"
-                        Margin="0,80,0,0"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
-                        Background="#FFCBAD8F">
-                <Button Width="220"
-                        Height="60"
-                        Margin="0,10,0,0"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
-                        HorizontalContentAlignment="Right"
-                        Background="#FFD9E1EE"
-                        BorderBrush="{x:Null}"
-                        Command="{Binding GoStudentState}"
-                        Content="학생 현황"
-                        FontSize="20"
-                        FontWeight="Bold"
-                        Padding="0,0,10,0" />
-                <Button x:Name="HiddenTalkBtn"
-                        Width="220"
-                        Height="60"
-                        Margin="0,10,0,0"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
-                        HorizontalContentAlignment="Right"
-                        Background="#FFD9E1EE"
-                        BorderBrush="{x:Null}"
-                        Command="{Binding GoHiddenTalk}"
-                        Content="익명 단체 대화방"
-                        FontSize="20"
-                        FontWeight="Bold"
-                        Padding="0,0,10,0" />
-                <Button Width="220"
-                        Height="60"
-                        Margin="0,10,0,0"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
-                        HorizontalContentAlignment="Right"
-                        Background="#FFD9E1EE"
-                        BorderBrush="{x:Null}"
-                        Command="{Binding GoSubjectStatistic}"
-                        Content="수업 통계"
-                        FontSize="20"
-                        FontWeight="Bold"
-                        Padding="0,0,10,0" />
-                <Button x:Name="QnABtn"
-                        Width="220"
-                        Height="60"
-                        Margin="0,10,0,0"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
-                        HorizontalContentAlignment="Right"
-                        Background="#FFD9E1EE"
-                        BorderBrush="{x:Null}"
-                        Command="{Binding GoQna}"
-                        Content="Q &amp; A 게시판"
-                        FontSize="20"
-                        FontWeight="Bold"
-                        Padding="0,0,10,0" />
-                <Button x:Name="NoticeBtn"
-                        Width="220"
-                        Height="60"
-                        Margin="0,10,0,0"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
-                        HorizontalContentAlignment="Right"
-                        Background="#FFD9E1EE"
-                        BorderBrush="{x:Null}"
-                        Command="{Binding GoNotice}"
-                        Content="공지사항"
-                        FontSize="20"
-                        FontWeight="Bold"
-                        Padding="0,0,10,0" />
-            </StackPanel>
         </Canvas>
         <Frame x:Name="FramePanel"
                Grid.Row="1"
                Grid.Column="1"
                Source="{Binding FrameSource,
                                 Mode=OneWay}" />
+        <Canvas Height="40"
+        	VerticalAlignment="Top"
+        	Background="#FF524500" Grid.ColumnSpan="2">
+            <Canvas x:Name="CloseBtn" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="24" Background="#FFEC5C5C" Canvas.Left="1158" Canvas.Top="9" MouseLeftButtonDown="CloseBtn_MouseLeftButtonDown">
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="X" VerticalAlignment="Top" Width="24" Foreground="White" FontWeight="Bold" Height="16" TextAlignment="Center" Canvas.Top="4"/>
+            </Canvas>
+            <TextBlock x:Name="SubName"
+        		Canvas.Top="7"
+        		Width="1158"
+        		Height="30"
+        		FontSize="20"
+        		Foreground="White"
+        		TextWrapping="Wrap" TextAlignment="Center" />
+        </Canvas>
+        <Grid HorizontalAlignment="Left" Height="549" VerticalAlignment="Top" Width="220" Margin="0,80,0,0" Grid.Row="1" Background="#FFFFF8CA">
+            <Canvas x:Name="canvas"  HorizontalAlignment="Left" Height="70" Width="220" Margin="0,30,0,449" Background="#FFFFF8CA" MouseLeftButtonDown="canvas_MouseLeftButtonDown" >
+                <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="학생현황" Canvas.Top="20" Height="30" Width="220" FontSize="20" TextAlignment="Center"/>
+            </Canvas>
+            <Canvas x:Name="canvas1"  HorizontalAlignment="Left" Height="70" Width="220" Margin="0,100,0,379" Background="#FFFFF8CA" MouseLeftButtonDown="canvas1_MouseLeftButtonDown" >
+                <TextBlock x:Name="textBlock1" TextWrapping="Wrap" Text="익명 단체 대화방" Canvas.Top="20" Height="30" Width="220" FontSize="20" TextAlignment="Center"/>
+            </Canvas>
+            <Canvas x:Name="canvas2"   HorizontalAlignment="Left" Height="70" Width="220" Margin="0,170,0,309" Background="#FFFFF8CA" MouseLeftButtonDown="canvas2_MouseLeftButtonDown" >
+                <TextBlock x:Name="textBlock2" TextWrapping="Wrap" Text="수업통계" Canvas.Top="20" Height="30" Width="220" FontSize="20" TextAlignment="Center"/>
+            </Canvas>
+            <Canvas x:Name="canvas3"   HorizontalAlignment="Left" Height="70" Width="220" Margin="0,240,0,239" Background="#FFFFF8CA" MouseLeftButtonDown="canvas3_MouseLeftButtonDown" >
+                <TextBlock x:Name="textBlock3" TextWrapping="Wrap" Text="공지사항" Canvas.Top="20" Height="30" Width="220" FontSize="20" TextAlignment="Center"/>
+            </Canvas>
+            <Canvas x:Name="WidgetBtn"  HorizontalAlignment="Left" Height="70" Width="220" Margin="0,429,0,50" Background="#FFFFF8CA" MouseLeftButtonDown="WidgetBtn_MouseLeftButtonDown" >
+                <TextBlock x:Name="textBlock4" TextWrapping="Wrap" Text="Widget Mode" Canvas.Top="20" Height="30" Width="220" FontSize="20" TextAlignment="Center"/>
+            </Canvas>
+            <Canvas x:Name="HomeBtn"   HorizontalAlignment="Left" Width="220" Margin="0,499,0,0" Background="#FFFFF8CA" Height="50" MouseLeftButtonDown="HomeBtn_MouseLeftButtonDown" >
+                <TextBlock x:Name="textBlock5" TextWrapping="Wrap" Text="홈으로" Canvas.Top="9" Height="31" Width="220" FontSize="20" TextAlignment="Center"/>
+            </Canvas>
+        </Grid>
 
     </Grid>
 </Page>
