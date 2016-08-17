@@ -69,7 +69,7 @@ namespace Slim_professor.ViewModel
             int idx = parentWindow.SubjectListBox.SelectedIndex;
             if (idx < 0)
                 return;
-            parentWindow.NavigationService.Navigate(new PageMainSubject(ItemList[idx]));
+            parentWindow.NavigationService.Navigate(new PageMainSubject(ItemList[idx], parentWindow));
         }
         #endregion
 

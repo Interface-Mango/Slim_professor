@@ -21,13 +21,16 @@ namespace Slim_professor.View
     /// </summary>
     public partial class PageMainSubject : Page
     {
-        public PageMainSubject(object[] param)
+        private MainFrame mf;
+        private SubjectList _subjectlist;
+
+        public PageMainSubject(object[] param, SubjectList subjectList)
         {
             InitializeComponent();
             ViewModelMainSubject viewModelMainSubject = new ViewModelMainSubject();
             DataContext = viewModelMainSubject;
             viewModelMainSubject.FrameSource = new Uri("PageStudentState.xaml", UriKind.Relative);
-
+            _subjectlist = subjectList;
             SubName.Text = param.ElementAt(1).ToString();
         }
 
@@ -65,13 +68,12 @@ namespace Slim_professor.View
             MainFrame.Frame.Hide();
         }
 
-        #endregion
-
         private void HomeBtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            // To do 나중에
+            mf = MainFrame.thisMainFrame();
+            mf.NavigationService.Navigate(_subjectlist);
         }
 
-
+        #endregion
     }
 }

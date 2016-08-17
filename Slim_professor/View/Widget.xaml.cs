@@ -22,6 +22,10 @@ namespace Slim_professor.View
         public Widget()
         {
             InitializeComponent();
+
+            //위젯 창의 위치(왼쪽 위)
+            this.Left = SystemParameters.WorkArea.Width - SystemParameters.WorkArea.Width;
+            this.Top = SystemParameters.WorkArea.Height - (SystemParameters.WorkArea.Height);
         }
 
         private void BtnHome_Click(object sender, RoutedEventArgs e)

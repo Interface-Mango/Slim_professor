@@ -126,7 +126,7 @@ namespace Slim_professor.ViewModel
                         UI_Setting(typeState.DisConnecting);
 
                             //서버 세팅
-                            socketServer = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                            socketServer = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
                             IPEndPoint ipepServer = new IPEndPoint(IPAddress.Any, Convert.ToInt32(portBox.Text));
                             socketServer.Bind(ipepServer);
                             socketServer.Listen(20);

@@ -24,6 +24,8 @@ namespace Slim_professor
             ViewModelSubjectList viewModelSubjectList = new ViewModelSubjectList(this);
             viewModelSubjectList.makeList();
             DataContext = viewModelSubjectList;
+
+            
 		}
 
         #region 위젯버튼 & 닫기버튼

@@ -27,6 +27,8 @@ namespace Slim_professor.View
             ResizeMode = ResizeMode.NoResize;
             Frame = this;
             UserInfo = _userInfo;
+
+           
 		}
 
 		// 로그인 창과 호환되기 위한 함수
@@ -39,6 +41,11 @@ namespace Slim_professor.View
         private void Main_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
+        }
+
+        public static MainFrame thisMainFrame()
+        {
+            return Frame;
         }
 
 	}

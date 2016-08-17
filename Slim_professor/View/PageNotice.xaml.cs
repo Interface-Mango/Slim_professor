@@ -16,23 +16,7 @@ namespace Slim_professor.View
 	{
 		public PageNotice()
 		{
-			this.InitializeComponent();
-
-			
-		}
-
-		
-		private void TitleClick(object sender, System.Windows.RoutedEventArgs e)
-		{
-			
-            DialogNotice dialognotice = new DialogNotice();
-			dialognotice.ShowDialog();
-		}
-
-		private void RegBtnClick(object sender, System.Windows.RoutedEventArgs e)
-		{
-			EditNotice en = new EditNotice();
-			en.ShowDialog();
+			this.InitializeComponent();			
 		}
 
 

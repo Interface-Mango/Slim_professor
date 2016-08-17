@@ -1,15 +1,13 @@
 ﻿<Window x:Class="Slim_professor.View.Widget"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Widget" Height="140" Width="440" WindowStyle="None" ResizeMode="NoResize" MouseLeftButtonDown="Window_MouseLeftButtonDown">
-    <Grid>
-        <Button Content="?" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="100" Height="122"/>
-        <Button Content="LED" HorizontalAlignment="Left" Margin="115,10,0,0" VerticalAlignment="Top" Width="100" Height="122"/>
-        <Button Click="BtnHome_Click" Name="BtnHome" Content="홈버튼" HorizontalAlignment="Left" Margin="220,10,0,0" VerticalAlignment="Top" Width="100" Height="122"/>
-        <Grid HorizontalAlignment="Left" Height="122" Margin="325,10,0,0" VerticalAlignment="Top" Width="100">
-            <Label Content="00:00:00" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100"/>
-            <Button Content="Refresh" HorizontalAlignment="Left" Height="42" Margin="0,35,0,0" VerticalAlignment="Top" Width="100"/>
-            <Button Click="BtnFinish_Click" Name="BtnFinish" Content="Finish" HorizontalAlignment="Left" Height="42" Margin="0,80,0,0" VerticalAlignment="Top" Width="100"/>
-        </Grid>
+        Title="Widget" Height="46.5" Width="361" WindowStyle="None" ResizeMode="NoResize" MouseLeftButtonDown="Window_MouseLeftButtonDown">
+    <Grid Background="#FFFEE505">
+        <Button Content="?" HorizontalAlignment="Left" Margin="107,10,0,0" VerticalAlignment="Top" Width="29.5" Height="25.96" Background="#FF827201" BorderBrush="{x:Null}" Foreground="White"/>
+        <Button Content="LED" HorizontalAlignment="Left" Margin="141.5,10,0,0" VerticalAlignment="Top" Width="29.5" Height="25.96" Background="#FF827201" BorderBrush="{x:Null}" Foreground="White"/>
+        <Button Click="BtnHome_Click" Name="BtnHome" Content="Home" HorizontalAlignment="Left" Margin="321.5,10,0,0" VerticalAlignment="Top" Width="29.5" Height="25.96" Background="#FF827201" BorderBrush="{x:Null}" Foreground="White"/>
+        <Label Content="00:00:00" HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="2,11.04,0,0"/>
+        <Button Click="BtnFinish_Click" x:Name="BtnFinish" Content="Finish" HorizontalAlignment="Left" Height="25.96" Margin="249,10,0,0" VerticalAlignment="Top" Width="67.5" Background="#FF827201" BorderBrush="{x:Null}" Foreground="White"/>
+        <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="68" Margin="176,10,0,0" Height="25.96" Background="#FF827201" BorderBrush="{x:Null}" Foreground="White"/>
     </Grid>
 </Window>

@@ -40,13 +40,5 @@ namespace Slim_professor.View
             this.Close();
         }
 
-
-
-
-
-
-
-
-
     }
 }
