@@ -8,9 +8,30 @@
 	Width="972" Height="629"
 	WindowWidth="1200" WindowHeight="700">
     <Grid>
-        <Grid HorizontalAlignment="Left" Height="629" VerticalAlignment="Top" Width="972" Background="#FFFEE505"/>
-        <Canvas HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="972" Background="#FFEADD8B">
-        	<TextBlock TextWrapping="Wrap" Text="공지사항" Canvas.Top="10" VerticalAlignment="Center" Canvas.Left="80" Height="20" Width="93" FontSize="14.667" FontWeight="Bold"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+        <Canvas HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="972" Background="#FFEADD8B" Grid.Row="0" >
+            <TextBlock TextWrapping="Wrap" Canvas.Top="10" VerticalAlignment="Center" Canvas.Left="452" Height="20" Width="72" FontSize="15" FontWeight="Bold" Text="공지사항"/>
+        </Canvas>
+        <Canvas x:Name="QuestionCanvas" HorizontalAlignment="Left" Width="972" Grid.Row="1" Background="#FFE0F5EB" VerticalAlignment="Top">
+            <ListBox ItemsSource="{Binding NoticeItemList}"
+                     Style="{DynamicResource LBX_VERTICAL_Notice}" Height="589" Width="972" />
+        </Canvas>
+        <Canvas Grid.Row="2" Height="80" Background="#FFE0F5EB">
+            <Button x:Name="EnterButton"
+            	Width="100"
+            	Height="50"
+            	HorizontalAlignment="Center"
+            	VerticalAlignment="Center"
+            	Background="#f76a51"
+            	Command="{Binding WriteNoticeCommand}"
+            	Content="공지 등록"
+            	FontSize="15"
+            	FontWeight="Bold"
+            	Foreground="#ffffff" Canvas.Left="862" Canvas.Top="15"/>
         </Canvas>
     </Grid>
 </Page>

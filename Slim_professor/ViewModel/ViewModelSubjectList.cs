@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using Slim_professor.Model;
 using Slim_professor.View;
@@ -31,6 +32,20 @@ namespace Slim_professor.ViewModel
             parentWindow = pWindow;
             _ItemList = new List<object[]>();
         }
+
+        #region CloseWindowCommand
+        private ICommand _CloseWindowCommand;
+        public ICommand CloseWindowCommand
+        {
+            get { return _CloseWindowCommand ?? (_CloseWindowCommand = new AppCommand(CloseWindowFunc)); }
+        }
+
+        private void CloseWindowFunc(Object o)
+        {
+            if (MessageBox.Show("종료하시겠습니까?", "종료", MessageBoxButton.YesNo) == MessageBoxResult.No) return;
+            MainFrame.Frame.Close();
+        }
+        #endregion
 
         #region SubjectItemList
         private List<SubjectInfo> _SubjectItemList;

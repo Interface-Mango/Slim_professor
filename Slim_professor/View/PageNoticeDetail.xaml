@@ -1,0 +1,28 @@
+﻿<Page x:Class="Slim_professor.View.PageNoticeDetail"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      Width="972"
+      Height="629"
+	Title="PageNoticeDetail">
+
+    <Grid Background="#ffe506">
+        <Border BorderThickness="1" Background="#fff9c8" Margin="25 25 25 100">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Background="#827202" Orientation="Horizontal" Grid.Row="0">
+                    <TextBlock Background="#827202" Width="700" Foreground="#fff9c8" TextAlignment="Center" Padding="7" TextWrapping="Wrap" FontSize="16" Text="{Binding NoticeDetailTitle}"/>
+                    <TextBlock Background="#fff9c8" Margin="2" Width="220" Foreground="#827202" TextAlignment="Center" Padding="7" TextWrapping="Wrap" FontSize="16" Text="{Binding NoticeDetailDate}"/>
+                </StackPanel>
+                <TextBlock Grid.Row="1" TextWrapping="Wrap" FontSize="16" Padding="10" Text="{Binding NoticeDetailContent}"/>
+            </Grid>
+        </Border>
+        <Button Width="49" Height="50" HorizontalAlignment="Right" VerticalAlignment="Center" Background="#f76a51" Command="{Binding BackCommand}"
+                			Content="◀" FontSize="15" FontWeight="Bold" Foreground="#ffffff" Margin="0,550,900,25"/>
+    </Grid>
+</Page>

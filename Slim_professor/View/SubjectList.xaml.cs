@@ -10,16 +10,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Slim_professor.ViewModel;
-using Slim_professor.View;
 
-namespace Slim_professor
+namespace Slim_professor.View
 {
 	public partial class SubjectList
 	{
        
 		public SubjectList()
 		{
-            this.InitializeComponent();
+            InitializeComponent();
 
             ViewModelSubjectList viewModelSubjectList = new ViewModelSubjectList(this);
             viewModelSubjectList.makeList();
@@ -38,10 +37,10 @@ namespace Slim_professor
 
         private void CloseBtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            if (MessageBox.Show("종료하시겠습니까?", "종료", MessageBoxButton.YesNo) == MessageBoxResult.No) return;
             MainFrame.Frame.Close();
         }
         #endregion
-
 
     }
 }

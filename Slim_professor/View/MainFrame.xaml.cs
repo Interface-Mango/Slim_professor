@@ -40,7 +40,8 @@ namespace Slim_professor.View
 
         private void Main_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            this.DragMove();
+            if(e.ButtonState == MouseButtonState.Pressed)   // 닫기 버튼 때문에 해줘야 됨
+                this.DragMove();
         }
 
         public static MainFrame thisMainFrame()

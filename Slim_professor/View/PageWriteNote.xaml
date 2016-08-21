@@ -1,0 +1,39 @@
+﻿<Page x:Class="Slim_professor.View.PageWriteNote"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      Width="972"
+      Height="629"
+      WindowHeight="700"
+      WindowWidth="1200"
+	Title="PageWriteNote">
+
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+        <Canvas x:Name="QuestionTitle" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="972" Grid.Row="0" >
+            <TextBox Focusable="True" Background="#FFEADD8B" TextWrapping="Wrap" VerticalAlignment="Center" Height="40" Width="972" FontSize="15" FontWeight="Bold" Text="{Binding NoticeTitleTextBox}"/>
+        </Canvas>
+        <Canvas x:Name="QuestionCanvas" HorizontalAlignment="Left" Width="972" Grid.Row="1" VerticalAlignment="Top">
+            <TextBox Height="510" Width="972" TextWrapping="Wrap" Text="{Binding NoticeContentTextBox}" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
+        </Canvas>
+        <Canvas Grid.Row="2" Height="80" Background="#FFE0F5EB">
+            <Button
+            	Width="100"
+            	Height="50"
+            	HorizontalAlignment="Center"
+            	VerticalAlignment="Center"
+            	Background="#f76a51"
+            	Command="{Binding SaveNoticeCommand}"
+            	Content="저장"
+            	FontSize="15"
+            	FontWeight="Bold"
+            	Foreground="#ffffff" Canvas.Left="862" Canvas.Top="15"/>
+        </Canvas>
+    </Grid>
+</Page>

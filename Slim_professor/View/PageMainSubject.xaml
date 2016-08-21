@@ -311,9 +311,7 @@
         <Canvas Height="40"
         	VerticalAlignment="Top"
         	Background="#FF524500" Grid.ColumnSpan="2">
-            <Canvas x:Name="CloseBtn" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="24" Background="#FFEC5C5C" Canvas.Left="1158" Canvas.Top="9" MouseLeftButtonDown="CloseBtn_MouseLeftButtonDown">
-                <TextBlock x:Name="textBlock6" HorizontalAlignment="Left" TextWrapping="Wrap" Text="X" VerticalAlignment="Top" Width="24" Foreground="White" FontWeight="Bold" Height="16" TextAlignment="Center" Canvas.Top="4"/>
-            </Canvas>
+            <Button Background="#FFEC5C5C" Width="24" Height="24" Canvas.Left="1158" Canvas.Top="9" Content="X" Foreground="White" FontWeight="Bold" Command="{Binding CloseWindowCommand}"/>
             <TextBlock x:Name="SubName"
         		Canvas.Top="7"
         		Width="1158"
@@ -323,22 +321,52 @@
         		TextWrapping="Wrap" TextAlignment="Center" />
         </Canvas>
         <Grid HorizontalAlignment="Left" Height="549" VerticalAlignment="Top" Width="220" Margin="0,80,0,0" Grid.Row="1" Background="#FFFFF8CA">
-            <Canvas x:Name="canvas"  HorizontalAlignment="Left" Height="70" Width="220" Margin="0,30,0,449" Background="#FFFFF8CA" MouseLeftButtonDown="canvas_MouseLeftButtonDown" >
+            <Canvas x:Name="canvas"  HorizontalAlignment="Left" Height="70" Width="220" Margin="0,30,0,449" Background="#FFFFF8CA">
+                <Canvas.InputBindings>
+                    <MouseBinding 
+                                    MouseAction="LeftClick"
+                                    Command="{Binding GoStudentState}"/>
+                </Canvas.InputBindings>
                 <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="학생현황" Canvas.Top="20" Height="30" Width="220" FontSize="20" TextAlignment="Center"/>
             </Canvas>
-            <Canvas x:Name="canvas1"  HorizontalAlignment="Left" Height="70" Width="220" Margin="0,100,0,379" Background="#FFFFF8CA" MouseLeftButtonDown="canvas1_MouseLeftButtonDown" >
+            <Canvas x:Name="canvas1"  HorizontalAlignment="Left" Height="70" Width="220" Margin="0,100,0,379" Background="#FFFFF8CA">
+                <Canvas.InputBindings>
+                    <MouseBinding 
+                                    MouseAction="LeftClick"
+                                    Command="{Binding GoHiddenTalk}"/>
+                </Canvas.InputBindings>
                 <TextBlock x:Name="textBlock1" TextWrapping="Wrap" Text="익명 단체 대화방" Canvas.Top="20" Height="30" Width="220" FontSize="20" TextAlignment="Center"/>
             </Canvas>
-            <Canvas x:Name="canvas2"   HorizontalAlignment="Left" Height="70" Width="220" Margin="0,170,0,309" Background="#FFFFF8CA" MouseLeftButtonDown="canvas2_MouseLeftButtonDown" >
+            <Canvas x:Name="canvas2"   HorizontalAlignment="Left" Height="70" Width="220" Margin="0,170,0,309" Background="#FFFFF8CA">
+                <Canvas.InputBindings>
+                    <MouseBinding 
+                                    MouseAction="LeftClick"
+                                    Command="{Binding GoSubjectStatistic}"/>
+                </Canvas.InputBindings>
                 <TextBlock x:Name="textBlock2" TextWrapping="Wrap" Text="수업통계" Canvas.Top="20" Height="30" Width="220" FontSize="20" TextAlignment="Center"/>
             </Canvas>
-            <Canvas x:Name="canvas3"   HorizontalAlignment="Left" Height="70" Width="220" Margin="0,240,0,239" Background="#FFFFF8CA" MouseLeftButtonDown="canvas3_MouseLeftButtonDown" >
+            <Canvas x:Name="canvas3"   HorizontalAlignment="Left" Height="70" Width="220" Margin="0,240,0,239" Background="#FFFFF8CA">
+                <Canvas.InputBindings>
+                    <MouseBinding 
+                                    MouseAction="LeftClick"
+                                    Command="{Binding GoNotice}"/>
+                </Canvas.InputBindings>
                 <TextBlock x:Name="textBlock3" TextWrapping="Wrap" Text="공지사항" Canvas.Top="20" Height="30" Width="220" FontSize="20" TextAlignment="Center"/>
             </Canvas>
-            <Canvas x:Name="WidgetBtn"  HorizontalAlignment="Left" Height="70" Width="220" Margin="0,429,0,50" Background="#FFFFF8CA" MouseLeftButtonDown="WidgetBtn_MouseLeftButtonDown" >
+            <Canvas x:Name="WidgetBtn"  HorizontalAlignment="Left" Height="70" Width="220" Margin="0,429,0,50" Background="#FFFFF8CA">
                 <TextBlock x:Name="textBlock4" TextWrapping="Wrap" Text="Widget Mode" Canvas.Top="20" Height="30" Width="220" FontSize="20" TextAlignment="Center"/>
+                <Canvas.InputBindings>
+                    <MouseBinding 
+                                    MouseAction="LeftClick"
+                                    Command="{Binding MinimizeCommand}"/>
+                </Canvas.InputBindings>
             </Canvas>
-            <Canvas x:Name="HomeBtn"   HorizontalAlignment="Left" Width="220" Margin="0,499,0,0" Background="#FFFFF8CA" Height="50" MouseLeftButtonDown="HomeBtn_MouseLeftButtonDown" >
+            <Canvas x:Name="HomeBtn"   HorizontalAlignment="Left" Width="220" Margin="0,499,0,0" Background="#FFFFF8CA" Height="50">
+                <Canvas.InputBindings>
+                    <MouseBinding 
+                                    MouseAction="LeftClick"
+                                    Command="{Binding GoHome}"/>
+                </Canvas.InputBindings>
                 <TextBlock x:Name="textBlock5" TextWrapping="Wrap" Text="홈으로" Canvas.Top="9" Height="31" Width="220" FontSize="20" TextAlignment="Center"/>
             </Canvas>
         </Grid>

@@ -21,59 +21,21 @@ namespace Slim_professor.View
     /// </summary>
     public partial class PageMainSubject : Page
     {
-        private MainFrame mf;
+        public static object[] SubjectInfo;
+        public static Frame MainFrameObject;
+
         private SubjectList _subjectlist;
 
-        public PageMainSubject(object[] param, SubjectList subjectList)
+        public PageMainSubject(object[] param, SubjectList subjectlist)
         {
             InitializeComponent();
-            ViewModelMainSubject viewModelMainSubject = new ViewModelMainSubject();
-            DataContext = viewModelMainSubject;
-            viewModelMainSubject.FrameSource = new Uri("PageStudentState.xaml", UriKind.Relative);
-            _subjectlist = subjectList;
-            SubName.Text = param.ElementAt(1).ToString();
+            DataContext = new ViewModelMainSubject(subjectlist);
+
+            MainFrameObject = FramePanel;
+            ViewModelMainSubject.MainSubjectObject.FrameSource = new Uri("PageStudentState.xaml", UriKind.Relative);
+            SubjectInfo = param;
+            SubName.Text = SubjectInfo.ElementAt(1).ToString();
+            _subjectlist = subjectlist;
         }
-
-        #region 메뉴 버튼들
-
-        private void CloseBtn_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            MainFrame.Frame.Close();
-        }
-
-        private void canvas_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-        	FramePanel.Source = new Uri("PageStudentState.xaml", UriKind.Relative);
-        }
-
-        private void canvas1_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-        	 FramePanel.Source = new Uri("PageHiddenTalk.xaml", UriKind.Relative);
-        }
-
-        private void canvas2_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            FramePanel.Source = new Uri("PageSubjectStatistic.xaml", UriKind.Relative);
-        }
-
-        private void canvas3_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            FramePanel.Source = new Uri("PageNotice.xaml", UriKind.Relative);
-        }
-
-        private void WidgetBtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            Widget widget = new Widget();
-            widget.Show();
-            MainFrame.Frame.Hide();
-        }
-
-        private void HomeBtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            mf = MainFrame.thisMainFrame();
-            mf.NavigationService.Navigate(_subjectlist);
-        }
-
-        #endregion
     }
 }
