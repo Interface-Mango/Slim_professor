@@ -6,24 +6,84 @@
 	FlowDirection="LeftToRight"
 	Width="972" Height="629"
 	WindowWidth="1200" WindowHeight="700">
+	<Page.Resources>
+		<Storyboard x:Key="ServerConnectBtn">
+			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="ServerConnectBtn">
+				<DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}"/>
+				<DiscreteObjectKeyFrame KeyTime="0:0:0.1" Value="{x:Static Visibility.Visible}"/>
+				<DiscreteObjectKeyFrame KeyTime="0:0:0.3" Value="{x:Static Visibility.Visible}"/>
+			</ObjectAnimationUsingKeyFrames>
+			<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="ServerConnectBtn">
+				<EasingColorKeyFrame KeyTime="0" Value="#00827201"/>
+				<EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FF827201"/>
+			</ColorAnimationUsingKeyFrames>
+			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="textBlock">
+				<DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}"/>
+			</ObjectAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="ServerConnectingBtnA">
+			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="ServerConnectingBtn">
+				<DiscreteObjectKeyFrame KeyTime="0:0:0.3" Value="{x:Static Visibility.Visible}"/>
+				<DiscreteObjectKeyFrame KeyTime="0:0:2.3" Value="{x:Static Visibility.Visible}"/>
+				<DiscreteObjectKeyFrame KeyTime="0:0:2.4" Value="{x:Static Visibility.Collapsed}"/>
+			</ObjectAnimationUsingKeyFrames>
+			<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="ServerConnectingBtn">
+				<EasingColorKeyFrame KeyTime="0:0:0.3" Value="#00827201"/>
+				<EasingColorKeyFrame KeyTime="0:0:1.3" Value="#FF827201"/>
+				<EasingColorKeyFrame KeyTime="0:0:2.3" Value="#00827201"/>
+			</ColorAnimationUsingKeyFrames>
+			<BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.IsEnabled)" Storyboard.TargetName="ServerConnectingBtn">
+				<DiscreteBooleanKeyFrame KeyTime="0:0:0.3" Value="True"/>
+			</BooleanAnimationUsingKeyFrames>
+			<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="ServerConnectingBtn">
+				<EasingColorKeyFrame KeyTime="0:0:0.3" Value="Transparent"/>
+				<EasingColorKeyFrame KeyTime="0:0:1.3" Value="White"/>
+				<EasingColorKeyFrame KeyTime="0:0:2.3" Value="Transparent"/>
+			</ColorAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="txtBoxLong">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="msgTextBox2">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1.001"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="msgTextBox2">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.333"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="txtBoxShort">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="msgTextBox2">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.807"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="msgTextBox2">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-61.083"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+	</Page.Resources>
     <Grid x:Name="MainPanel" >
         <Grid HorizontalAlignment="Left" Height="589" VerticalAlignment="Top" Width="972" Margin="0,40,0,0" Background="#FFFEE505">
-            <TextBox x:Name="msgTextBox" TextWrapping="Wrap" Margin="30,28,776,142" Background="#FF827201" Foreground="#FFFBF9F9"/>
-            <TextBox x:Name="msgTextBox1" HorizontalAlignment="Left" Height="465" TextWrapping="Wrap" VerticalAlignment="Top" Width="726" Margin="226,28,0,0"/>
-            <TextBox x:Name="msgTextBox2" HorizontalAlignment="Left" Height="46" TextWrapping="Wrap" VerticalAlignment="Top" Width="510" Margin="322,508,0,0" IsEnabled="False">
+            <TextBox x:Name="msgTextBox" TextWrapping="Wrap" Margin="30,28,776,142" Background="#FF827201" Foreground="#FFFBF9F9" BorderBrush="{x:Null}"/>
+            <TextBox x:Name="msgTextBox1" HorizontalAlignment="Left" Height="465" TextWrapping="Wrap" VerticalAlignment="Top" Width="726" Margin="226,28,0,0" BorderBrush="{x:Null}" Background="#FF827201" Foreground="White"/>
+            <TextBox x:Name="msgTextBox2" HorizontalAlignment="Left" Height="60" TextWrapping="Wrap" VerticalAlignment="Top" Width="630" Margin="322,508,0,0" IsEnabled="False" BorderBrush="{x:Null}" RenderTransformOrigin="0.5,0.5">
+            	<TextBox.RenderTransform>
+            		<TransformGroup>
+            			<ScaleTransform/>
+            			<SkewTransform/>
+            			<RotateTransform/>
+            			<TranslateTransform/>
+            		</TransformGroup>
+            	</TextBox.RenderTransform>
                 <TextBox.InputBindings>
                     <KeyBinding Key="Enter" Command="{Binding msgSend}"/>
                 </TextBox.InputBindings>
             </TextBox>
-            <Button x:Name="ServerConnectingBtn" Content="서버접속" Command="{Binding ServerConnecting}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="94" Margin="858,508,0,0" Height="46" RenderTransformOrigin="1.067,0.623" IsEnabled="False"/>
-            <Button x:Name="ServerConnectBtn" Content="서버연결" Command="{Binding ServerConnect}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="163" Margin="30,508,0,0" Height="46" IsEnabled="False"/>
-            <TextBox x:Name="PortBox"  HorizontalAlignment="Left" Height="33" TextWrapping="Wrap" VerticalAlignment="Top" Width="89" Margin="104,460,0,0" TextChanged="PortBox_TextChanged" KeyDown="PortBox_KeyDown">
-            </TextBox>
-            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="PortNumber" VerticalAlignment="Top" Margin="10,464,0,0" Height="21" Width="89" FontSize="15"/>
-            <TextBlock x:Name="IDText" HorizontalAlignment="Left" TextWrapping="Wrap" Text="ID" VerticalAlignment="Top" Margin="228,520,0,0" Height="28" Width="78" FontSize="18" Foreground="#FF0D21F1" FontWeight="Bold" TextAlignment="Center"/>
+            <Button x:Name="ServerConnectingBtn" Content="서버접속" Command="{Binding ServerConnecting}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="94" Margin="858,508,0,0" Height="46" RenderTransformOrigin="1.067,0.623" BorderBrush="{x:Null}" Background="#FF827201" FontSize="13.333" Foreground="White" IsEnabled="False" Visibility="Collapsed" Click="ServerConnectingBtn_Click"/>
+            <Button x:Name="ServerConnectBtn" Content="서버 연결" Command="{Binding ServerConnect}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="163" Margin="30,508,0,0" Height="46" BorderBrush="{x:Null}" Background="#FF827201" FontSize="16" FontFamily="/Slim_professor;component/Fonts/#Malgun Gothic" FontWeight="Bold" Foreground="White" Visibility="Collapsed" Click="ServerConnectBtn_Click"/>
+            <TextBox x:Name="PortBox"  HorizontalAlignment="Left" Height="33" TextWrapping="Wrap" VerticalAlignment="Top" Width="89" Margin="104,460,0,0" TextChanged="PortBox_TextChanged" BorderBrush="{x:Null}" KeyDown="PortBox_KeyDown"/>
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="10,460,0,0" Height="41" Width="89" FontSize="13.333" TextAlignment="Center"><Run Text="Port"/><Run Text=" "/><LineBreak/><Run/><Run Text="Number"/></TextBlock>
+            <TextBlock x:Name="IDText" HorizontalAlignment="Left" TextWrapping="Wrap" Text="ID" VerticalAlignment="Top" Margin="228,526,0,0" Height="28" Width="78" FontSize="18" Foreground="#FF509146" FontWeight="Bold" TextAlignment="Center" FontFamily="Calibri"/>
         </Grid>
         <Canvas HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="972" Background="#FFEADD8B">
             <TextBlock TextWrapping="Wrap" Text="익명 단체 대화방" Canvas.Top="10" VerticalAlignment="Center" Canvas.Left="80" Height="20" Width="177" FontSize="14.667" FontWeight="Bold"/>
         </Canvas>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="39,561,0,0" Height="45.96" Width="134.43" TextAlignment="Center" FontFamily="Arial Black"><Run Text="포트넘버를 "/><LineBreak/><Run Text="입력해 "/><Run Text="주세요"/><Run Text="!"/></TextBlock>
     </Grid>
 </Page>

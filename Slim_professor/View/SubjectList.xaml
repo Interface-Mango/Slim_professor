@@ -48,7 +48,7 @@
             <Grid Margin="150,112,150,50" Background="#4CD69595">
                 <ListBox Name="SubjectListBox"
                          ItemsSource="{Binding SubjectItemList}"
-                         Style="{DynamicResource LBX_VERTICAL}" BorderBrush="{x:Null}" />
+                         Style="{DynamicResource LBX_VERTICAL}" BorderBrush="{x:Null}" Background="#FFFFFDF5" />
 
                 <Button Name="EnterButton"
                         Grid.Row="0"

@@ -26,7 +26,7 @@ namespace Slim_professor.ViewModel
             dbManager = new DBManager();
             dbUser = new DB_User(dbManager);
             parentWindow = pWindow;
-            prog = new ProgressRIng();
+            
         }
 
         #region IDTextBox
@@ -59,25 +59,20 @@ namespace Slim_professor.ViewModel
             if (IDTextBox == string.Empty || parentWindow.PWBox.Password == string.Empty)
                 return;
             object[] obj = dbUser.SelectUser(IDTextBox, parentWindow.PWBox.Password);
-            prog.Show();
             //string name = (string)obj[(int)DB_User.FIELD.user_name];
-            
+
             if (obj == null)
             {
-                prog.Hide();
                 MessageBox.Show("로그인 에러!");
             }                
             else
             {
-                // 기존의 로그인창을 '일단' 숨겨놓고 메인프레임 호출
-                // 메인프레임에서 로그인창을 닫아준다
+                prog = new ProgressRIng(obj);
                 obj[(int)DB_User.FIELD.pw] = string.Empty;
-                MainFrame mf = new MainFrame(obj);
+                prog.Show();
 
-                mf.Show();
                 parentWindow.Close();
-                //parentWindow.Hide();
-                //    mf.ShowDialog();
+
             }
         }
         #endregion

@@ -19,13 +19,17 @@ namespace Slim_professor.View
     /// </summary>
     public partial class ProgressRIng : Window
     {
-        public ProgressRIng()
+        private object[] obj;
+        public ProgressRIng(object[] _obj)
         {
             InitializeComponent();
+            obj = _obj;
         }
 
         public void AutoClose(object sender, EventArgs e)
         {
+            MainFrame mf = new MainFrame(obj);
+            mf.Show();
             this.Close();
         }
     }

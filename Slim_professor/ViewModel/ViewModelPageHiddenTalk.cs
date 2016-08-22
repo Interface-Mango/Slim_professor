@@ -15,6 +15,7 @@ using System.Windows.Threading;
 
 using SocketGlobal;
 using Slim_professor.View;
+using System.Windows.Media.Animation;
 
 namespace Slim_professor.ViewModel
 {
@@ -87,6 +88,7 @@ namespace Slim_professor.ViewModel
                     ServerConnectBtn.Content = "서버 연결";
                     txtMsg.IsEnabled = false;
                     ServerConnectingBtn.IsEnabled = false;
+                    
                     portBox.IsEnabled = true;
                     break;
 

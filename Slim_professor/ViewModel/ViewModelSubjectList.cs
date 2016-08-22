@@ -135,7 +135,7 @@ namespace Slim_professor.ViewModel
         {
             get { return (string)MainFrame.UserInfo[(int)DB_User.FIELD.group]; }
         }
-
+        
         public string UserName
         {
             get { return (string)MainFrame.UserInfo[(int)DB_User.FIELD.user_name]; }

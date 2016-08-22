@@ -28,7 +28,14 @@ namespace Slim_professor.ViewModel
             }
         }
         #endregion
+        private SubjectList _subjectlist;
+ 
 
+        public ViewModelMainSubject(SubjectList subjectlist)
+        {
+            _subjectlist = subjectlist;
+             
+        }
 
         #region GoStudentStateCommand
         private ICommand _GoStudentState;
@@ -74,19 +81,6 @@ namespace Slim_professor.ViewModel
         }
         #endregion
 
-        #region GoQna
-        private ICommand _GoQna;
-        public ICommand GoQna
-        {
-            get { return _GoQna ?? (_GoQna = new AppCommand(GoQnaFunc)); }
-        }
-
-        private void GoQnaFunc(Object o)
-        {
-            _FrameSource = new Uri("PageQnA.xaml", UriKind.Relative);
-            OnPropertyChanged("FrameSource");
-        }
-        #endregion
 
         #region GoNotice
         private ICommand _GoNotice;
@@ -104,15 +98,32 @@ namespace Slim_professor.ViewModel
 
         #region GoHome
         private ICommand _GoHome;
+        private MainFrame mf;
         public ICommand GoHome
         {
             get { return _GoHome ?? (_GoHome = new AppCommand(GoHomeFunc)); }
         }
         private void GoHomeFunc(Object o)
         {
-            _FrameSource = new Uri("SubjectList.xaml", UriKind.Relative);
-            Console.WriteLine(_FrameSource.OriginalString);
-            OnPropertyChanged("FrameSource");
+            mf = MainFrame.thisMainFrame();
+            mf.NavigationService.Navigate(_subjectlist);
+        }
+        #endregion
+
+        #region MinimizeCommand
+        private ICommand _MinimizeCommand;
+        public ICommand MinimizeCommand
+        {
+            get
+            {
+                return _MinimizeCommand ?? (_MinimizeCommand = new AppCommand(MinimizeCommandFunc));
+            }
+        }
+        public void MinimizeCommandFunc(Object o)
+        {
+            //Widget widget = new Widget();
+            //widget.Show();
+            //MainFrame.Frame.Hide();
         }
         #endregion
 

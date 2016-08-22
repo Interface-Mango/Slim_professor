@@ -23,24 +23,13 @@ namespace Slim_professor
 
             ViewModelSubjectList viewModelSubjectList = new ViewModelSubjectList(this);
             viewModelSubjectList.makeList();
-            DataContext = viewModelSubjectList;
-
-            
+            DataContext = viewModelSubjectList; 
 		}
-
-        #region 위젯버튼 & 닫기버튼
-        private void WidgetBtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            Widget widget = new Widget();
-            widget.Show();
-            MainFrame.Frame.Hide();
-        }
 
         private void CloseBtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             MainFrame.Frame.Close();
         }
-        #endregion
 
 
     }

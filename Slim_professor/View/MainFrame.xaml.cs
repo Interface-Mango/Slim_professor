@@ -28,6 +28,10 @@ namespace Slim_professor.View
             Frame = this;
             UserInfo = _userInfo;
 
+            // 창 중앙 위치!!
+            this.Left = (SystemParameters.WorkArea.Width - Width) / 2.0 + SystemParameters.WorkArea.Left;
+            this.Height = (SystemParameters.WorkArea.Height - Height) / 2.0 + SystemParameters.WorkArea.Top;
+
            
 		}
 

@@ -19,6 +19,7 @@ namespace Slim_professor.View
     /// </summary>
     public partial class Widget : Window
     {
+        
         public Widget()
         {
             InitializeComponent();
@@ -26,6 +27,7 @@ namespace Slim_professor.View
             //위젯 창의 위치(왼쪽 위)
             this.Left = SystemParameters.WorkArea.Width - SystemParameters.WorkArea.Width;
             this.Top = SystemParameters.WorkArea.Height - (SystemParameters.WorkArea.Height);
+
         }
 
         private void BtnHome_Click(object sender, RoutedEventArgs e)
@@ -40,7 +42,7 @@ namespace Slim_professor.View
         private void BtnFinish_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Frame.Show();
-            this.Close();
+            this.Hide();
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

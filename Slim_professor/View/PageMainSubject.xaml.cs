@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Slim_professor.ViewModel;
+using System.Threading;
+using System.Windows.Threading;
 
 namespace Slim_professor.View
 {
@@ -21,59 +23,67 @@ namespace Slim_professor.View
     /// </summary>
     public partial class PageMainSubject : Page
     {
-        private MainFrame mf;
+       
         private SubjectList _subjectlist;
-
+        private int sec,min,hour;
+        private Widget widget;
         public PageMainSubject(object[] param, SubjectList subjectList)
         {
             InitializeComponent();
-            ViewModelMainSubject viewModelMainSubject = new ViewModelMainSubject();
+            ViewModelMainSubject viewModelMainSubject = new ViewModelMainSubject(subjectList);
             DataContext = viewModelMainSubject;
             viewModelMainSubject.FrameSource = new Uri("PageStudentState.xaml", UriKind.Relative);
             _subjectlist = subjectList;
             SubName.Text = param.ElementAt(1).ToString();
+            widget = new Widget();
+
+            sec = 7200;
+            Clock();
         }
 
-        #region 메뉴 버튼들
+        #region 소소한 기능들
 
         private void CloseBtn_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             MainFrame.Frame.Close();
         }
 
-        private void canvas_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        public void Clock()        
         {
-        	FramePanel.Source = new Uri("PageStudentState.xaml", UriKind.Relative);
+            System.Windows.Threading.DispatcherTimer TimerClock = 
+                new System.Windows.Threading.DispatcherTimer();
+
+            // 200 milliseconds
+            TimerClock.Interval = new TimeSpan(0, 0, 0, 1);
+            TimerClock.IsEnabled = true;
+            TimerClock.Tick += new EventHandler(TimerClock_Tick);
         }
 
-        private void canvas1_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        void TimerClock_Tick(object sender, EventArgs e)
         {
-        	 FramePanel.Source = new Uri("PageHiddenTalk.xaml", UriKind.Relative);
-        }
+            sec -= 1;
 
-        private void canvas2_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            FramePanel.Source = new Uri("PageSubjectStatistic.xaml", UriKind.Relative);
-        }
-
-        private void canvas3_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            FramePanel.Source = new Uri("PageNotice.xaml", UriKind.Relative);
-        }
-
-        private void WidgetBtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            Widget widget = new Widget();
-            widget.Show();
-            MainFrame.Frame.Hide();
-        }
-
-        private void HomeBtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            mf = MainFrame.thisMainFrame();
-            mf.NavigationService.Navigate(_subjectlist);
+            if (sec == 0)
+            {
+                widget.HT.Text = "00";
+                widget.MT.Text = "00";
+                widget.ST.Text = "00";
+            }
+            else
+            {
+                widget.HT.Text = (sec / 3600).ToString();
+                widget.MT.Text = ((sec % 3600) / 60).ToString();
+                widget.ST.Text = ((sec % 3600) % 60).ToString();
+            }
+            
         }
 
         #endregion
+
+        private void WidgetBtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            widget.Show();
+            MainFrame.Frame.Hide();
+        }
     }
 }

@@ -10,11 +10,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Slim_professor.ViewModel;
+using System.Windows.Media.Animation;
 
 namespace Slim_professor.View
 {
 	public partial class PageHiddenTalk : Page
 	{
+        private Storyboard storyboard;
+		private Storyboard ServerConnectingBtnA;
+        private Storyboard txtBoxLong, txtBoxShort;
+        private int Count;
+
 		public PageHiddenTalk()
 		{
 			this.InitializeComponent();
@@ -23,6 +29,9 @@ namespace Slim_professor.View
             msgTextBox.IsReadOnly = true;
             msgTextBox1.IsReadOnly = true;
             PortBox.MaxLength = 4;
+            Count = 2;
+            
+            
 		}
 
         private delegate void SetTextCallback(String nMessage);
@@ -92,10 +101,53 @@ namespace Slim_professor.View
 
         #endregion
 
+        // UI Animation
         private void PortBox_KeyDown(object sender, KeyEventArgs e)
         {
-            ServerConnectBtn.IsEnabled = true;
+            if(PortBox.Text.Length == 0)
+            {
+                storyboard = new Storyboard();
+                storyboard = (Storyboard)this.Resources["ServerConnectBtn"];
+                
+                storyboard.Begin();
+            }
+            
         }
+
+        private void ServerConnectBtn_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+
+            ServerConnectingBtnA = new Storyboard();
+            ServerConnectingBtnA = (Storyboard)this.Resources["ServerConnectingBtnA"];
+            ServerConnectingBtnA.RepeatBehavior = RepeatBehavior.Forever;
+
+            txtBoxShort = new Storyboard();
+            txtBoxShort = (Storyboard)this.Resources["txtBoxShort"];
+
+            txtBoxLong = new Storyboard();
+            txtBoxLong = (Storyboard)this.Resources["txtBoxLong"];
+            
+            if (Count%2 == 0)
+            { 
+                ServerConnectingBtnA.Begin();
+                txtBoxShort.Begin();
+                Count++;
+            }
+            else
+            { 
+                ServerConnectingBtnA.Remove();
+                txtBoxLong.Begin();
+                Count++;
+            }
+
+        }
+
+        private void ServerConnectingBtn_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            ServerConnectingBtnA.Remove();
+            txtBoxLong.Begin();
+        }
+
 
     }
 }
