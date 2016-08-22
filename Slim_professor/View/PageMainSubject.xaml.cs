@@ -22,31 +22,30 @@ namespace Slim_professor.View
     /// Interaction logic for PageMainSubject.xaml
     /// </summary>
     public partial class PageMainSubject : Page
-    {
-       
+    {       
+        public static object[] SubjectInfo;
+        public static Frame MainFrameObject;
+
         private SubjectList _subjectlist;
-        private int sec,min,hour;
+        private int sec;//,min,hour;
         private Widget widget;
-        public PageMainSubject(object[] param, SubjectList subjectList)
+        public PageMainSubject(object[] param, SubjectList subjectlist)
         {
             InitializeComponent();
-            ViewModelMainSubject viewModelMainSubject = new ViewModelMainSubject(subjectList);
-            DataContext = viewModelMainSubject;
-            viewModelMainSubject.FrameSource = new Uri("PageStudentState.xaml", UriKind.Relative);
-            _subjectlist = subjectList;
-            SubName.Text = param.ElementAt(1).ToString();
+            DataContext = new ViewModelMainSubject(subjectlist);
+
+            MainFrameObject = FramePanel;
+            ViewModelMainSubject.MainSubjectObject.FrameSource = new Uri("PageStudentState.xaml", UriKind.Relative);
+            SubjectInfo = param;
+            SubName.Text = SubjectInfo.ElementAt(1).ToString();
+            _subjectlist = subjectlist;
             widget = new Widget();
 
-            sec = 7200;
-            Clock();
+            //sec = 7200;
+            //Clock();
         }
 
         #region 소소한 기능들
-
-        private void CloseBtn_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            MainFrame.Frame.Close();
-        }
 
         public void Clock()        
         {
@@ -75,15 +74,20 @@ namespace Slim_professor.View
                 widget.MT.Text = ((sec % 3600) / 60).ToString();
                 widget.ST.Text = ((sec % 3600) % 60).ToString();
             }
-            
-        }
 
-        #endregion
+        }
 
         private void WidgetBtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             widget.Show();
             MainFrame.Frame.Hide();
         }
+
+        private void CloseBtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (MessageBox.Show("종료하시겠습니까?", "종료", MessageBoxButton.YesNo) == MessageBoxResult.No) return;
+            MainFrame.Frame.Close();
+        }
+        #endregion
     }
 }

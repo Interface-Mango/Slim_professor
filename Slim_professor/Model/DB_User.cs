@@ -36,7 +36,7 @@ namespace Slim_professor.Model
 
         public object[] SelectUser(string id, string pw)
         {
-            string sql = "SELECT * FROM user WHERE user_id=@arg1 AND pw=password(@arg2)";   // DB에 password로 암호화 돼서 저장됐기 때문에 복호화로 password함수 써야한다.
+            string sql = "SELECT * FROM user WHERE user_id=@arg1 AND pw=password(@arg2) AND auth=1";   // DB에 password로 암호화 돼서 저장됐기 때문에 복호화로 password함수 써야한다.
             List<object> args = new List<object>();
             args.Add(id);
             args.Add(pw);

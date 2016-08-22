@@ -326,29 +326,33 @@
         <Grid HorizontalAlignment="Left" Height="549" VerticalAlignment="Top" Width="220" Margin="0,80,0,0" Grid.Row="1" Background="#FFFFF8CA">
             <Canvas x:Name="canvas"  HorizontalAlignment="Left" Height="70" Width="220" Margin="0,30,0,449" Background="#FFFFF8CA">
                 <Canvas.InputBindings>
-                    <MouseBinding MouseAction="LeftClick"
-                                  Command="{Binding GoStudentState}"/>
+                    <MouseBinding 
+                                    MouseAction="LeftClick"
+                                    Command="{Binding GoStudentState}"/>
                 </Canvas.InputBindings>
                 <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="학생현황" Canvas.Top="20" Height="30" Width="220" FontSize="20" TextAlignment="Center"/>
             </Canvas>
-            <Canvas x:Name="canvas1"  HorizontalAlignment="Left" Height="70" Width="220" Margin="0,100,0,379" Background="#FFFFF8CA" >
+            <Canvas x:Name="canvas1"  HorizontalAlignment="Left" Height="70" Width="220" Margin="0,100,0,379" Background="#FFFFF8CA">
                 <Canvas.InputBindings>
-                    <MouseBinding MouseAction="LeftClick"
-                                  Command="{Binding GoHiddenTalk}"/>
+                    <MouseBinding 
+                                    MouseAction="LeftClick"
+                                    Command="{Binding GoHiddenTalk}"/>
                 </Canvas.InputBindings>
                 <TextBlock x:Name="textBlock1" TextWrapping="Wrap" Text="익명 단체 대화방" Canvas.Top="20" Height="30" Width="220" FontSize="20" TextAlignment="Center"/>
             </Canvas>
-            <Canvas x:Name="canvas2"   HorizontalAlignment="Left" Height="70" Width="220" Margin="0,170,0,309" Background="#FFFFF8CA"  >
+            <Canvas x:Name="canvas2"   HorizontalAlignment="Left" Height="70" Width="220" Margin="0,170,0,309" Background="#FFFFF8CA">
                 <Canvas.InputBindings>
-                    <MouseBinding MouseAction="LeftClick"
-                                  Command="{Binding GoSubjectStatistic}"/>
+                    <MouseBinding 
+                                    MouseAction="LeftClick"
+                                    Command="{Binding GoSubjectStatistic}"/>
                 </Canvas.InputBindings>
                 <TextBlock x:Name="textBlock2" TextWrapping="Wrap" Text="수업통계" Canvas.Top="20" Height="30" Width="220" FontSize="20" TextAlignment="Center"/>
             </Canvas>
-            <Canvas x:Name="canvas3"   HorizontalAlignment="Left" Height="70" Width="220" Margin="0,240,0,239" Background="#FFFFF8CA" >
+            <Canvas x:Name="canvas3"   HorizontalAlignment="Left" Height="70" Width="220" Margin="0,240,0,239" Background="#FFFFF8CA">
                 <Canvas.InputBindings>
-                    <MouseBinding MouseAction="LeftClick"
-                                  Command="{Binding GoNotice}"/>
+                    <MouseBinding 
+                                    MouseAction="LeftClick"
+                                    Command="{Binding GoNotice}"/>
                 </Canvas.InputBindings>
                 <TextBlock x:Name="textBlock3" TextWrapping="Wrap" Text="공지사항" Canvas.Top="20" Height="30" Width="220" FontSize="20" TextAlignment="Center"/>
             </Canvas>
