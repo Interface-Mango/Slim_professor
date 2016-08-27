@@ -41,8 +41,8 @@ namespace Slim_professor.View
             _subjectlist = subjectlist;
             widget = new Widget();
 
-            //sec = 7200;
-            //Clock();
+            sec = 7200;
+            Clock();
         }
 
         #region 소소한 기능들

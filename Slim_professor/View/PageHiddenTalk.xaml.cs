@@ -16,22 +16,15 @@ namespace Slim_professor.View
 {
 	public partial class PageHiddenTalk : Page
 	{
-        private Storyboard storyboard;
-		private Storyboard ServerConnectingBtnA;
-        private Storyboard txtBoxLong, txtBoxShort;
-        private int Count;
+		private Storyboard serverConnectingBtnA;
 
 		public PageHiddenTalk()
 		{
 			this.InitializeComponent();
             DataContext = new ViewModelPageHiddenTalk
-                (this, msgTextBox2, PortBox, IDText, ServerConnectingBtn, ServerConnectBtn);
+                (this, msgTextBox2, IDText, ServerConnectBtn);
             msgTextBox.IsReadOnly = true;
             msgTextBox1.IsReadOnly = true;
-            PortBox.MaxLength = 4;
-            Count = 2;
-            
-            
 		}
 
         private delegate void SetTextCallback(String nMessage);
@@ -101,51 +94,19 @@ namespace Slim_professor.View
 
         #endregion
 
-        // UI Animation
-        private void PortBox_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(PortBox.Text.Length == 0)
-            {
-                storyboard = new Storyboard();
-                storyboard = (Storyboard)this.Resources["ServerConnectBtn"];
-                
-                storyboard.Begin();
-            }
-            
-        }
-
         private void ServerConnectBtn_Click(object sender, System.Windows.RoutedEventArgs e)
         {
 
-            ServerConnectingBtnA = new Storyboard();
-            ServerConnectingBtnA = (Storyboard)this.Resources["ServerConnectingBtnA"];
-            ServerConnectingBtnA.RepeatBehavior = RepeatBehavior.Forever;
+            serverConnectingBtnA = new Storyboard();
+            serverConnectingBtnA = (Storyboard)this.Resources["ServerConnectingBtnA"];
+            serverConnectingBtnA.RepeatBehavior = RepeatBehavior.Forever;
 
-            txtBoxShort = new Storyboard();
-            txtBoxShort = (Storyboard)this.Resources["txtBoxShort"];
-
-            txtBoxLong = new Storyboard();
-            txtBoxLong = (Storyboard)this.Resources["txtBoxLong"];
-            
-            if (Count%2 == 0)
-            { 
-                ServerConnectingBtnA.Begin();
-                txtBoxShort.Begin();
-                Count++;
-            }
-            else
-            { 
-                ServerConnectingBtnA.Remove();
-                txtBoxLong.Begin();
-                Count++;
-            }
-
+            FocusManager.SetFocusedElement(this, null);
         }
 
         private void ServerConnectingBtn_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            ServerConnectingBtnA.Remove();
-            txtBoxLong.Begin();
+            serverConnectingBtnA.Remove();
         }
 
 
