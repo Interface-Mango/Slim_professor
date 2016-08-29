@@ -75,7 +75,7 @@
                     <KeyBinding Key="Enter" Command="{Binding msgSend}"/>
                 </TextBox.InputBindings>
             </TextBox>
-            <Button x:Name="ServerConnectBtn" Command="{Binding ServerConnect}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="163" Margin="30,508,0,0" Height="46" BorderBrush="{x:Null}" Background="#FF827201" FontSize="16" FontFamily="/Slim_professor;component/Fonts/#Malgun Gothic" FontWeight="Bold" Foreground="White" Visibility="Visible" Click="ServerConnectBtn_Click"/>
+            <Button x:Name="ServerConnectBtn" Command="{Binding ServerConnect}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="163" Margin="30,508,0,0" Height="60" BorderBrush="{x:Null}" Background="#FF827201" FontSize="16" FontFamily="/Slim_professor;component/Fonts/#Malgun Gothic" FontWeight="Bold" Foreground="White" Visibility="Visible" Click="ServerConnectBtn_Click"/>
             <TextBlock x:Name="IDText" HorizontalAlignment="Left" TextWrapping="Wrap" Text="ID" VerticalAlignment="Top" Margin="228,526,0,0" Height="28" Width="78" FontSize="18" Foreground="#FF509146" FontWeight="Bold" TextAlignment="Center" FontFamily="Calibri"/>
         </Grid>
         <Canvas HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="972" Background="#FFEADD8B">

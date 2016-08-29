@@ -23,41 +23,46 @@
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="50" />
-                                <ColumnDefinition Width="825" />
+                                <ColumnDefinition Width="780" />
                                 <ColumnDefinition Width="auto" />
                                 <ColumnDefinition Width="auto" />
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Row="0"
                                        Grid.RowSpan="2"
                                        Grid.Column="0"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
                                        Margin="10"
                                        FontSize="20"
                                        FontWeight="Bold"
                                        Text="{Binding Id}" />
-
-
                             <TextBlock Grid.Row="0"
                                        Grid.Column="1"
+                                       FontSize="16"
+                                       VerticalAlignment="Center"
                                        Text="{Binding NoticeTitle}" />
                             <TextBlock Grid.Row="1"
                                        Grid.Column="1"
+                                       Foreground="#FFC7A6A6"
                                        Text="{Binding NoticeDate}" />
 
                             <Button Grid.Row="0"
                                     Grid.Column="2"
-                                    Grid.RowSpan="2"
-                                    Background="AliceBlue"
+                                    Grid.RowSpan="4"
+                                    Background="#7F49AE56"
+                                    BorderBrush="{x:Null}"
                                     Margin="4"
                                     Content="수정"
-                                    Command="{Binding NoticeModifyCommand}"/>
+                                    Command="{Binding NoticeModifyCommand}" Foreground="Black" Width="50"/>
 
                             <Button Grid.Row="0"
                                     Grid.Column="3"
-                                    Grid.RowSpan="2"
-                                    Background="LightGreen"
+                                    Grid.RowSpan="4"
+                                    Background="#7FFF6726"
+                                    BorderBrush="{x:Null}"
                                     Margin="4"
                                     Content="삭제"
-                                    Command="{Binding NoticeDeleteCommand}"/>
+                                    Command="{Binding NoticeDeleteCommand}" Width="50" Foreground="Black"/>
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>

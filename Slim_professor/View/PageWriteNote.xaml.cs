@@ -34,5 +34,9 @@ namespace Slim_professor.View
             else // 수정
                 DataContext = new ViewModelPageWriteNote(this, mId, mTitle, mContent);
         }
+
+
+
+
     }
 }
