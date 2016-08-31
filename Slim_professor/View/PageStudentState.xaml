@@ -1,15 +1,30 @@
-﻿<Page
-	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	x:Class="Slim_professor.View.PageStudentState"
-	WindowTitle="Slim"
-	FlowDirection="LeftToRight"
-	Width="972" Height="629"
-	WindowWidth="1200" WindowHeight="700">
-    <Grid Margin="0,0,0,-2" >
-        <Grid HorizontalAlignment="Left" Height="589" VerticalAlignment="Top" Width="972" Margin="0,40,0,0" Background="#FFFEE505"/>
-        <Canvas HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="972" Background="#FFEADD8B">
-            <TextBlock TextWrapping="Wrap" Text="학생현황" Canvas.Top="10" VerticalAlignment="Center" Canvas.Left="80" Height="20" Width="93" FontSize="14.667" FontWeight="Bold"/>
+﻿<Page   x:Class="Slim_professor.View.PageStudentState"
+	    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        mc:Ignorable="d"
+    	Width="972"
+        Height="629"
+        Title="PageStudentState">
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+        <Canvas x:Name="QuestionTitle" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="972" Background="#FFEA8BC3" Grid.Row="0" >
+            <TextBlock TextWrapping="Wrap" Canvas.Top="10" VerticalAlignment="Center" Canvas.Left="452" Height="20" Width="72" FontSize="15" FontWeight="Bold" Text="학생 현황"/>
+        </Canvas>
+        <Canvas x:Name="QuestionCanvas" HorizontalAlignment="Left" Width="972" Grid.Row="1" Background="#FFE0F5EB" VerticalAlignment="Top">
+            <Grid Background="#4CD69595" Canvas.Top="-2">
+                <ListBox Name="QuestionListBox"
+                             ItemsSource="{Binding AttendanceItemList}"
+                             Style="{DynamicResource LBX_VERTICAL}" Height="510" Width="972" />
+            </Grid>
+        </Canvas>
+        <Canvas Grid.Row="2" Height="80" Background="#FFE0F5EB">
+
         </Canvas>
     </Grid>
 </Page>

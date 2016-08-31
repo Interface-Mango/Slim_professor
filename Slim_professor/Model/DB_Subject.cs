@@ -34,8 +34,6 @@ namespace Slim_professor.Model
         }
 
 
-
-
         public List<object[]> SearchDatas(string sql, List<object> args)
         {
             List<object[]> recordList = new List<object[]>();

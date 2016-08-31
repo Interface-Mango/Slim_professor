@@ -10,7 +10,10 @@ using Slim_professor.Model;
 using Slim_professor.View;
 
 namespace Slim_professor.ViewModel
+
 {
+ 
+
     /* 알고리즘
      * 
      * 1. 유저(학생) 정보 가져오기
@@ -70,6 +73,9 @@ namespace Slim_professor.ViewModel
             if (idx < 0)
                 return;
             parentWindow.NavigationService.Navigate(new PageMainSubject(ItemList[idx]));
+            parentWindow.NavigationService.Navigate(new PageStudentState(ItemList[idx]));
+
+
         }
         #endregion
 
@@ -124,6 +130,11 @@ namespace Slim_professor.ViewModel
                 DBManager dbm = new DBManager();
                 DB_User dbUser = new DB_User(dbm);
                 return Convert.ToString(dbUser.SelectUser(user_id)[(int)DB_User.FIELD.user_name]);
+            }
+
+            internal static object Data()
+            {
+                throw new NotImplementedException();
             }
         }
 

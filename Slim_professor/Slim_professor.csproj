@@ -62,6 +62,7 @@
     <Compile Include="Model\DBManager.cs" />
     <Compile Include="Model\DB_Announcement.cs" />
     <Compile Include="Model\DB_AnonymousBoard.cs" />
+    <Compile Include="Model\DB_Attendance.cs" />
     <Compile Include="Model\DB_MyQuestion.cs" />
     <Compile Include="Model\DB_QnA.cs" />
     <Compile Include="Model\DB_Signal.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="ViewModel\ViewModelPageNotice.cs" />
     <Compile Include="ViewModel\ViewModelPageQnA.cs" />
     <Compile Include="ViewModel\ViewModelPageSignalLightMonitor.cs" />
+    <Compile Include="ViewModel\ViewModelPageStudentState.cs" />
     <Compile Include="ViewModel\ViewModelSubjectList.cs" />
     <Compile Include="View\EditLog.xaml.cs">
       <DependentUpon>EditLog.xaml</DependentUpon>

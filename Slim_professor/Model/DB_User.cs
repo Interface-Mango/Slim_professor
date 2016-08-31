@@ -21,6 +21,19 @@ namespace Slim_professor.Model
             db = _dbm;
         }
 
+        public object[] SelectStudent(String auth)
+        {
+            string sql = "SELECT * FROM user WHERE auth=@arg1";
+            List<object> args = new List<object>();
+            args.Add(auth);
+
+            List<object[]> result = SearchDatas(sql, args);
+            if (result.Count == 0)
+                return null;
+            else
+                return result[0];
+        }
+
         public object[] SelectUser(string id)
         {
             string sql = "SELECT * FROM user WHERE user_id=@arg1";  
@@ -89,6 +102,10 @@ namespace Slim_professor.Model
 
             return recordList;
         }
-        
+
+        internal object SelectUser(object user_id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
