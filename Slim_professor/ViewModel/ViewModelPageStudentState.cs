@@ -56,12 +56,13 @@ namespace Slim_professor.ViewModel
         }
         #endregion
 
-      
+
 
 
         /* makeList(void) 메소드
 * 기능:     
 */
+        #region makeList
         public void makeList()
         {
             //1.선택 과목 정보 가져오기(sub_id 가져오기)
@@ -83,7 +84,7 @@ namespace Slim_professor.ViewModel
             AttendanceItemList = AttendanceInfo.Data(ItemList);
             
         }
-        //위의 데이터에서 sub_ids에서 _를 기준으로 데이터 구분하기
+        #endregion
 
 
         // attendance table 관하여
