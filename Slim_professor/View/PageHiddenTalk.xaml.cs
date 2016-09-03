@@ -10,19 +10,21 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Slim_professor.ViewModel;
+using System.Windows.Media.Animation;
 
 namespace Slim_professor.View
 {
 	public partial class PageHiddenTalk : Page
 	{
+		private Storyboard serverConnectingBtnA;
+
 		public PageHiddenTalk()
 		{
 			this.InitializeComponent();
             DataContext = new ViewModelPageHiddenTalk
-                (this, msgTextBox2, PortBox, IDText, ServerConnectingBtn, ServerConnectBtn);
+                (this, msgTextBox2, IDText, ServerConnectBtn);
             msgTextBox.IsReadOnly = true;
             msgTextBox1.IsReadOnly = true;
-            PortBox.MaxLength = 4;
 		}
 
         private delegate void SetTextCallback(String nMessage);
@@ -92,10 +94,21 @@ namespace Slim_professor.View
 
         #endregion
 
-        private void PortBox_KeyDown(object sender, KeyEventArgs e)
+        private void ServerConnectBtn_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            ServerConnectBtn.IsEnabled = true;
+
+            serverConnectingBtnA = new Storyboard();
+            serverConnectingBtnA = (Storyboard)this.Resources["ServerConnectingBtnA"];
+            serverConnectingBtnA.RepeatBehavior = RepeatBehavior.Forever;
+
+            FocusManager.SetFocusedElement(this, null);
         }
+
+        private void ServerConnectingBtn_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            serverConnectingBtnA.Remove();
+        }
+
 
     }
 }

@@ -12,7 +12,7 @@ namespace Slim_professor.Model
         DBManager db;
 
         public enum FIELD{
-            sub_id, sub_name, lectureler_id, time, location, END
+            sub_id, sub_name, lectureler_id, time, location, ipaddr, END
         }
 
         public DB_Subject(DBManager _dbm)
@@ -74,6 +74,35 @@ namespace Slim_professor.Model
             }
 
             return recordList;
+        }
+
+        public bool UpdateIpaddr(int sub_id, string ipaddr, int port)
+        {
+            string sql = "UPDATE subject SET ipaddr=@arg1, port=@arg2 WHERE sub_id=@arg3";
+            List<object> args = new List<object>();
+            args.Add(ipaddr);
+            args.Add(port);
+            args.Add(sub_id);
+
+            try
+            {
+                db.Connection.Open();
+                using (MySqlCommand cmd = new MySqlCommand(sql, db.Connection))
+                {
+                    cmd.Parameters.AddWithValue("@arg1", ipaddr);
+                    cmd.Parameters.AddWithValue("@arg2", port);
+                    cmd.Parameters.AddWithValue("@arg3", sub_id);
+                    cmd.ExecuteNonQuery();
+                }
+                db.Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);  // For Debugging
+                return false;    // 제거 오류시 false 반환
+            }
+
+            return true;
         }
     }
 }

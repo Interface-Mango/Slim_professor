@@ -27,6 +27,12 @@ namespace Slim_professor.View
             ResizeMode = ResizeMode.NoResize;
             Frame = this;
             UserInfo = _userInfo;
+
+            // 창 중앙 위치!!
+           // this.Left = (SystemParameters.WorkArea.Width - Width) / 2.0 + SystemParameters.WorkArea.Left;
+           // this.Height = (SystemParameters.WorkArea.Height - Height) / 2.0 + SystemParameters.WorkArea.Top;
+
+           
 		}
 
 		// 로그인 창과 호환되기 위한 함수
@@ -38,7 +44,13 @@ namespace Slim_professor.View
 
         private void Main_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            this.DragMove();
+            if(e.ButtonState == MouseButtonState.Pressed)   // 닫기 버튼 때문에 해줘야 됨
+                this.DragMove();
+        }
+
+        public static MainFrame thisMainFrame()
+        {
+            return Frame;
         }
 
 	}

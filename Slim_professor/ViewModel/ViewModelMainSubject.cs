@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using Slim_professor.Model;
 using Slim_professor.View;
@@ -13,6 +14,61 @@ namespace Slim_professor.ViewModel
 {
     class ViewModelMainSubject : ViewModelBase
     {
+        private DBManager dbManager;
+        public static ViewModelMainSubject MainSubjectObject;
+        private DB_OnetimeProgram dbOneTime;
+        private DB_AllProgram dbAllProgram;
+
+
+
+        private SubjectList _subjectlist;
+        public ViewModelMainSubject(SubjectList subjectlist)
+        {
+            dbManager = new DBManager();
+            dbOneTime = new DB_OnetimeProgram(dbManager);
+            dbAllProgram = new DB_AllProgram(dbManager);
+            _subjectlist = subjectlist;
+            _OneTimeItemList = OneTimeItemList; 
+            MainSubjectObject = this;
+        }
+
+
+        #region OneTimeItemList
+        private List<OneTimeList> _OneTimeItemList;
+        public List<OneTimeList> OneTimeItemList
+        {
+            get { return _OneTimeItemList; }
+            set
+            {
+                _OneTimeItemList = value;
+            }
+        }
+        #endregion
+
+
+        #region ItemListOneTime
+        private List<object[]> _ItemListOneTime;
+        public List<object[]> ItemListOneTime
+        {
+            get { return _ItemListOneTime; }
+            set { _ItemListOneTime = value; }
+        }
+        #endregion
+
+        #region makeList
+        public void makeList()
+        {
+           
+
+        }
+        #endregion
+
+        internal class OneTimeList
+        {
+
+        }
+
+
         #region FrameSource
         private Uri _FrameSource;
         public Uri FrameSource
@@ -28,9 +84,23 @@ namespace Slim_professor.ViewModel
             }
         }
         #endregion
+        
+        //<Button Background="#FFEC5C5C" Width="24" Height="24" Canvas.Left="1158" Canvas.Top="9" Content="X" Foreground="White" FontWeight="Bold" Command="{Binding CCloseWindowCommand}"/>
+        #region CloseWindowCommand
+        private ICommand _CloseWindowCommand;
+        public ICommand CCloseWindowCommand
+        {
+            get { return _CloseWindowCommand ?? (_CloseWindowCommand = new AppCommand(CloseWindowFunc)); }
+        }
 
+        private void CloseWindowFunc(Object o)
+        {
+            if (MessageBox.Show("종료하시겠습니까?", "종료", MessageBoxButton.YesNo) == MessageBoxResult.No) return;
+            MainFrame.Frame.Close();
+        }
+        #endregion
 
-        #region GoStudentStateCommand
+        #region GoStudentState
         private ICommand _GoStudentState;
         public ICommand GoStudentState
         {
@@ -74,19 +144,6 @@ namespace Slim_professor.ViewModel
         }
         #endregion
 
-        #region GoQna
-        private ICommand _GoQna;
-        public ICommand GoQna
-        {
-            get { return _GoQna ?? (_GoQna = new AppCommand(GoQnaFunc)); }
-        }
-
-        private void GoQnaFunc(Object o)
-        {
-            _FrameSource = new Uri("PageQnA.xaml", UriKind.Relative);
-            OnPropertyChanged("FrameSource");
-        }
-        #endregion
 
         #region GoNotice
         private ICommand _GoNotice;
@@ -103,6 +160,7 @@ namespace Slim_professor.ViewModel
         #endregion
 
         #region GoHome
+        private MainFrame mainFrame;
         private ICommand _GoHome;
         public ICommand GoHome
         {
@@ -110,13 +168,32 @@ namespace Slim_professor.ViewModel
         }
         private void GoHomeFunc(Object o)
         {
-            _FrameSource = new Uri("SubjectList.xaml", UriKind.Relative);
-            Console.WriteLine(_FrameSource.OriginalString);
-            OnPropertyChanged("FrameSource");
+            mainFrame = MainFrame.thisMainFrame();
+            mainFrame.NavigationService.Navigate(_subjectlist);
+        }
+        #endregion
+        /*
+        #region MinimizeCommand
+        private ICommand _MinimizeCommand;
+        public ICommand MinimizeCommand
+        {
+            get
+            {
+                return _MinimizeCommand ?? (_MinimizeCommand = new AppCommand(MinimizeCommandFunc));
+            }
+        }
+        public void MinimizeCommandFunc(Object o)
+        {
+            Widget widget = new Widget();
+            widget.Show();
+            MainFrame.Frame.Hide();
         }
         #endregion
 
+        */
 
+
+        
         #region Profile
         public string UserGroup
         {

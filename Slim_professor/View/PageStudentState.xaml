@@ -13,14 +13,14 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="80"/>
         </Grid.RowDefinitions>
-        <Canvas x:Name="QuestionTitle" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="972" Background="#FFEA8BC3" Grid.Row="0" >
+        <Canvas x:Name="StudentStateTitle" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="972" Background="#FFEA8BC3" Grid.Row="0" >
             <TextBlock TextWrapping="Wrap" Canvas.Top="10" VerticalAlignment="Center" Canvas.Left="452" Height="20" Width="72" FontSize="15" FontWeight="Bold" Text="학생 현황"/>
         </Canvas>
-        <Canvas x:Name="QuestionCanvas" HorizontalAlignment="Left" Width="972" Grid.Row="1" Background="#FFE0F5EB" VerticalAlignment="Top">
+        <Canvas x:Name="StudentStateCanvas" HorizontalAlignment="Left" Width="972" Grid.Row="1" Background="#FFE0F5EB" VerticalAlignment="Top">
             <Grid Background="#4CD69595" Canvas.Top="-2">
-                <ListBox Name="QuestionListBox"
+                <ListBox Name="StudentStateBox"
                              ItemsSource="{Binding AttendanceItemList}"
-                             Style="{DynamicResource LBX_VERTICAL}" Height="510" Width="972" />
+                             Style="{DynamicResource LBX_VERTICAL_STDSTATE}" Height="510" Width="972" />
             </Grid>
         </Canvas>
         <Canvas Grid.Row="2" Height="80" Background="#FFE0F5EB">

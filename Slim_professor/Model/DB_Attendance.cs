@@ -22,7 +22,7 @@ namespace Slim_professor.Model
             db = _dbm;
         }
 
-        public List<object[]> SelectAttendanceList(string sub_id)
+        public List<object[]> SelectAttendanceList(int sub_id)
         {
             string sql = "SELECT * FROM attendance WHERE sub_id=@arg1 ORDER BY id DESC";
             List<object> args = new List<object>();

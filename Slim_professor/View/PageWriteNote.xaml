@@ -1,0 +1,85 @@
+﻿<Page x:Class="Slim_professor.View.PageWriteNote"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      Width="972"
+      Height="629"
+      WindowHeight="700"
+      WindowWidth="1200"
+	Title="PageWriteNote">
+    <Page.Resources>
+        <Storyboard x:Key="TitleBlockOff">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="titleBlock">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="158"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="titleBlock">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="ContentBlockOff">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="contentBlock">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="157.5"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="contentBlock">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Page.Resources>
+    <Page.Triggers>
+        <EventTrigger RoutedEvent="TextBoxBase.TextChanged" SourceName="textBox">
+            <BeginStoryboard Storyboard="{StaticResource TitleBlockOff}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="TextBoxBase.TextChanged" SourceName="textBox1">
+            <BeginStoryboard x:Name="ContentBlockOff_BeginStoryboard" Storyboard="{StaticResource ContentBlockOff}"/>
+        </EventTrigger>
+    </Page.Triggers>
+
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+        <Canvas x:Name="QuestionTitle" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="972" Grid.Row="0" >
+            <TextBox x:Name="textBox" Focusable="True"  Background="#FFEADD8B" TextWrapping="Wrap" VerticalAlignment="Center" Height="40" Width="972" FontSize="15" FontWeight="Bold" Text="{Binding NoticeTitleTextBox}"/>
+            <TextBlock x:Name="titleBlock" TextWrapping="Wrap" Canvas.Top="10" Width="154.9" FontWeight="Bold" FontFamily="Calibri" Height="20" FontSize="14.667" RenderTransformOrigin="0.5,0.5" Canvas.Left="4" Opacity="0.2">
+                <TextBlock.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBlock.RenderTransform><Run Text="제목을 입력해 주세요."/></TextBlock>
+        </Canvas>
+        <Canvas x:Name="QuestionCanvas" HorizontalAlignment="Left" Width="972" Grid.Row="1" VerticalAlignment="Top">
+            <TextBox x:Name="textBox1" Height="510" Width="969" TextWrapping="Wrap" Text="{Binding NoticeContentTextBox}" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" BorderBrush="White" Canvas.Left="4"/>
+            <TextBlock x:Name="contentBlock" TextWrapping="Wrap" Canvas.Top="22.5" Width="152.43" FontWeight="Bold" FontFamily="Calibri" Height="20" FontSize="14.667" RenderTransformOrigin="0.5,0.5" Canvas.Left="4" Opacity="0.2">
+                <TextBlock.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBlock.RenderTransform><Run Text="내용을 작성해 주세요."/></TextBlock>
+        </Canvas>
+        <Canvas Grid.Row="2" Height="80" Background="#FFFEE505">
+            <Button
+            	Width="100"
+            	Height="50"
+            	HorizontalAlignment="Center"
+            	VerticalAlignment="Center"
+            	Background="#FF827202"
+            	Command="{Binding SaveNoticeCommand}"
+            	Content="저장"
+            	FontSize="15"
+            	FontWeight="Bold"
+            	Foreground="#ffffff" Canvas.Left="862" Canvas.Top="15" BorderBrush="{x:Null}"/>
+            <Button Width="49" Height="50" HorizontalAlignment="Right" VerticalAlignment="Center" Background="#FF827201" Command="{Binding BackCommand}"
+            	Content="◀" FontSize="15" FontWeight="Bold" Foreground="#ffffff" BorderBrush="{x:Null}" Canvas.Left="813" Canvas.Top="15"/>
+        </Canvas>
+    </Grid>
+</Page>

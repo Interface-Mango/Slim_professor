@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Slim_professor.ViewModel;
 
 namespace Slim_professor.View
 {
@@ -17,22 +18,9 @@ namespace Slim_professor.View
 		public PageNotice()
 		{
 			this.InitializeComponent();
-
-			
-		}
-
-		
-		private void TitleClick(object sender, System.Windows.RoutedEventArgs e)
-		{
-			
-            DialogNotice dialognotice = new DialogNotice();
-			dialognotice.ShowDialog();
-		}
-
-		private void RegBtnClick(object sender, System.Windows.RoutedEventArgs e)
-		{
-			EditNotice en = new EditNotice();
-			en.ShowDialog();
+            ViewModelPageNotice viewModelPageNotice = new ViewModelPageNotice(this);
+            viewModelPageNotice.makeList();
+            DataContext = viewModelPageNotice;
 		}
 
 

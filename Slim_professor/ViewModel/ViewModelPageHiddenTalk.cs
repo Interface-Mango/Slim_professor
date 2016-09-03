@@ -15,6 +15,8 @@ using System.Windows.Threading;
 
 using SocketGlobal;
 using Slim_professor.View;
+using Slim_professor.Model;
+using System.Windows.Media.Animation;
 
 namespace Slim_professor.ViewModel
 {
@@ -36,10 +38,12 @@ namespace Slim_professor.ViewModel
         private Socket socketServer;
         private PageHiddenTalk pht;
         private TextBox txtMsg;
-        private TextBox portBox;
+        private int portNum;
         private TextBlock IDText;
         private String NickName;
-        private Button ServerConnectingBtn, ServerConnectBtn;
+        private Button ServerConnectBtn;
+
+        private DB_Subject dbSubject;
 
         /// 명령어 클래스
         private claCommand m_insCommand = new claCommand();
@@ -60,18 +64,18 @@ namespace Slim_professor.ViewModel
         private typeState m_typeState = typeState.Connecting;
 
         public ViewModelPageHiddenTalk
-            (PageHiddenTalk _pht, TextBox _txtMsg, TextBox _portBox, TextBlock _IDText, Button _ServerConnectingBtn, Button _ServerConnectBtn)
+            (PageHiddenTalk _pht, TextBox _txtMsg, TextBlock _IDText, Button _ServerConnectBtn)
         {
             pht = _pht;
             txtMsg = _txtMsg;
-            portBox = _portBox;
 
             IDText = _IDText;
             NickName = randomID();
-            ServerConnectingBtn = _ServerConnectingBtn;
             ServerConnectBtn = _ServerConnectBtn;
 
             UI_Setting(typeState.Connecting);
+
+            dbSubject = new DB_Subject(new DBManager());
         }
 
         // UI 세팅
@@ -84,20 +88,17 @@ namespace Slim_professor.ViewModel
             switch (typeSet)
             {
                 case typeState.Connecting:	// 연결 전
-                    ServerConnectBtn.Content = "서버 연결";
+                    ServerConnectBtn.Content = "채팅 열기";
                     txtMsg.IsEnabled = false;
-                    ServerConnectingBtn.IsEnabled = false;
-                    portBox.IsEnabled = true;
+                    
                     break;
 
                 case typeState.DisConnecting:	// 연결완료
                     pht.Dispatcher.BeginInvoke(new Action(
                         delegate()
                         {
-                            ServerConnectBtn.Content = "서버 종료";
+                            ServerConnectBtn.Content = "채팅 종료";
                         }));
-                    portBox.IsEnabled = false;
-                    ServerConnectingBtn.IsEnabled = true;
                     break;
             }
             
@@ -125,9 +126,12 @@ namespace Slim_professor.ViewModel
                         //UI 세팅
                         UI_Setting(typeState.DisConnecting);
 
+
+                            Random random = new Random();
+                            portNum = random.Next(1000) + 8124;
                             //서버 세팅
-                            socketServer = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                            IPEndPoint ipepServer = new IPEndPoint(IPAddress.Any, Convert.ToInt32(portBox.Text));
+                            socketServer = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
+                            IPEndPoint ipepServer = new IPEndPoint(IPAddress.Any, portNum);
                             socketServer.Bind(ipepServer);
                             socketServer.Listen(20);
 
@@ -142,16 +146,20 @@ namespace Slim_professor.ViewModel
                             //유저 리스트 생성
                             m_listUser = new List<SocketUser>();
                             //서버 시작 로그 표시
-                            pht.DisplayLog("* Port : [ " + portBox.Text + " ] ");
-                            pht.DisplayLog("* 서버 시작 ");
-                            
+                            pht.DisplayLog("* [ " + portNum + " ] ");
+                            pht.DisplayLog("* 채팅 시작 ");
+
+                            // ip와 포트 추가
+                            dbSubject.UpdateIpaddr(Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)), getMyIp, portNum);
+
+                            ServerConnectionFunction();
                         break;
                     }
                 case typeState.DisConnecting:
                     {
                         UI_Setting(typeState.Connecting);
-                        pht.DisplayLog("* [ " + portBox.Text + " ] 서버 종료 * \n");
-                        pht.DisplayMsg("* [Server DisConnecting] *\n");
+                        pht.DisplayLog("* [ " + portNum + " ] 채팅 종료 * \n");
+                        pht.DisplayMsg("* [채팅이 종료되었습니다.] *\n");
                         pht.Dispatcher.BeginInvoke(new Action(
                         delegate()
                         {
@@ -160,9 +168,30 @@ namespace Slim_professor.ViewModel
                         Commd_Server_Disconnetion();
                         socketServer.Close();
                         m_listUser.Clear();
-                        
+
+                        dbSubject.UpdateIpaddr(Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)), "", 0);
                         break;
                     }
+            }
+        }
+
+        /*
+         * 자신 PC의 IP를 받아오는 프로퍼티
+         */
+        public string getMyIp
+        {
+            get
+            {
+                IPHostEntry host = Dns.GetHostEntry(Dns.GetHostName());
+                string ClientIP = string.Empty;
+                for (int i = 0; i < host.AddressList.Length; i++)
+                {
+                    if (host.AddressList[i].AddressFamily == AddressFamily.InterNetwork)
+                    {
+                        ClientIP = host.AddressList[i].ToString();
+                    }
+                }
+                return ClientIP;
             }
         }
         #endregion
@@ -357,20 +386,13 @@ namespace Slim_professor.ViewModel
         }
         #endregion
 
-        #region ServerConnecting
-        private ICommand _ServerConnecting;
-        public ICommand ServerConnecting
-        {
-            get { return _ServerConnecting ?? (_ServerConnecting = new AppCommand(ServerConnectingFunc)); }
-        }
-        private void ServerConnectingFunc(Object o)
+        private void ServerConnectionFunction()
         {
             txtMsg.IsEnabled = true;
-            ServerConnectingBtn.IsEnabled = false;
 
             //소켓 생성
             Socket socketServer = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            IPEndPoint ipepServer = new IPEndPoint(IPAddress.Parse("127.0.0.1"), Convert.ToInt32(portBox.Text));
+            IPEndPoint ipepServer = new IPEndPoint(IPAddress.Parse("127.0.0.1"), portNum);
 
             SocketAsyncEventArgs saeaServer = new SocketAsyncEventArgs();
             saeaServer.RemoteEndPoint = ipepServer;
@@ -380,7 +402,6 @@ namespace Slim_professor.ViewModel
             //서버 메시지 대기
             socketServer.ConnectAsync(saeaServer);
         }
-        #endregion
 
         /// 연결 완료
         private void Connect_Completed(object sender, SocketAsyncEventArgs e)
@@ -517,7 +538,7 @@ namespace Slim_professor.ViewModel
                 "Book ", "Lemon ", "Orange ", "멍청이 ", "이순신 ",
                 "장영실 ", "Melon ", "Moon ", "Star ", "Cloud ",
                 "Winter ", "Spring ", "Summer ","Fall ","광해군 ",
-                "연산군 ", "논개 ", "장희빈 "
+                "연산군 ", "논개 ", "장희빈 ", "논병아리 ", "뱁새" 
             };
             Random rand = new Random();
             int r = rand.Next(0, NickNames.Length);

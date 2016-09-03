@@ -1,4 +1,4 @@
-﻿<Page x:Class="Slim_professor.SubjectList"
+﻿<Page x:Class="Slim_professor.View.SubjectList"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       Width="1192"
@@ -40,17 +40,17 @@
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
     </Page.Resources>
-    <Page.Triggers>
-        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="WidgetBtn">
-            <BeginStoryboard Storyboard="{StaticResource MouseEnterInBtn}"/>
-        </EventTrigger>
-        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="WidgetBtn">
-            <BeginStoryboard Storyboard="{StaticResource MouseLeaveInBtn}"/>
-        </EventTrigger>
-    </Page.Triggers>
+        <Page.Triggers>
+            <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="WidgetBtn">
+                <BeginStoryboard Storyboard="{StaticResource MouseEnterInBtn}"/>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="WidgetBtn">
+                <BeginStoryboard Storyboard="{StaticResource MouseLeaveInBtn}"/>
+            </EventTrigger>
+        </Page.Triggers>
 
 
-    <Grid>
+        <Grid>
         <Grid Width="972"
               Height="629"
               Margin="220,40,0,0"
@@ -60,7 +60,7 @@
             <Grid Margin="150,112,150,50" Background="#4CD69595">
                 <ListBox Name="SubjectListBox"
                          ItemsSource="{Binding SubjectItemList}"
-                         Style="{DynamicResource LBX_VERTICAL}" BorderBrush="{x:Null}" />
+                         Style="{DynamicResource LBX_VERTICAL}" BorderBrush="{x:Null}" Background="#FFFFFDF5" />
 
                 <Button Name="EnterButton"
                         Grid.Row="0"

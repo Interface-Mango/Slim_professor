@@ -31,19 +31,18 @@ namespace Slim_professor.View
         public static object[] SelectSubjectInfo;
 
 
-        public PageStudentState(object[] param)
+        public PageStudentState()
 		{
 			InitializeComponent();
             ViewModelPageStudentState ViewModelPageStudentState = new ViewModelPageStudentState(this);
             ViewModelPageStudentState.makeList();
             DataContext = ViewModelPageStudentState;
-            SelectSubjectInfo = param;
 
 
 
             // 개체 만들기에 필요한 코드를 이 지점 아래에 삽입하십시오.
         }
 
-
+     
     }
 }

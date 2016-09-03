@@ -19,12 +19,14 @@ namespace Slim_professor.ViewModel
         private DBManager dbManager;
         private DB_User dbUser;
         private LoginWindow parentWindow;
+        private ProgressRIng prog;
 
         public ViewModelLoginWindow(LoginWindow pWindow)
         {
             dbManager = new DBManager();
             dbUser = new DB_User(dbManager);
             parentWindow = pWindow;
+            
         }
 
         #region IDTextBox
@@ -57,29 +59,20 @@ namespace Slim_professor.ViewModel
             if (IDTextBox == string.Empty || parentWindow.PWBox.Password == string.Empty)
                 return;
             object[] obj = dbUser.SelectUser(IDTextBox, parentWindow.PWBox.Password);
-           
             //string name = (string)obj[(int)DB_User.FIELD.user_name];
-            
+
             if (obj == null)
             {
                 MessageBox.Show("로그인 에러!");
             }                
             else
             {
-                // 기존의 로그인창을 '일단' 숨겨놓고 메인프레임 호출
-                // 메인프레임에서 로그인창을 닫아준다
+                prog = new ProgressRIng(obj);
                 obj[(int)DB_User.FIELD.pw] = string.Empty;
-                MainFrame mf = new MainFrame(obj);
+                prog.Show();
 
-                parentWindow.Hide();
-                try
-                {
-                    mf.ShowDialog();
-                }
-                catch(IOException)
-                {
-                    //
-                }
+                parentWindow.Close();
+
             }
         }
         #endregion

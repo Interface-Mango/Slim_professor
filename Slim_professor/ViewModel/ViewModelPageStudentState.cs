@@ -56,10 +56,7 @@ namespace Slim_professor.ViewModel
         }
         #endregion
 
-        #region StudentStateCommand(나중에 필요하면 추가)
-        private ICommand _WriteStudentStateCommand;
-        // 나중에
-        #endregion
+      
 
 
         /* makeList(void) 메소드
@@ -71,13 +68,22 @@ namespace Slim_professor.ViewModel
             DBManager dbm = new DBManager();
             DB_User dbUser = new DB_User(dbm);
 
-            ItemList = dbAttendnace.SelectAttendanceList(dbUser.SelectStudent(0));
+
+            List<object[]> items = new List<object[]>();
+            items = dbAttendnace.SelectAttendanceList(Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)));
+
+            for(int i=0;i<items.Count;i++)
+            {
+                string name = Convert.ToString(dbUser.SelectUser(Convert.ToString(items[i].ElementAt((int)DB_Attendance.FIELD.std_id)))[(int)DB_User.FIELD.user_name]);
+                items[i].SetValue(name, 4);
+            }
+
+            ItemList = items;
 
             AttendanceItemList = AttendanceInfo.Data(ItemList);
             
         }
         //위의 데이터에서 sub_ids에서 _를 기준으로 데이터 구분하기
-
 
 
         // attendance table 관하여
@@ -93,7 +99,7 @@ namespace Slim_professor.ViewModel
             public int AttendSubjectId { get; private set; }
             public string AttendStudentId { get; private set; }
             public DateTime AttendTime { get; private set; }
-            public int AttendCheck { get; private set; }
+            public string AttendCheck { get; private set; }
 
 
 
@@ -104,28 +110,36 @@ namespace Slim_professor.ViewModel
 
                 for (int i = 0; i < items.Count; i++)
                 {
-                    string studentNameTemp = GetStudentName(Convert.ToString(items[i].ElementAt((int)DB_Subject.FIELD.sub_id)));
-                    string studentIdTemp = GetStudentId(Convert.ToString(items[i].ElementAt((int)DB_Subject.FIELD.sub_id)));
+                    string checkTemp = GetCheck(Convert.ToInt32(items[i].ElementAt((int)DB_Attendance.FIELD.sub_id)));
+                    attendTemp = new AttendanceInfo
+                    {
+                        AttendId = Convert.ToInt32(items[i].ElementAt((int)DB_Attendance.FIELD.id)),
+                        AttendStudentName = Convert.ToString(items[i].ElementAt(4)),
+                        AttendSubjectId = Convert.ToInt32(items[i].ElementAt((int)DB_Attendance.FIELD.sub_id)),
+                        AttendStudentId = Convert.ToString(items[i].ElementAt((int)DB_Attendance.FIELD.std_id)),
+                        AttendTime = Convert.ToDateTime(items[i].ElementAt((int)DB_Attendance.FIELD.date)),
+                        AttendCheck = checkTemp
+                    };
+                data.Add(attendTemp);
 
-                }
+            }
                 return data;
             }
 
-            //User 테이블에서 해당 과목을 듣는 학생 이름(user_name)뽑아오기
-            private static string GetStudentName(string sub_id)
+            //출석여부 받아오기 
+            private static string GetCheck(int check) 
             {
-                DBManager dbm = new DBManager();
-                DB_User dbUser = new DB_User(dbm);
-                return Convert.ToString(dbUser.SelectUser(sub_id)[(int)DB_User.FIELD.user_name]);
+                string checkTemp="미출석";
+                if (check == 1)
+                    checkTemp = "출석";
+                else if (check == 2)
+                    checkTemp = "지각";
+                else if (check == 3)
+                    checkTemp = "결석";
+
+                return checkTemp;
             }
 
-            //User 테이블에서 해당 과목을 듣는 학생 아이디(std_id)뽑아오기
-            private static string GetStudentId(string sub_id)
-            {
-                DBManager dbm = new DBManager();
-                DB_User dbUser = new DB_User(dbm);
-                return Convert.ToString(dbUser.SelectUser(sub_id)[(int)DB_User.FIELD.user_id]);
-            }
 
             internal static object Data()
             {

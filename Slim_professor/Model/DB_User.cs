@@ -21,17 +21,17 @@ namespace Slim_professor.Model
             db = _dbm;
         }
 
-        public object[] SelectStudent(String auth)
+        public List<object[]> SelectStudent(string sub_id)
         {
             string sql = "SELECT * FROM user WHERE auth=@arg1";
             List<object> args = new List<object>();
-            args.Add(auth);
+            args.Add(sub_id);
 
             List<object[]> result = SearchDatas(sql, args);
-            if (result.Count == 0)
+            if (result == null)
                 return null;
             else
-                return result[0];
+                return result;
         }
 
         public object[] SelectUser(string id)
@@ -49,7 +49,7 @@ namespace Slim_professor.Model
 
         public object[] SelectUser(string id, string pw)
         {
-            string sql = "SELECT * FROM user WHERE user_id=@arg1 AND pw=password(@arg2)";   // DB에 password로 암호화 돼서 저장됐기 때문에 복호화로 password함수 써야한다.
+            string sql = "SELECT * FROM user WHERE user_id=@arg1 AND pw=password(@arg2) AND auth=1";   // DB에 password로 암호화 돼서 저장됐기 때문에 복호화로 password함수 써야한다.
             List<object> args = new List<object>();
             args.Add(id);
             args.Add(pw);

@@ -64,6 +64,7 @@
     <Compile Include="Model\DB_AnonymousBoard.cs" />
     <Compile Include="Model\DB_Attendance.cs" />
     <Compile Include="Model\DB_MyQuestion.cs" />
+    <Compile Include="Model\DB_Notice.cs" />
     <Compile Include="Model\DB_QnA.cs" />
     <Compile Include="Model\DB_Signal.cs" />
     <Compile Include="Model\DB_Subject.cs" />
@@ -74,16 +75,12 @@
     <Compile Include="ViewModel\ViewModelMainSubject.cs" />
     <Compile Include="ViewModel\ViewModelPageHiddenTalk.cs" />
     <Compile Include="ViewModel\ViewModelPageNotice.cs" />
+    <Compile Include="ViewModel\ViewModelPageNoticeDetail.cs" />
     <Compile Include="ViewModel\ViewModelPageQnA.cs" />
     <Compile Include="ViewModel\ViewModelPageSignalLightMonitor.cs" />
     <Compile Include="ViewModel\ViewModelPageStudentState.cs" />
+    <Compile Include="ViewModel\ViewModelPageWriteNote.cs" />
     <Compile Include="ViewModel\ViewModelSubjectList.cs" />
-    <Compile Include="View\EditLog.xaml.cs">
-      <DependentUpon>EditLog.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\EditNotice.xaml.cs">
-      <DependentUpon>EditNotice.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\PageHiddenTalk.xaml.cs">
       <DependentUpon>PageHiddenTalk.xaml</DependentUpon>
     </Compile>
@@ -93,17 +90,20 @@
     <Compile Include="View\PageMainSubject.xaml.cs">
       <DependentUpon>PageMainSubject.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\PageNoticeDetail.xaml.cs">
+      <DependentUpon>PageNoticeDetail.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\PageQnA.xaml.cs">
       <DependentUpon>PageQnA.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\DialogLog.xaml.cs">
-      <DependentUpon>DialogLog.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\DialogNotice.xaml.cs">
-      <DependentUpon>DialogNotice.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\PageStudentState.xaml.cs">
       <DependentUpon>PageStudentState.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PageWriteNote.xaml.cs">
+      <DependentUpon>PageWriteNote.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ProgressRIng.xaml.cs">
+      <DependentUpon>ProgressRIng.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\SubjectList.xaml.cs">
       <DependentUpon>SubjectList.xaml</DependentUpon>
@@ -114,14 +114,6 @@
     <Compile Include="View\Widget.xaml.cs">
       <DependentUpon>Widget.xaml</DependentUpon>
     </Compile>
-    <Page Include="View\EditLog.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\EditNotice.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="View\PageHiddenTalk.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -150,21 +142,25 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\PageNoticeDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\PageQnA.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\DialogLog.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\DialogNotice.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\PageStudentState.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\PageWriteNote.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ProgressRIng.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\SubjectList.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -174,7 +170,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\Template\Styles.ListBox.Vertical.xaml">
+    <Page Include="View\Template\Style.ListBox.Vertical_StudentState.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Template\Styles.ListBox.Vertical_Notice.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Template\Styles.ListBox.Vertical_SubjectList.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

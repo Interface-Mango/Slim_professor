@@ -21,17 +21,7 @@ namespace Slim_professor.View
 			
 		}
 
-		private void ShowBtnClick(object sender, System.Windows.RoutedEventArgs e)
-		{
-            DialogLog dialoglog = new DialogLog();
-			dialoglog.ShowDialog();
-		}
 
-		private void RegBtnClick(object sender, System.Windows.RoutedEventArgs e)
-		{
-			EditLog editlog = new EditLog();
-			editlog.ShowDialog();
-		}
 
 	}
 }
