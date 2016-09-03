@@ -61,7 +61,8 @@ namespace Slim_professor.ViewModel
         #region makeList
         public void makeList()
         {
-           
+            DBManager dbm = new DBManager();
+            DB_User dbUser = new DB_User(dbm);
 
         }
         #endregion

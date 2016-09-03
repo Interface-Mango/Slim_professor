@@ -60,11 +60,13 @@
     </ApplicationDefinition>
     <Compile Include="MessageEventArgs.cs" />
     <Compile Include="Model\DBManager.cs" />
+    <Compile Include="Model\DB_AllProgram.cs" />
     <Compile Include="Model\DB_Announcement.cs" />
     <Compile Include="Model\DB_AnonymousBoard.cs" />
     <Compile Include="Model\DB_Attendance.cs" />
     <Compile Include="Model\DB_MyQuestion.cs" />
     <Compile Include="Model\DB_Notice.cs" />
+    <Compile Include="Model\DB_OnetimeProgram.cs" />
     <Compile Include="Model\DB_QnA.cs" />
     <Compile Include="Model\DB_Signal.cs" />
     <Compile Include="Model\DB_Subject.cs" />
