@@ -16,17 +16,20 @@ namespace Slim_professor.ViewModel
     {
         private DBManager dbManager;
         public static ViewModelMainSubject MainSubjectObject;
-        private DB_OnetimeProgram dbOneTime;
-        private DB_AllProgram dbAllProgram;
+        //private DB_OnetimeProgram dbOneTime;
+        //private DB_AllProgram dbAllProgram;
+        private DB_Subject dbSubject;
 
+        private const int FINISH_CLASS = 0;
 
 
         private SubjectList _subjectlist;
         public ViewModelMainSubject(SubjectList subjectlist)
         {
             dbManager = new DBManager();
-            dbOneTime = new DB_OnetimeProgram(dbManager);
-            dbAllProgram = new DB_AllProgram(dbManager);
+            //dbOneTime = new DB_OnetimeProgram(dbManager);
+            //dbAllProgram = new DB_AllProgram(dbManager);
+            dbSubject = new DB_Subject(dbManager);
             _subjectlist = subjectlist;
             _OneTimeItemList = OneTimeItemList; 
             MainSubjectObject = this;
@@ -170,6 +173,7 @@ namespace Slim_professor.ViewModel
         {
             mainFrame = MainFrame.thisMainFrame();
             mainFrame.NavigationService.Navigate(_subjectlist);
+            dbSubject.UpdateIsProcessing(Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)), FINISH_CLASS);  // 수업 종료 DB 변경
         }
         #endregion
         /*

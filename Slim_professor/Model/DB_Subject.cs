@@ -12,7 +12,7 @@ namespace Slim_professor.Model
         DBManager db;
 
         public enum FIELD{
-            sub_id, sub_name, lectureler_id, time, location, ipaddr, END
+            sub_id, sub_name, lectureler_id, time, location, ipaddr, is_processing, END
         }
 
         public DB_Subject(DBManager _dbm)
@@ -33,8 +33,7 @@ namespace Slim_professor.Model
                 return result;
         }
 
-
-        public List<object[]> SearchDatas(string sql, List<object> args)
+        private List<object[]> SearchDatas(string sql, List<object> args)
         {
             List<object[]> recordList = new List<object[]>();
 
@@ -76,13 +75,10 @@ namespace Slim_professor.Model
             return recordList;
         }
 
+        // 채팅방 열었을 때 IP와 Port 등록하는 함수
         public bool UpdateIpaddr(int sub_id, string ipaddr, int port)
         {
             string sql = "UPDATE subject SET ipaddr=@arg1, port=@arg2 WHERE sub_id=@arg3";
-            List<object> args = new List<object>();
-            args.Add(ipaddr);
-            args.Add(port);
-            args.Add(sub_id);
 
             try
             {
@@ -92,6 +88,31 @@ namespace Slim_professor.Model
                     cmd.Parameters.AddWithValue("@arg1", ipaddr);
                     cmd.Parameters.AddWithValue("@arg2", port);
                     cmd.Parameters.AddWithValue("@arg3", sub_id);
+                    cmd.ExecuteNonQuery();
+                }
+                db.Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);  // For Debugging
+                return false;    // 제거 오류시 false 반환
+            }
+
+            return true;
+        }
+
+        // 강사가 과목 입장시 is_processing (수업 진행 관련 플래그 변경)
+        public bool UpdateIsProcessing(int sub_id, int isProcessing)
+        {
+            string sql = "UPDATE subject SET is_processing=@arg1 WHERE sub_id=@arg2";
+
+            try
+            {
+                db.Connection.Open();
+                using (MySqlCommand cmd = new MySqlCommand(sql, db.Connection))
+                {
+                    cmd.Parameters.AddWithValue("@arg1", isProcessing);
+                    cmd.Parameters.AddWithValue("@arg2", sub_id);
                     cmd.ExecuteNonQuery();
                 }
                 db.Connection.Close();

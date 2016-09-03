@@ -26,6 +26,7 @@ namespace Slim_professor.ViewModel
         private DBManager dbManager;
         private DB_Subject dbSubject;
         private SubjectList parentWindow;
+        private const int FINISH_CLASS = 0;
 
         // 생성자
         public ViewModelSubjectList(SubjectList pWindow)
@@ -46,6 +47,7 @@ namespace Slim_professor.ViewModel
         private void CloseWindowFunc(Object o)
         {
             if (MessageBox.Show("종료하시겠습니까?", "종료", MessageBoxButton.YesNo) == MessageBoxResult.No) return;
+            dbSubject.UpdateIsProcessing(Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)), FINISH_CLASS);   // 수업 종료 DB 변경
             MainFrame.Frame.Close();
         }
         #endregion

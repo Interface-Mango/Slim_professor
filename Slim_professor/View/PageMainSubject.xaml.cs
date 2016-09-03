@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Slim_professor.ViewModel;
+using Slim_professor.Model;
 using System.Threading;
 using System.Windows.Threading;
 
@@ -26,9 +27,13 @@ namespace Slim_professor.View
         public static object[] SubjectInfo;
         public static Frame MainFrameObject;
 
+        private DB_Subject dbSubject;
         private SubjectList _subjectlist;
         private int sec;//,min,hour;
         private Widget widget;
+
+        private const int START_CLASS = 1;
+
         public PageMainSubject(object[] param, SubjectList subjectlist)
         {
             InitializeComponent();
@@ -37,9 +42,13 @@ namespace Slim_professor.View
             MainFrameObject = FramePanel;
             ViewModelMainSubject.MainSubjectObject.FrameSource = new Uri("PageStudentState.xaml", UriKind.Relative);
             SubjectInfo = param;
-            SubName.Text = SubjectInfo.ElementAt(1).ToString();
+            SubName.Text = SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_name).ToString();
             _subjectlist = subjectlist;
             widget = new Widget();
+
+            // 수업 진행 중으로 바꿈
+            dbSubject = new DB_Subject(new DBManager());
+            dbSubject.UpdateIsProcessing(Convert.ToInt32(SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)), START_CLASS);  // START_CLASS를 넣으면 수업이 진행중이 됨   
 
             sec = 7200;
             Clock();

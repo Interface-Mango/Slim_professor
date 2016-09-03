@@ -91,7 +91,7 @@ namespace Slim_professor.ViewModel
         internal class AttendanceInfo
         {
             private static List<AttendanceInfo> data;
-            private static DB_Attendance dbAttendnace;
+            //private static DB_Attendance dbAttendnace;
 
 
             public int AttendId { get; private set; }
