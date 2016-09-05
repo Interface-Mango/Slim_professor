@@ -16,28 +16,23 @@ namespace Slim_professor.ViewModel
     {
         private DBManager dbManager;
         public static ViewModelMainSubject MainSubjectObject;
-        //private DB_OnetimeProgram dbOneTime;
-        //private DB_AllProgram dbAllProgram;
-        private DB_Subject dbSubject;
-
-        private const int FINISH_CLASS = 0;
-
-
+        private DB_OnetimeProgram dbOneTime;
+        private DB_AllProgram dbAllProgram;
         private SubjectList _subjectlist;
+
         public ViewModelMainSubject(SubjectList subjectlist)
         {
             dbManager = new DBManager();
-            //dbOneTime = new DB_OnetimeProgram(dbManager);
-            //dbAllProgram = new DB_AllProgram(dbManager);
-            dbSubject = new DB_Subject(dbManager);
+            dbOneTime = new DB_OnetimeProgram(dbManager);
+            dbAllProgram = new DB_AllProgram(dbManager);
             makeRedGreenList();
             _ItemRedList = new List<object[]>();
             _ItemGreenList = new List<object[]>();
             _subjectlist = subjectlist;
-            _OneTimeItemList = OneTimeItemList; 
             MainSubjectObject = this;
         }
-         #region ItemRedList
+
+        #region ItemRedList
         private List<object[]> _ItemRedList;
         public List<object[]> ItemRedList
         {
@@ -45,6 +40,7 @@ namespace Slim_professor.ViewModel
             set { _ItemRedList = value; }
         }
         #endregion
+
 
         #region ItemRedList
         private List<object[]> _ItemGreenList;
@@ -54,30 +50,6 @@ namespace Slim_professor.ViewModel
             set { _ItemGreenList = value; }
         }
         #endregion
- 
-
-        #region OneTimeItemList
-        private List<OneTimeList> _OneTimeItemList;
-        public List<OneTimeList> OneTimeItemList
-        {
-            get { return _OneTimeItemList; }
-            set
-            {
-                _OneTimeItemList = value;
-            }
-        }
-        #endregion
-
-        #region AllProgramList
-+        private List<AllProgramListInfo> _AllProgramList;
-+        public List<AllProgramListInfo> AllProgramList
-        {
-            get { return _AllProgramList; }
-            set
-            {
-                _AllProgramList = value;
-            }
-        }
 
         #region ItemListOneTime
         private List<object[]> _ItemListOneTime;
@@ -89,18 +61,20 @@ namespace Slim_professor.ViewModel
         #endregion
 
         #region makeList
-        public void makeList()
+        public void makeRedGreenList()
         {
-            DBManager dbm = new DBManager();
-            DB_User dbUser = new DB_User(dbm);
+
+            object[] subItems = PageMainSubject.SubjectInfo;
+            int sub_id = Convert.ToInt32(subItems[(int)DB_Subject.FIELD.sub_id]);
+
+            ItemRedList = dbAllProgram.SelectAllProgramList(Convert.ToInt32(sub_id), 0);
+            ItemGreenList = dbAllProgram.SelectAllProgramList(Convert.ToInt32(sub_id), 1);
+
+
 
         }
         #endregion
 
-        internal class OneTimeList
-        {
-
-        }
 
 
         #region FrameSource
@@ -118,7 +92,7 @@ namespace Slim_professor.ViewModel
             }
         }
         #endregion
-        
+
         //<Button Background="#FFEC5C5C" Width="24" Height="24" Canvas.Left="1158" Canvas.Top="9" Content="X" Foreground="White" FontWeight="Bold" Command="{Binding CCloseWindowCommand}"/>
         #region CloseWindowCommand
         private ICommand _CloseWindowCommand;
@@ -204,7 +178,6 @@ namespace Slim_professor.ViewModel
         {
             mainFrame = MainFrame.thisMainFrame();
             mainFrame.NavigationService.Navigate(_subjectlist);
-            dbSubject.UpdateIsProcessing(Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)), FINISH_CLASS);  // 수업 종료 DB 변경
         }
         #endregion
         /*
@@ -228,7 +201,7 @@ namespace Slim_professor.ViewModel
         */
 
 
-        
+
         #region Profile
         public string UserGroup
         {
