@@ -30,11 +30,31 @@ namespace Slim_professor.ViewModel
             //dbOneTime = new DB_OnetimeProgram(dbManager);
             //dbAllProgram = new DB_AllProgram(dbManager);
             dbSubject = new DB_Subject(dbManager);
+            makeRedGreenList();
+            _ItemRedList = new List<object[]>();
+            _ItemGreenList = new List<object[]>();
             _subjectlist = subjectlist;
             _OneTimeItemList = OneTimeItemList; 
             MainSubjectObject = this;
         }
+         #region ItemRedList
+        private List<object[]> _ItemRedList;
+        public List<object[]> ItemRedList
+        {
+            get { return _ItemRedList; }
+            set { _ItemRedList = value; }
+        }
+        #endregion
 
+        #region ItemRedList
+        private List<object[]> _ItemGreenList;
+        public List<object[]> ItemGreenList
+        {
+            get { return _ItemGreenList; }
+            set { _ItemGreenList = value; }
+        }
+        #endregion
+ 
 
         #region OneTimeItemList
         private List<OneTimeList> _OneTimeItemList;
@@ -48,6 +68,16 @@ namespace Slim_professor.ViewModel
         }
         #endregion
 
+        #region AllProgramList
++        private List<AllProgramListInfo> _AllProgramList;
++        public List<AllProgramListInfo> AllProgramList
+        {
+            get { return _AllProgramList; }
+            set
+            {
+                _AllProgramList = value;
+            }
+        }
 
         #region ItemListOneTime
         private List<object[]> _ItemListOneTime;
