@@ -37,11 +37,11 @@ namespace Slim_professor.View
         public PageMainSubject(object[] param, SubjectList subjectlist)
         {
             InitializeComponent();
+            SubjectInfo = param;
             DataContext = new ViewModelMainSubject(subjectlist);
 
             MainFrameObject = FramePanel;
             ViewModelMainSubject.MainSubjectObject.FrameSource = new Uri("PageStudentState.xaml", UriKind.Relative);
-            SubjectInfo = param;
             SubName.Text = SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_name).ToString();
             _subjectlist = subjectlist;
             widget = new Widget();
