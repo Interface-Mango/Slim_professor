@@ -72,7 +72,6 @@
     <Compile Include="Model\DB_Subject.cs" />
     <Compile Include="Model\DB_User.cs" />
     <Compile Include="SocketUser.cs" />
-    <Compile Include="ViewModel\ViewModelDialogNotice.cs" />
     <Compile Include="ViewModel\ViewModelLoginWindow.cs" />
     <Compile Include="ViewModel\ViewModelMainSubject.cs" />
     <Compile Include="ViewModel\ViewModelPageHiddenTalk.cs" />
@@ -81,6 +80,7 @@
     <Compile Include="ViewModel\ViewModelPageQnA.cs" />
     <Compile Include="ViewModel\ViewModelPageSignalLightMonitor.cs" />
     <Compile Include="ViewModel\ViewModelPageStudentState.cs" />
+    <Compile Include="ViewModel\ViewModelPageSubjectStatistic.cs" />
     <Compile Include="ViewModel\ViewModelPageWriteNote.cs" />
     <Compile Include="ViewModel\ViewModelSubjectList.cs" />
     <Compile Include="View\PageHiddenTalk.xaml.cs">
@@ -215,6 +215,10 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <Page Include="View\Template\Styles.ListBox.Vertical_Statistic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
