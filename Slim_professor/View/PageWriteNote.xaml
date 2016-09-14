@@ -36,7 +36,7 @@
         </EventTrigger>
     </Page.Triggers>
 
-    <Grid >
+    <Grid Background="White" >
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
@@ -54,8 +54,8 @@
                     </TransformGroup>
                 </TextBlock.RenderTransform><Run Text="제목을 입력해 주세요."/></TextBlock>
         </Canvas>
-        <Canvas x:Name="QuestionCanvas" HorizontalAlignment="Left" Width="972" Grid.Row="1" VerticalAlignment="Top">
-            <TextBox x:Name="textBox1" Height="510" Width="969" TextWrapping="Wrap" Text="{Binding NoticeContentTextBox}" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" BorderBrush="White" Canvas.Left="4"/>
+        <Canvas x:Name="QuestionCanvas" HorizontalAlignment="Left" Width="972" Grid.Row="1" VerticalAlignment="Top" Background="White">
+            <TextBox x:Name="textBox1" Height="512" Width="971" TextWrapping="Wrap" Text="{Binding NoticeContentTextBox}" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" BorderBrush="White" Canvas.Left="4"/>
             <TextBlock x:Name="contentBlock" TextWrapping="Wrap" Canvas.Top="22.5" Width="152.43" FontWeight="Bold" FontFamily="Calibri" Height="20" FontSize="14.667" RenderTransformOrigin="0.5,0.5" Canvas.Left="4" Opacity="0.2">
                 <TextBlock.RenderTransform>
                     <TransformGroup>

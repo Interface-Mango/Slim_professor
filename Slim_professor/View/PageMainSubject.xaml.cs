@@ -38,7 +38,7 @@ namespace Slim_professor.View
         {
             InitializeComponent();
             SubjectInfo = param;
-            DataContext = new ViewModelMainSubject(subjectlist);
+            DataContext = new ViewModelMainSubject(subjectlist, temp1);
 
             MainFrameObject = FramePanel;
             ViewModelMainSubject.MainSubjectObject.FrameSource = new Uri("PageStudentState.xaml", UriKind.Relative);

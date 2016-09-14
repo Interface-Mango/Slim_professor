@@ -356,17 +356,19 @@
                 </Canvas.InputBindings>
                 <TextBlock x:Name="textBlock3" TextWrapping="Wrap" Text="공지사항" Canvas.Top="20" Height="30" Width="220" FontSize="20" TextAlignment="Center"/>
             </Canvas>
-            <Canvas x:Name="WidgetBtn"  HorizontalAlignment="Left" Height="70" Width="220" Margin="0,429,0,50" Background="#FFFFF8CA" MouseLeftButtonDown="WidgetBtn_MouseLeftButtonDown">
+            <Canvas x:Name="WidgetBtn"  HorizontalAlignment="Left" Height="70" Width="220" Margin="0,310,0,169" Background="#FFFFF8CA" MouseLeftButtonDown="WidgetBtn_MouseLeftButtonDown">
                 <TextBlock x:Name="textBlock4" TextWrapping="Wrap" Text="Widget Mode" Canvas.Top="20" Height="30" Width="220" FontSize="20" TextAlignment="Center"/>
             </Canvas>
-            <Canvas x:Name="HomeBtn"   HorizontalAlignment="Left" Width="220" Margin="0,499,0,0" Background="#FFFFF8CA" Height="50" >
+            <Canvas x:Name="HomeBtn"   HorizontalAlignment="Left" Width="220" Margin="0,380,0,116" Background="#FFFFF8CA" >
                 <Canvas.InputBindings>
                     <MouseBinding MouseAction="LeftClick"
                                   Command="{Binding GoHome}"/>
                 </Canvas.InputBindings>
-                <TextBlock x:Name="textBlock5" TextWrapping="Wrap" Text="홈으로" Canvas.Top="9" Height="31" Width="220" FontSize="20" TextAlignment="Center"/>
+                <TextBlock x:Name="textBlock5" TextWrapping="Wrap" Text="홈으로" Canvas.Top="10" Height="33" Width="220" FontSize="20" TextAlignment="Center"/>
             </Canvas>
         </Grid>
+        <TextBox x:Name="temp1" IsReadOnly="True" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="&#xD;&#xA;" VerticalAlignment="Top" Width="200" Margin="10,596,0,0" Grid.Row="1" Background="White" BorderBrush="{x:Null}" TextAlignment="Center" Foreground="#FFDE4949"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Current Process Name" VerticalAlignment="Top" Margin="10,580,0,0" Grid.Row="1" Width="200" TextAlignment="Center" FontWeight="Bold"/>
 
     </Grid>
 </Page>
