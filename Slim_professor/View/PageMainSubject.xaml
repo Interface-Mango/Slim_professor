@@ -311,7 +311,7 @@
                                 Mode=OneWay}" />
         <Canvas Height="40"
         	VerticalAlignment="Top"
-        	Background="#FF524500" Grid.ColumnSpan="2">
+        	Background="#8ccccccc" Grid.ColumnSpan="2">
             <Canvas x:Name="CloseBtn" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="24" Background="#FFEC5C5C" Canvas.Left="1158" Canvas.Top="9" MouseLeftButtonDown="CloseBtn_MouseLeftButtonDown">
                 <TextBlock x:Name="textBlock6" HorizontalAlignment="Left" TextWrapping="Wrap" Text="X" VerticalAlignment="Top" Width="24" Foreground="White" FontWeight="Bold" Height="16" TextAlignment="Center" Canvas.Top="4"/>
             </Canvas>
