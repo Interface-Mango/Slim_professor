@@ -3,41 +3,43 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing" x:Name="window" x:Class="Slim_professor.View.Widget"
         Title="Widget" Height="35.25" Width="197.249" ResizeMode="NoResize" MouseLeftButtonDown="Window_MouseLeftButtonDown" Background="White" WindowStyle="None">
-	<Window.Resources>
-		<Storyboard x:Key="widgetAnimation">
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="window">
-				<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="317.249"/>
-			</DoubleAnimationUsingKeyFrames>
-		</Storyboard>
-		<Storyboard x:Key="widgetAnimation1">
-			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="window">
-				<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="197.582"/>
-			</DoubleAnimationUsingKeyFrames>
-		</Storyboard>
-	</Window.Resources>
-	<Window.Triggers>
-		<EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="canvas">
-			<BeginStoryboard Storyboard="{StaticResource widgetAnimation}"/>
-		</EventTrigger>
-		<EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="canvas">
-			<BeginStoryboard Storyboard="{StaticResource widgetAnimation1}"/>
-		</EventTrigger>
-	</Window.Triggers>
-	<Grid Background="#FFFEE505">
-		<Button Content="?" HorizontalAlignment="Left" Margin="97,5,0,0" VerticalAlignment="Top" Width="29.5" Height="25.96" Background="#FF827201" BorderBrush="{x:Null}" Foreground="White"/>
-		<Button Content="RED" HorizontalAlignment="Left" Margin="135.5,5,0,0" VerticalAlignment="Top" Width="29.5" Height="25.96" Background="#FF827201" BorderBrush="{x:Null}" Foreground="White"/>
-		<Canvas HorizontalAlignment="Left" Height="26" VerticalAlignment="Top" Width="76" Margin="16,6,0,0">
-			<TextBlock x:Name="MT" HorizontalAlignment="Left" TextWrapping="Wrap" Text="00" VerticalAlignment="Top" Canvas.Left="26" Canvas.Top="4" FontWeight="Bold" FontSize="14" FontFamily="Calibri" Foreground="Black"/>
-			<TextBlock x:Name="ST" HorizontalAlignment="Left" TextWrapping="Wrap" Text="00" VerticalAlignment="Top" Canvas.Left="54" Canvas.Top="4" FontWeight="Bold" FontSize="14" FontFamily="Calibri" Foreground="Black"/>
-			<TextBlock x:Name="HT" HorizontalAlignment="Right" TextWrapping="Wrap" Text="2" VerticalAlignment="Top" Width="9" Canvas.Left="6" Canvas.Top="4" FontWeight="Bold" FontSize="14" FontFamily="Calibri" Foreground="Black"/>
-			<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Left="18" Canvas.Top="4" Foreground="Black"><Run Text=":"/></TextBlock>
-			<TextBlock TextWrapping="Wrap" Text=":" Height="16" Canvas.Left="45" Canvas.Top="4" Width="3" Foreground="Black"/>
-		</Canvas>
-		<Canvas x:Name="canvas" HorizontalAlignment="Left" Height="35.25" VerticalAlignment="Top" Width="149.166" Margin="170,0,-121.584,0" Background="#FFFEBA05">
-			<Button Click="BtnHome_Click" x:Name="BtnHome" HorizontalAlignment="Left" VerticalAlignment="Top" Width="29.5" Height="25.96" Background="White" BorderBrush="{x:Null}" Foreground="#FF827201" Content="Home" Canvas.Left="110.083" Canvas.Top="5.666"/>
-			<Button Click="BtnFinish_Click" x:Name="BtnFinish" Content="Finish" HorizontalAlignment="Left" Height="25.96" VerticalAlignment="Top" Width="29.5" Background="White" BorderBrush="{x:Null}" Foreground="#FF827201" Canvas.Left="71.583" Canvas.Top="4.626"/>
-			<Button Content="refresh" HorizontalAlignment="Left" VerticalAlignment="Top" Width="29.5" Height="25.96" Background="White" BorderBrush="{x:Null}" Foreground="#FF827201" Canvas.Left="33.083" Canvas.Top="4.626"/>
-			<ed:BlockArrow Fill="#FF80B662" Orientation="Right" Height="15.96" Canvas.Left="3.835" Canvas.Top="10.752" Width="18.833"/>
-		</Canvas>
-	</Grid>
+    <Window.Resources>
+        <Storyboard x:Key="widgetAnimation">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="window">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="317.249"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="widgetAnimation1">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="window">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="197.582"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="canvas">
+            <BeginStoryboard Storyboard="{StaticResource widgetAnimation}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="canvas">
+            <BeginStoryboard Storyboard="{StaticResource widgetAnimation1}"/>
+        </EventTrigger>
+    </Window.Triggers>
+    <Grid Background="#FFFEE505">
+        <Button Content="?" HorizontalAlignment="Left" Margin="97,5,0,0" VerticalAlignment="Top" Width="29.5" Height="25.96" Background="#FF827201" BorderBrush="{x:Null}" Foreground="White"/>
+        <Button Content="RED" HorizontalAlignment="Left" Margin="135.5,5,0,0" VerticalAlignment="Top" Width="29.5" Height="25.96" Background="#FF827201" BorderBrush="{x:Null}" Foreground="White"/>
+        <Canvas HorizontalAlignment="Left" Height="26" VerticalAlignment="Top" Width="76" Margin="16,6,0,0">
+            <TextBlock x:Name="MT" HorizontalAlignment="Left" TextWrapping="Wrap" Text="00" VerticalAlignment="Top" Canvas.Left="26" Canvas.Top="4" FontWeight="Bold" FontSize="14" FontFamily="Calibri" Foreground="Black"/>
+            <TextBlock x:Name="ST" HorizontalAlignment="Left" TextWrapping="Wrap" Text="00" VerticalAlignment="Top" Canvas.Left="54" Canvas.Top="4" FontWeight="Bold" FontSize="14" FontFamily="Calibri" Foreground="Black"/>
+            <TextBlock x:Name="HT" HorizontalAlignment="Right" TextWrapping="Wrap" Text="2" VerticalAlignment="Top" Width="9" Canvas.Left="6" Canvas.Top="4" FontWeight="Bold" FontSize="14" FontFamily="Calibri" Foreground="Black"/>
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Canvas.Left="18" Canvas.Top="4" Foreground="Black"><Run Text=":"/></TextBlock>
+            <TextBlock TextWrapping="Wrap" Text=":" Height="16" Canvas.Left="45" Canvas.Top="4" Width="3" Foreground="Black"/>
+        </Canvas>
+        <Canvas x:Name="canvas" HorizontalAlignment="Left" Height="35.25" VerticalAlignment="Top" Width="149.166" Margin="170,0,-121.584,0" Background="#FFFEBA05">
+            <Button Click="BtnHome_Click" x:Name="BtnHome" HorizontalAlignment="Left" VerticalAlignment="Top" Width="29.5" Height="25.96" Background="White" BorderBrush="{x:Null}" Foreground="#FF827201" Canvas.Left="110.083" Canvas.Top="5.666">
+                <Image HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="20" Source="Images/turnoff1.png" OpacityMask="#FF723737"/>
+            </Button>
+            <Button Click="BtnFinish_Click" x:Name="BtnFinish" Content="Finish" HorizontalAlignment="Left" Height="25.96" VerticalAlignment="Top" Width="29.5" Background="White" BorderBrush="{x:Null}" Foreground="#FF827201" Canvas.Left="71.583" Canvas.Top="4.626"/>
+            <Button Content="refresh" HorizontalAlignment="Left" VerticalAlignment="Top" Width="29.5" Height="25.96" Background="White" BorderBrush="{x:Null}" Foreground="#FF827201" Canvas.Left="33.083" Canvas.Top="4.626"/>
+            <ed:BlockArrow Fill="#FF80B662" Orientation="Right" Height="15.96" Canvas.Left="3.835" Canvas.Top="10.752" Width="18.833"/>
+        </Canvas>
+    </Grid>
 </Window>
