@@ -25,7 +25,7 @@ namespace Slim_professor.ViewModel
             dbManager = new DBManager();
             dbOneTime = new DB_OnetimeProgram(dbManager);
             dbAllProgram = new DB_AllProgram(dbManager);
-            makeRedGreenList();
+            //makeRedGreenList();
             _ItemRedList = new List<object[]>();
             _ItemGreenList = new List<object[]>();
             _subjectlist = subjectlist;
@@ -61,18 +61,17 @@ namespace Slim_professor.ViewModel
         #endregion
 
         #region makeList
-        public void makeRedGreenList()
-        {
+        /*   public void makeRedGreenList()
+           {
 
-            object[] subItems = PageMainSubject.SubjectInfo;
-            int sub_id = Convert.ToInt32(subItems[(int)DB_Subject.FIELD.sub_id]);
+               object[] subItems = PageMainSubject.SubjectInfo;
+               int sub_id = Convert.ToInt32(subItems[(int)DB_Subject.FIELD.sub_id]);
 
-            ItemRedList = dbAllProgram.SelectAllProgramList(Convert.ToInt32(sub_id), 0);
-            ItemGreenList = dbAllProgram.SelectAllProgramList(Convert.ToInt32(sub_id), 1);
+               ItemRedList = dbAllProgram.SelectAllProgramList(Convert.ToInt32(sub_id), 0);
+               ItemGreenList = dbAllProgram.SelectAllProgramList(Convert.ToInt32(sub_id), 1);
 
 
-
-        }
+           }  */
         #endregion
 
 

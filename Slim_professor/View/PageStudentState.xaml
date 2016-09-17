@@ -16,11 +16,16 @@
         <Canvas x:Name="StudentStateTitle" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="972" Background="#FFEA8BC3" Grid.Row="0" >
             <TextBlock TextWrapping="Wrap" Canvas.Top="10" VerticalAlignment="Center" Canvas.Left="452" Height="20" Width="72" FontSize="15" FontWeight="Bold" Text="학생 현황"/>
         </Canvas>
+
         <Canvas x:Name="StudentStateCanvas" HorizontalAlignment="Left" Width="972" Grid.Row="1" Background="#FFE0F5EB" VerticalAlignment="Top">
             <Grid Background="#4CD69595" Canvas.Top="-2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="265*"/>
+                    <ColumnDefinition Width="707*"/>
+                </Grid.ColumnDefinitions>
                 <ListBox Name="StudentStateBox"
-                             ItemsSource="{Binding AttendanceItemList}"
-                             Style="{DynamicResource LBX_VERTICAL_STDSTATE}" Height="510" Width="972" />
+                             Style="{DynamicResource LBX_VERTICAL_STDSTATE}" Height="510" Width="972" Grid.ColumnSpan="2" >
+                </ListBox>
             </Grid>
         </Canvas>
         <Canvas Grid.Row="2" Height="80" Background="#FFE0F5EB">
