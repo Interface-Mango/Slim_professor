@@ -8,28 +8,19 @@
         Height="629"
         Title="PageStudentState">
     <Grid >
-        <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="80"/>
-        </Grid.RowDefinitions>
-        <Canvas x:Name="StudentStateTitle" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="972" Background="#FFEA8BC3" Grid.Row="0" >
+        <Canvas x:Name="StudentStateTitle" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="972" Background="#FFEA8BC3">
             <TextBlock TextWrapping="Wrap" Canvas.Top="10" VerticalAlignment="Center" Canvas.Left="452" Height="20" Width="72" FontSize="15" FontWeight="Bold" Text="학생 현황"/>
         </Canvas>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Button Command="{Binding ShowCalendar}" Grid.Row="0" HorizontalAlignment="Right" Margin="738,9,10,0" VerticalAlignment="Top" Width="100" Height="20" Content="날짜 선택"/>
 
-        <Canvas x:Name="StudentStateCanvas" HorizontalAlignment="Left" Width="972" Grid.Row="1" Background="#FFE0F5EB" VerticalAlignment="Top">
-            <Grid Background="#4CD69595" Canvas.Top="-2">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="265*"/>
-                    <ColumnDefinition Width="707*"/>
-                </Grid.ColumnDefinitions>
-                <ListBox Name="StudentStateBox"
-                             Style="{DynamicResource LBX_VERTICAL_STDSTATE}" Height="510" Width="972" Grid.ColumnSpan="2" >
-                </ListBox>
-            </Grid>
-        </Canvas>
-        <Canvas Grid.Row="2" Height="80" Background="#FFE0F5EB">
-
-        </Canvas>
+            <ListBox Grid.Row="1"
+                     ItemsSource="{Binding AttendanceItemList}"
+                         Style="{DynamicResource LBX_VERTICAL_STDSTATE}" BorderBrush="{x:Null}" Background="#FFFFFDF5" />
+        </Grid>
     </Grid>
 </Page>
