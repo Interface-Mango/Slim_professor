@@ -50,7 +50,7 @@ namespace Slim_professor.ViewModel
 
             //makeRedGreenList();
             _temp = temp;
-            _ItemRedList = new List<object[]>();
+            _ItemChcek = new List<object[]>();
             _ItemGreenList = new List<object[]>();
             _subjectlist = subjectlist;
             MainSubjectObject = this;
@@ -59,12 +59,12 @@ namespace Slim_professor.ViewModel
             cpu_Counter = new PerformanceCounter("Process", "% User Time", Process.GetCurrentProcess().ProcessName);
         }
 
-        #region ItemRedList
-        private List<object[]> _ItemRedList;
-        public List<object[]> ItemRedList
+        #region ItemCheck
+        private List<object[]> _ItemChcek;
+        public List<object[]> ItemChcek
         {
-            get { return _ItemRedList; }
-            set { _ItemRedList = value; }
+            get { return _ItemChcek; }
+            set { _ItemChcek = value; }
         }
         #endregion
 
@@ -235,6 +235,7 @@ namespace Slim_professor.ViewModel
             TimerClock.Interval = new TimeSpan(0, 0, 0, 1);
             TimerClock.IsEnabled = true;
             TimerClock.Tick += new EventHandler(TimerClock_Tick);
+
         }
 
         public void TimerClock_Tick(object sender, EventArgs e)
@@ -256,7 +257,21 @@ namespace Slim_professor.ViewModel
 
             //현재 활성화 되어있는 process의 이름으로 cpu_Counter InstanceName에 대입
             cpu_Counter.InstanceName = ps.ProcessName;
+            ItemChcek=dbOneTime.SelectOneTimeList(ps.ProcessName);
 
+
+
+            if (ItemChcek == null)
+            {
+                dbOneTime.InsertOneTime(ps.ProcessName, Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)), Convert.ToString(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_name)), 1);
+                dbOneTime.UpdateOneTime(ps.ProcessName);
+            }
+
+          
+            else if (ItemChcek.Count > 0)
+            {
+                dbOneTime.UpdateOneTime1(ps.ProcessName);
+            }
         }
 
         #endregion

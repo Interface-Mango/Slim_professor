@@ -13,18 +13,18 @@ namespace Slim_professor.Model
 
         public enum FIELD
         {
-            id, process_name, title_name, location, sub_id, sub_name, END
+            id, process_name, sub_id, sub_name, check_field, END
         }
 
         public DB_OnetimeProgram(DBManager _dbm)
         {
             db = _dbm;
         }
-        public List<object[]> SelectOneTimeList(int sub_id)
+        public List<object[]> SelectOneTimeList(string process_name)
         {
-            string sql = "SELECT * FROM onetime_program WHERE sub_id=@arg1 ";
+            string sql = "SELECT * FROM onetime_program WHERE process_name=@arg1";
             List<object> args = new List<object>();
-            args.Add(sub_id);
+            args.Add(process_name);
 
             List<object[]> result = SearchDatas(sql, args);
             if (result.Count == 0)
@@ -32,6 +32,7 @@ namespace Slim_professor.Model
             else
                 return result;
         }
+
 
         public List<object[]> SearchDatas(string sql, List<object> args)
         {
@@ -74,5 +75,95 @@ namespace Slim_professor.Model
 
             return recordList;
         }
+
+
+        public bool InsertOneTime(string process_name, int sub_id, string sub_name, int check)
+        {
+            string sql = "INSERT INTO onetime_program(process_name, sub_id, sub_name, check_field) VALUES(@arg1, @arg2, @arg3, @arg4)";
+            List<object> args = new List<object>();
+            args.Add(process_name);
+            args.Add(sub_id);
+            args.Add(sub_name);
+            args.Add(check);
+
+
+            try
+            {
+                db.Connection.Open();
+                using (MySqlCommand cmd = new MySqlCommand(sql, db.Connection))
+                {
+                    for (int i = 1; i <= 4; i++)
+                    {
+                        cmd.Parameters.AddWithValue("@arg" + i, args.ElementAt(i - 1));
+                    }
+                    cmd.ExecuteNonQuery();
+                }
+                db.Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);  // For Debugging
+                return false;    // 삽입 오류시 false 반환
+            }
+
+            return true;
+
+        }
+
+
+        public bool UpdateOneTime(string process_name)
+        {
+            string sql = "UPDATE onetime_program SET check_field = 0 WHERE process_name != @arg1";
+            List<object> args = new List<object>();
+            args.Add(process_name);
+            
+
+            try
+            {
+                db.Connection.Open();
+                using (MySqlCommand cmd = new MySqlCommand(sql, db.Connection))
+                {
+                    cmd.Parameters.AddWithValue("@arg1", process_name);
+                    cmd.ExecuteNonQuery();
+                }
+                db.Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);  // For Debugging
+                return false;    // 제거 오류시 false 반환
+            }
+
+            return true;
+        }
+
+        public bool UpdateOneTime1(string process_name)
+        {
+            string sql = "UPDATE onetime_program SET check_field = 1  WHERE process_name = @arg1";
+            List<object> args = new List<object>();
+            args.Add(process_name);
+
+
+            try
+            {
+                db.Connection.Open();
+                using (MySqlCommand cmd = new MySqlCommand(sql, db.Connection))
+                {
+                    cmd.Parameters.AddWithValue("@arg1", process_name);
+                    cmd.ExecuteNonQuery();
+                }
+                db.Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);  // For Debugging
+                return false;    // 제거 오류시 false 반환
+            }
+
+            return true;
+        }
     }
+
+    
+
 }
