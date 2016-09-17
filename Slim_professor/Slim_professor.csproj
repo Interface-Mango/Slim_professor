@@ -77,7 +77,6 @@
     <Compile Include="ViewModel\ViewModelPageHiddenTalk.cs" />
     <Compile Include="ViewModel\ViewModelPageNotice.cs" />
     <Compile Include="ViewModel\ViewModelPageNoticeDetail.cs" />
-    <Compile Include="ViewModel\ViewModelPageQnA.cs" />
     <Compile Include="ViewModel\ViewModelPageSignalLightMonitor.cs" />
     <Compile Include="ViewModel\ViewModelPageStudentState.cs" />
     <Compile Include="ViewModel\ViewModelPageSubjectStatistic.cs" />

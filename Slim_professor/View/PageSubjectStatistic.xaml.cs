@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Slim_professor.ViewModel;
 
 namespace Slim_professor.View
 {
@@ -18,6 +19,7 @@ namespace Slim_professor.View
 		{
 			this.InitializeComponent();
 
+            DataContext = new ViewModelPageSubjectStatistic(this);
 			
 		}
 

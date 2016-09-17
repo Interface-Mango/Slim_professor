@@ -11,7 +11,7 @@ using Slim_professor.View;
 
 namespace Slim_professor.ViewModel
 {
-    class ViewModelPageSubjectStatistic
+    class ViewModelPageSubjectStatistic : ViewModelBase
     {
         /*
          * TODO 수업통계
@@ -24,11 +24,30 @@ namespace Slim_professor.ViewModel
          * ============
          * 콤보박스로 날짜선택하고 위의 내용들 뜨도록
          * 
-         * 테이블하나 만들어서 저장해야할듯
+         * 테이블하나 만들어서 저장해야할듯tj
          */
+
+        PageSubjectStatistic window;
         public ViewModelPageSubjectStatistic(PageSubjectStatistic pWindow)
         {
-
+            window = pWindow;
         }
+
+        #region ShowCalendar
+        private ICommand _ShowCalendar;
+        public ICommand ShowCalendar
+        {
+            get { return _ShowCalendar ?? (_ShowCalendar = new AppCommand(ShowCalendarFunc)); }
+        }
+
+        public void ShowCalendarFunc(Object o)
+        {
+            if (window.CalendarControl.Visibility == System.Windows.Visibility.Visible)
+                window.CalendarControl.Visibility = System.Windows.Visibility.Hidden;
+            else 
+                window.CalendarControl.Visibility = System.Windows.Visibility.Visible;
+        }
+        #endregion
+
     }
 }

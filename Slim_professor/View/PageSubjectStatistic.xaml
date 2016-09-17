@@ -15,10 +15,13 @@
                 <RowDefinition Height="40" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <ComboBox Grid.Row="0" HorizontalAlignment="Left" Margin="738,9,0,0" VerticalAlignment="Top" Width="224"/>
+            <Button Command="{Binding ShowCalendar}" Grid.Row="0" HorizontalAlignment="Right" Margin="738,9,10,0" VerticalAlignment="Top" Width="100" Height="20" Content="날짜 선택"/>
+
             <ListBox Grid.Row="1"
-                         ItemsSource="{Binding StatisticItemList}"
-                         Style="{DynamicResource LBX_VERTICAL_Statistic}" BorderBrush="{x:Null}" Background="#FFFFFDF5" />
+                         Style="{DynamicResource LBX_VERTICAL_Statistic}" BorderBrush="{x:Null}" Background="#FFFFFDF5" >
+
+            </ListBox>
+            <Calendar Name="CalendarControl" HorizontalAlignment="Left" Margin="678,10,0,0" VerticalAlignment="Top" Grid.RowSpan="2" Visibility="Visible"/>
         </Grid>
     </Grid>
 </Page>
