@@ -35,6 +35,22 @@ namespace Slim_professor.ViewModel
             _ItemList = new List<object[]>();
         }
 
+        #region ShowCalendar
+        private ICommand _ShowCalendar;
+        public ICommand ShowCalendar1
+        {
+            get { return _ShowCalendar ?? (_ShowCalendar = new AppCommand(ShowCalendarFunc)); }
+        }
+
+        public void ShowCalendarFunc(Object o)
+        {
+            if (parentWindow.CalendarControl.Visibility == System.Windows.Visibility.Visible)
+                parentWindow.CalendarControl.Visibility = System.Windows.Visibility.Hidden;
+            else
+                parentWindow.CalendarControl.Visibility = System.Windows.Visibility.Visible;
+        }
+        #endregion
+
         #region StudentStateItemList
         private List<AttendanceInfo> _AttendanceItemList;
         public List<AttendanceInfo> AttendanceItemList
@@ -62,26 +78,37 @@ namespace Slim_professor.ViewModel
         /* makeList(void) 메소드
 * 기능:     
 */
-        #region makeList
-        public void makeList()
+        public string BindingDate
         {
+            get;
+            set;
+        }
+
+        #region makeList
+        public void makeList(string date)
+        //public void makeList()
+        {
+            ItemList = null;
+            AttendanceItemList = null;
+
             //1.선택 과목 정보 가져오기(sub_id 가져오기)
-            DBManager dbm = new DBManager();
-            DB_User dbUser = new DB_User(dbm);
+            DB_User dbUser = new DB_User(new DBManager());
 
 
             List<object[]> items = new List<object[]>();
-            items = dbAttendnace.SelectAttendanceList(Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)));
-
+            items = dbAttendnace.SelectAttendanceList(Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)), date);
+            //items = dbAttendnace.SelectAttendanceList(Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)));
+            if (items == null) return;
             for(int i=0;i<items.Count;i++)
             {
                 string name = Convert.ToString(dbUser.SelectUser(Convert.ToString(items[i].ElementAt((int)DB_Attendance.FIELD.std_id)))[(int)DB_User.FIELD.user_name]);
-                items[i].SetValue(name, 4);
+                items[i].SetValue(name, 5);
             }
 
             ItemList = items;
 
             AttendanceItemList = AttendanceInfo.Data(ItemList);
+            
             
         }
         #endregion
@@ -111,19 +138,19 @@ namespace Slim_professor.ViewModel
 
                 for (int i = 0; i < items.Count; i++)
                 {
-                    string checkTemp = GetCheck(Convert.ToInt32(items[i].ElementAt((int)DB_Attendance.FIELD.sub_id)));
+                    string checkTemp = GetCheck(Convert.ToInt32(items[i].ElementAt((int)DB_Attendance.FIELD.check)));
                     attendTemp = new AttendanceInfo
                     {
                         AttendId = Convert.ToInt32(items[i].ElementAt((int)DB_Attendance.FIELD.id)),
-                        AttendStudentName = Convert.ToString(items[i].ElementAt(4)),
+                        AttendStudentName = Convert.ToString(items[i].ElementAt(5)),
                         AttendSubjectId = Convert.ToInt32(items[i].ElementAt((int)DB_Attendance.FIELD.sub_id)),
                         AttendStudentId = Convert.ToString(items[i].ElementAt((int)DB_Attendance.FIELD.std_id)),
                         AttendTime = Convert.ToDateTime(items[i].ElementAt((int)DB_Attendance.FIELD.date)),
                         AttendCheck = checkTemp
                     };
-                data.Add(attendTemp);
+                    data.Add(attendTemp);
 
-            }
+                }
                 return data;
             }
 
@@ -135,7 +162,7 @@ namespace Slim_professor.ViewModel
                     checkTemp = "출석";
                 else if (check == 2)
                     checkTemp = "지각";
-                else if (check == 3)
+                else if (check == 0)
                     checkTemp = "결석";
 
                 return checkTemp;

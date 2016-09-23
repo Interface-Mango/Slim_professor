@@ -29,18 +29,26 @@ namespace Slim_professor.View
          public static int mCheck; // 1(출석) 2(지각) 3(결석)
          */
         public static object[] SelectSubjectInfo;
-
+        private ViewModelPageStudentState viewModelPageStudentState;
 
         public PageStudentState()
 		{
 			InitializeComponent();
-            ViewModelPageStudentState ViewModelPageStudentState = new ViewModelPageStudentState(this);
-            ViewModelPageStudentState.makeList();
-            DataContext = ViewModelPageStudentState;
+            viewModelPageStudentState = new ViewModelPageStudentState(this);
+            viewModelPageStudentState.makeList(DateTime.Now.ToShortDateString());
+            //viewModelPageStudentState.makeList("2016-09-23");
+            DataContext = viewModelPageStudentState;
 
 
 
             // 개체 만들기에 필요한 코드를 이 지점 아래에 삽입하십시오.
+        }
+
+        private void CalendarControl_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //viewModelPageStudentState.makeList("2016-09-04");
+            CalendarControl.Visibility = System.Windows.Visibility.Hidden;
+            //ListBoxControl.UpdateLayout();
         }
 
      

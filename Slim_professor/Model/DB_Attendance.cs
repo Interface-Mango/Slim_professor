@@ -22,9 +22,9 @@ namespace Slim_professor.Model
             db = _dbm;
         }
 
-        public List<object[]> SelectAttendanceList(int sub_id)
+        public List<object[]> SelectAttendanceList(int sub_id, string date)
         {
-            string sql = "SELECT * FROM attendance WHERE sub_id=@arg1 ORDER BY id DESC";
+            string sql = "SELECT * FROM attendance WHERE sub_id=@arg1 AND date LIKE '"+date+"%' ORDER BY id DESC";
             List<object> args = new List<object>();
             args.Add(sub_id);
 
@@ -57,7 +57,7 @@ namespace Slim_professor.Model
 
                 while (reader.Read())
                 {
-                    object[] items = new object[reader.FieldCount]; // columns 개수
+                    object[] items = new object[reader.FieldCount+1]; // columns 개수. 이름때문에 +1
                     for (int i = 0; i < reader.FieldCount; i++)
                     {
                         items[i] = reader[i];

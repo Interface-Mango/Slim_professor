@@ -25,15 +25,10 @@ namespace Slim_professor.View
             DataContext = viewModelSubjectList; 
 		}
 
-        private void CloseBtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void CloseBtn_Click(object sender, RoutedEventArgs e)
         {
             if (MessageBox.Show("종료하시겠습니까?", "종료", MessageBoxButton.YesNo) == MessageBoxResult.No) return;
             MainFrame.Frame.Close();
-        }
-
-        private void WidgetBtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-
         }
     }
 }

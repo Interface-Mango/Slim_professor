@@ -16,11 +16,15 @@
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Button Command="{Binding ShowCalendar}" Grid.Row="0" HorizontalAlignment="Right" Margin="738,9,10,0" VerticalAlignment="Top" Width="100" Height="20" Content="날짜 선택"/>
+            <Button Command="{Binding ShowCalendar1}" Grid.Row="0" HorizontalAlignment="Right" Margin="738,9,10,0" VerticalAlignment="Top" Width="100" Height="20" Content="날짜 선택" Visibility="Hidden"/>
 
-            <ListBox Grid.Row="1"
-                     ItemsSource="{Binding AttendanceItemList}"
-                         Style="{DynamicResource LBX_VERTICAL_STDSTATE}" BorderBrush="{x:Null}" Background="#FFFFFDF5" />
+            <ListBox 
+                x:Name="ListBoxControl"
+                Grid.Row="1"
+                ItemsSource="{Binding AttendanceItemList}"
+                Style="{DynamicResource LBX_VERTICAL_STDSTATE}" BorderBrush="{x:Null}" Background="#FFFFFDF5" />
+
+            <Calendar Name="CalendarControl" HorizontalAlignment="Left" Margin="678,10,0,0" VerticalAlignment="Top" Grid.RowSpan="2" Visibility="Hidden" SelectedDatesChanged="CalendarControl_SelectedDatesChanged"/>
         </Grid>
     </Grid>
 </Page>

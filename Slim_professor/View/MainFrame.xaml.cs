@@ -46,6 +46,7 @@ namespace Slim_professor.View
 		// 로그인 창과 호환되기 위한 함수
 		protected override void OnClosed(EventArgs e)
         {
+            dbSubject.UpdateIpaddr(Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)), string.Empty, 0);      // 수업 종료 DB 변경
             dbSubject.UpdateIsProcessing(Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)), FINISH_CLASS);   // 창 강제 종료시 수업 종료
 			base.OnClosed(e); 
 			Application.Current.Shutdown();

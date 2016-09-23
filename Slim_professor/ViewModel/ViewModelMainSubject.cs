@@ -21,9 +21,11 @@ namespace Slim_professor.ViewModel
         public static ViewModelMainSubject MainSubjectObject;
         private DB_OnetimeProgram dbOneTime;
         private DB_AllProgram dbAllProgram;
+        private DB_Subject dbSubject;
         private SubjectList _subjectlist;
         private TextBox _temp;
 
+        private const int FINISH_CLASS = 0;
         #region Algorithm component
         private PerformanceCounter cpu_Counter; // cpu 점유율
         private IntPtr handle;//활성화 윈도우를 담는 그릇
@@ -47,6 +49,7 @@ namespace Slim_professor.ViewModel
             dbManager = new DBManager();
             dbOneTime = new DB_OnetimeProgram(dbManager);
             dbAllProgram = new DB_AllProgram(dbManager);
+            dbSubject = new DB_Subject(dbManager);
 
             //makeRedGreenList();
             _temp = temp;
@@ -119,17 +122,19 @@ namespace Slim_professor.ViewModel
         }
         #endregion
 
-        //<Button Background="#FFEC5C5C" Width="24" Height="24" Canvas.Left="1158" Canvas.Top="9" Content="X" Foreground="White" FontWeight="Bold" Command="{Binding CCloseWindowCommand}"/>
-        #region CloseWindowCommand
-        private ICommand _CloseWindowCommand;
-        public ICommand CCloseWindowCommand
+        #region ClosingWindowCommand
+        private ICommand _ClosingWindowCommand;
+        public ICommand ClosingWindowCommand
         {
-            get { return _CloseWindowCommand ?? (_CloseWindowCommand = new AppCommand(CloseWindowFunc)); }
+            get { return _ClosingWindowCommand ?? (_ClosingWindowCommand = new AppCommand(ClosingWindowFunc)); }
         }
 
-        private void CloseWindowFunc(Object o)
+        private void ClosingWindowFunc(Object o)
         {
             if (MessageBox.Show("종료하시겠습니까?", "종료", MessageBoxButton.YesNo) == MessageBoxResult.No) return;
+
+            dbSubject.UpdateIpaddr(Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)), string.Empty, 0);      // 수업 종료 DB 변경
+            dbSubject.UpdateIsProcessing(Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)), FINISH_CLASS);   // 수업 종료 DB 변경
             MainFrame.Frame.Close();
         }
         #endregion
@@ -202,6 +207,8 @@ namespace Slim_professor.ViewModel
         }
         private void GoHomeFunc(Object o)
         {
+            dbSubject.UpdateIpaddr(Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)), string.Empty, 0);      // 수업 종료 DB 변경
+            dbSubject.UpdateIsProcessing(Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)), FINISH_CLASS);   // 수업 종료 DB 변경
             mainFrame = MainFrame.thisMainFrame();
             mainFrame.NavigationService.Navigate(_subjectlist);
         }

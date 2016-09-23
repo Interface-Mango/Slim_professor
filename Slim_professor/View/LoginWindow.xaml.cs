@@ -35,7 +35,7 @@ namespace Slim_professor.View
         }
 
 
-        private void Canvas_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
+        private void CloseBtn_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

@@ -76,6 +76,7 @@ namespace Slim_professor.ViewModel
             UI_Setting(typeState.Connecting);
 
             dbSubject = new DB_Subject(new DBManager());
+            portNum = dbSubject.SelectPort(Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)));
         }
 
         // UI 세팅
@@ -127,8 +128,8 @@ namespace Slim_professor.ViewModel
                         UI_Setting(typeState.DisConnecting);
 
 
-                            Random random = new Random();
-                            portNum = random.Next(1000) + 8124;
+                            //Random random = new Random();
+                            //portNum = random.Next(1000) + 8124;
                             //서버 세팅
                             socketServer = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
                             IPEndPoint ipepServer = new IPEndPoint(IPAddress.Any, portNum);
@@ -146,11 +147,11 @@ namespace Slim_professor.ViewModel
                             //유저 리스트 생성
                             m_listUser = new List<SocketUser>();
                             //서버 시작 로그 표시
-                            pht.DisplayLog("* [ " + portNum + " ] ");
+                            //pht.DisplayLog("* [ " + portNum + " ] ");
                             pht.DisplayLog("* 채팅 시작 ");
 
                             // ip와 포트 추가
-                            dbSubject.UpdateIpaddr(Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)), getMyIp, portNum);
+                            //dbSubject.UpdateIpaddr(Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)), getMyIp, portNum);
 
                             ServerConnectionFunction();
                         break;
@@ -158,7 +159,7 @@ namespace Slim_professor.ViewModel
                 case typeState.DisConnecting:
                     {
                         UI_Setting(typeState.Connecting);
-                        pht.DisplayLog("* [ " + portNum + " ] 채팅 종료 * \n");
+                        //pht.DisplayLog("* [ " + portNum + " ] 채팅 종료 * \n");
                         pht.DisplayMsg("* [채팅이 종료되었습니다.] *\n");
                         pht.Dispatcher.BeginInvoke(new Action(
                         delegate()

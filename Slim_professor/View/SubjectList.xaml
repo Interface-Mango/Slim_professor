@@ -104,7 +104,7 @@
         </Canvas>
         <Canvas Height="40"
         	VerticalAlignment="Top"
-        	Background="#FF524500">
+        	Background="Black">
             <TextBlock Canvas.Left="569.205"
         		Canvas.Top="2.555"
         		Width="54.473"
@@ -113,9 +113,9 @@
         		Foreground="White"
         		Text="Slim"
         		TextWrapping="Wrap" HorizontalAlignment="Center" />
-            <Canvas x:Name="CloseBtn" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="24" Background="#FFEC5C5C" Canvas.Left="1158" Canvas.Top="9" MouseLeftButtonDown="CloseBtn_MouseLeftButtonDown">
-                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="X" VerticalAlignment="Top" Width="24" Foreground="White" FontWeight="Bold" Height="16" TextAlignment="Center" Canvas.Top="4"/>
-            </Canvas>
+            <Button x:Name="CloseBtn" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="24" Background="#aa0000" Canvas.Left="1158" Canvas.Top="9" Click="CloseBtn_Click">
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="X" VerticalAlignment="Top" Foreground="White" FontWeight="Bold" Height="16" TextAlignment="Center"/>
+            </Button>
         </Canvas>
     </Grid>
 </Page>

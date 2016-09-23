@@ -37,17 +37,16 @@ namespace Slim_professor.ViewModel
             _ItemList = new List<object[]>();
         }
 
-        #region CloseWindowCommand
-        private ICommand _CloseWindowCommand;
-        public ICommand CloseWindowCommand
+        #region ClosingWindowCommand
+        private ICommand _ClosingWindowCommand;
+        public ICommand ClosingWindowCommand
         {
-            get { return _CloseWindowCommand ?? (_CloseWindowCommand = new AppCommand(CloseWindowFunc)); }
+            get { return _ClosingWindowCommand ?? (_ClosingWindowCommand = new AppCommand(ClosingWindowFunc)); }
         }
 
-        private void CloseWindowFunc(Object o)
+        private void ClosingWindowFunc(Object o)
         {
             if (MessageBox.Show("종료하시겠습니까?", "종료", MessageBoxButton.YesNo) == MessageBoxResult.No) return;
-            dbSubject.UpdateIsProcessing(Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)), FINISH_CLASS);   // 수업 종료 DB 변경
             MainFrame.Frame.Close();
         }
         #endregion

@@ -16,6 +16,8 @@ using Slim_professor.ViewModel;
 using Slim_professor.Model;
 using System.Threading;
 using System.Windows.Threading;
+using System.Net;
+using System.Net.Sockets;
 
 namespace Slim_professor.View
 {
@@ -33,6 +35,7 @@ namespace Slim_professor.View
         private Widget widget;
 
         private const int START_CLASS = 1;
+        private const int FINISH_CLASS = 0;
 
         public PageMainSubject(object[] param, SubjectList subjectlist)
         {
@@ -48,6 +51,9 @@ namespace Slim_professor.View
 
             // 수업 진행 중으로 바꿈
             dbSubject = new DB_Subject(new DBManager());
+            Random random = new Random();
+            int portNum = random.Next(1000) + 8124;
+            dbSubject.UpdateIpaddr(Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)), getMyIp, portNum);      // 수업 종료 DB 변경
             dbSubject.UpdateIsProcessing(Convert.ToInt32(SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)), START_CLASS);  // START_CLASS를 넣으면 수업이 진행중이 됨   
 
             sec = 7200;
@@ -86,17 +92,31 @@ namespace Slim_professor.View
 
         }
 
+        /*
+         * 자신 PC의 IP를 받아오는 프로퍼티
+         */
+        public string getMyIp
+        {
+            get
+            {
+                IPHostEntry host = Dns.GetHostEntry(Dns.GetHostName());
+                string ClientIP = string.Empty;
+                for (int i = 0; i < host.AddressList.Length; i++)
+                {
+                    if (host.AddressList[i].AddressFamily == AddressFamily.InterNetwork)
+                    {
+                        ClientIP = host.AddressList[i].ToString();
+                    }
+                }
+                return ClientIP;
+            }
+        }
+        #endregion
+
         private void WidgetBtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             widget.Show();
             MainFrame.Frame.Hide();
         }
-
-        private void CloseBtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            if (MessageBox.Show("종료하시겠습니까?", "종료", MessageBoxButton.YesNo) == MessageBoxResult.No) return;
-            MainFrame.Frame.Close();
-        }
-        #endregion
     }
 }

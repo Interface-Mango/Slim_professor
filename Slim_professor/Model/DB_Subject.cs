@@ -20,6 +20,19 @@ namespace Slim_professor.Model
             db = _dbm;
         }
 
+        public int SelectPort(int sub_id)
+        {
+            string sql = "SELECT port FROM subject WHERE sub_id=@arg1";
+            List<object> args = new List<object>();
+            args.Add(sub_id);
+
+            List<object[]> result = SearchDatas(sql, args);
+            if (result.Count == 0)
+                return 0;
+            else
+                return Convert.ToInt32(result[0].ElementAt(0));
+        }
+
         public List<object[]> SelectSubjectList(int lec_id)
         {
             string sql = "SELECT * FROM subject WHERE lectureler_id=@arg1";   
