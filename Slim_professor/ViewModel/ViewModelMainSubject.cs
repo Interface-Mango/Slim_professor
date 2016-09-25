@@ -23,7 +23,7 @@ namespace Slim_professor.ViewModel
         private DB_AllProgram dbAllProgram;
         private DB_Subject dbSubject;
         private SubjectList _subjectlist;
-        private TextBox _temp;
+        private TextBox processTextBox;
 
         private const int FINISH_CLASS = 0;
         #region Algorithm component
@@ -44,7 +44,7 @@ namespace Slim_professor.ViewModel
         #endregion
         #endregion
 
-        public ViewModelMainSubject(SubjectList subjectlist, TextBox temp)
+        public ViewModelMainSubject(SubjectList subjectlist, TextBox _processTextBox)
         {
             dbManager = new DBManager();
             dbOneTime = new DB_OnetimeProgram(dbManager);
@@ -52,7 +52,7 @@ namespace Slim_professor.ViewModel
             dbSubject = new DB_Subject(dbManager);
 
             //makeRedGreenList();
-            _temp = temp;
+            processTextBox = _processTextBox;
             _ItemChcek = new List<object[]>();
             _ItemGreenList = new List<object[]>();
             _subjectlist = subjectlist;
@@ -257,7 +257,7 @@ namespace Slim_professor.ViewModel
                 //_temp.AppendText(ps.ProcessName + Environment.NewLine);
 
                 //현재 무슨 Process가 활성화 되는지 유저에게 인터페이스 제공
-                _temp.Text = ps.ProcessName;
+            processTextBox.Text = ps.ProcessName;
 
                 
             //}
