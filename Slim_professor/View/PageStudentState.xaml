@@ -8,10 +8,7 @@
         Height="629"
         Title="PageStudentState">
     <Grid >
-        <Canvas x:Name="StudentStateTitle" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="972" Background="#FFEA8BC3">
-            <TextBlock TextWrapping="Wrap" Canvas.Top="10" VerticalAlignment="Center" Canvas.Left="452" Height="20" Width="72" FontSize="15" FontWeight="Bold" Text="학생 현황"/>
-        </Canvas>
-        <Grid>
+        <Grid Background="White">
             <Grid.RowDefinitions>
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="*"/>
@@ -26,5 +23,8 @@
 
             <Calendar Name="CalendarControl" HorizontalAlignment="Left" Margin="678,10,0,0" VerticalAlignment="Top" Grid.RowSpan="2" Visibility="Hidden" SelectedDatesChanged="CalendarControl_SelectedDatesChanged"/>
         </Grid>
+        <Canvas HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="972" Background="#FFEADD8B">
+            <TextBlock TextWrapping="Wrap" Text="학생현황" Canvas.Top="10" VerticalAlignment="Center" Canvas.Left="80" Height="20" Width="177" FontSize="14.667" FontWeight="Bold"/>
+        </Canvas>
     </Grid>
 </Page>

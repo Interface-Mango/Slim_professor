@@ -121,7 +121,7 @@ namespace Slim_professor.ViewModel
             private static List<AttendanceInfo> data;
             //private static DB_Attendance dbAttendnace;
 
-
+            public int Id { get; private set; }
             public int AttendId { get; private set; }
             public string AttendStudentName { get; private set; } //user 에서 가져옴
             public int AttendSubjectId { get; private set; }
@@ -141,6 +141,7 @@ namespace Slim_professor.ViewModel
                     string checkTemp = GetCheck(Convert.ToInt32(items[i].ElementAt((int)DB_Attendance.FIELD.check)));
                     attendTemp = new AttendanceInfo
                     {
+                        Id = items.Count - i,
                         AttendId = Convert.ToInt32(items[i].ElementAt((int)DB_Attendance.FIELD.id)),
                         AttendStudentName = Convert.ToString(items[i].ElementAt(5)),
                         AttendSubjectId = Convert.ToInt32(items[i].ElementAt((int)DB_Attendance.FIELD.sub_id)),

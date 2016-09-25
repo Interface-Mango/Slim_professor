@@ -17,38 +17,45 @@
                        
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="10" />
-                                <ColumnDefinition Width="100" />
-                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="60" />
+                                <ColumnDefinition Width="140" />
                                 <ColumnDefinition Width="600" />
                                 <ColumnDefinition Width="50" />
 
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Row="0"
+                            <!--TextBlock Grid.Row="0"
                                        Grid.Column="0"
                                        VerticalAlignment="Center"
                                        HorizontalAlignment="Center"
                                        Margin="2"
                                        FontSize="20"
                                        FontWeight="Bold"
-                                       Text="{Binding Id}" />
+                                       Text="{Binding Id}" /-->
+                            
                             <TextBlock Grid.Row="0"
                                        Grid.Column="1"
                                        FontSize="16"
                                          Margin="2"
                                        VerticalAlignment="Center"
-                                       Text="{Binding AttendStudentId}" />
+                                       Text="{Binding Id}" 
+                                       Foreground="#FFC38311" />
+                            
                             <TextBlock Grid.Row="0"
                                        Grid.Column="2"
-                                       FontSize="16"
-                                         Margin="10"
+                                       FontSize="15"
+                                       Margin="10"
                                        VerticalAlignment="Center"
-                                       Text="{Binding AttendStudentName}" />
+                                       Text="{Binding AttendStudentName}" 
+                                       Foreground="#FF2C2287" FontWeight="Bold" />
+                            
                             <TextBlock Grid.Row="0"
                                        Grid.Column="3"
                                          Margin="10"
-                                       FontSize="16"
+                                       FontSize="14"
                                        VerticalAlignment="Center"
-                                       Text="{Binding AttendTime}" />
+                                       Text="{Binding AttendTime}" 
+                                       Foreground="#FF9C8484" />
+                            
                             <TextBlock Grid.Row="0"
                                        Grid.Column="4"
                                        FontSize="16"  
