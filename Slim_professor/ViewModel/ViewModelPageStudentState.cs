@@ -108,8 +108,6 @@ namespace Slim_professor.ViewModel
             ItemList = items;
 
             AttendanceItemList = AttendanceInfo.Data(ItemList);
-            
-            
         }
         #endregion
 

@@ -21,11 +21,10 @@ namespace Slim_professor.Model
             db = _dbm;
         }
 
-        public List<object[]> SelectStudent(string sub_id)
+        public List<object[]> SelectStudent()
         {
-            string sql = "SELECT * FROM user WHERE auth=@arg1";
+            string sql = "SELECT * FROM user WHERE auth=0";
             List<object> args = new List<object>();
-            args.Add(sub_id);
 
             List<object[]> result = SearchDatas(sql, args);
             if (result == null)

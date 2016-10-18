@@ -78,7 +78,34 @@ namespace Slim_professor.Model
             return recordList;
         }
 
-      
-        // 나중에 insert delete update 추가
+        public bool InsertStudentAttendance(string std_id, int sub_id, int check)
+        {
+            string sql = "INSERT INTO attendance(sub_id, std_id, att_check, date) VALUES(@arg1, @arg2, @arg3, NOW())";
+            List<object> args = new List<object>();
+            args.Add(sub_id);
+            args.Add(std_id);
+            args.Add(check);
+
+            try
+            {
+                db.Connection.Open();
+                using (MySqlCommand cmd = new MySqlCommand(sql, db.Connection))
+                {
+                    for (int i = 1; i <= 3; i++)
+                    {
+                        cmd.Parameters.AddWithValue("@arg" + i, args.ElementAt(i - 1));
+                    }
+                    cmd.ExecuteNonQuery();
+                }
+                db.Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);  // For Debugging
+                return false;    // 삽입 오류시 false 반환
+            }
+
+            return true;
+        }
     }
 }

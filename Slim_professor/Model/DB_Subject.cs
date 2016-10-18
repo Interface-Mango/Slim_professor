@@ -12,7 +12,7 @@ namespace Slim_professor.Model
         DBManager db;
 
         public enum FIELD{
-            sub_id, sub_name, lectureler_id, time, location, ipaddr, is_processing, END
+            sub_id, sub_name, lectureler_id, time, location, ipaddr, port, is_processing, last_class, END
         }
 
         public DB_Subject(DBManager _dbm)
@@ -125,6 +125,31 @@ namespace Slim_professor.Model
                 using (MySqlCommand cmd = new MySqlCommand(sql, db.Connection))
                 {
                     cmd.Parameters.AddWithValue("@arg1", isProcessing);
+                    cmd.Parameters.AddWithValue("@arg2", sub_id);
+                    cmd.ExecuteNonQuery();
+                }
+                db.Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);  // For Debugging
+                return false;    // 제거 오류시 false 반환
+            }
+
+            return true;
+        }
+
+        // 강사가 과목 입장시 날짜 오늘로 변경
+        public bool UpdateLastClass(int sub_id, DateTime lastClass)
+        {
+            string sql = "UPDATE subject SET last_class=@arg1 WHERE sub_id=@arg2";
+
+            try
+            {
+                db.Connection.Open();
+                using (MySqlCommand cmd = new MySqlCommand(sql, db.Connection))
+                {
+                    cmd.Parameters.AddWithValue("@arg1", lastClass);
                     cmd.Parameters.AddWithValue("@arg2", sub_id);
                     cmd.ExecuteNonQuery();
                 }

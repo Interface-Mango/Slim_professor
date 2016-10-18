@@ -22,6 +22,8 @@ namespace Slim_professor.ViewModel
         private DB_OnetimeProgram dbOneTime;
         private DB_AllProgram dbAllProgram;
         private DB_Subject dbSubject;
+        private DB_User dbUser;
+        private DB_Attendance dbAttendance;
         private SubjectList _subjectlist;
         private TextBox processTextBox;
 
@@ -50,6 +52,62 @@ namespace Slim_professor.ViewModel
             dbOneTime = new DB_OnetimeProgram(dbManager);
             dbAllProgram = new DB_AllProgram(dbManager);
             dbSubject = new DB_Subject(dbManager);
+            dbUser = new DB_User(dbManager);
+            dbAttendance = new DB_Attendance(dbManager);
+
+
+            /*
+             * 해당 수업을 듣는 학생들 구분하기
+             * 1. 모든 학생 리스트 출력(attendance 테이블에 선생님이 그날 첫 로그인을 하면 해당 학생들 전부 insert시키기)
+             * 2. 기본적으로 오늘 날짜 출력
+             * 3. 날짜 선택해서 들어가면 해당 학생의 당시 출결 여부 판단 가능
+             * 4. (선택사항) 학생 더블클릭하면 해당 날짜의 학생 스텟 확인 가능(빨간불 몇회, 물음표 몇회)
+             */
+
+
+            #region 학생 출석리스트에 담기
+            // 1. 모든 학생 리스트 출력(attendance 테이블에 선생님이 그날 첫 로그인을 하면 해당 학생들 전부 insert시키기)
+
+            //TODO: 오늘 출석을 했으면 체크해서 다시 이 로직을 수행하지 않도록.. -> subject테이블 마지막 속성에 가장 마지막으로 접속한 날짜를 기록해두고 확인하는 방식으로.
+            //if(선생님이 오늘 이 과목으로 로그인을 한번도 하지 않았으면)
+
+            string month = "", day = "";
+            if (DateTime.Now.Month < 10)
+                month = "0" + DateTime.Now.Month;
+            else
+                month = DateTime.Now.Month.ToString();
+            if (DateTime.Now.Day < 10)
+                day = "0" + DateTime.Now.Day;
+            else
+                day = DateTime.Now.Day.ToString();
+
+
+            string today = DateTime.Now.Year+"-"+month+"-"+day;
+            string lastClassDate = Convert.ToString(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.last_class)).Split(' ')[0];
+            if (lastClassDate != today)
+            {
+                int subId = Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id));
+                dbSubject.UpdateLastClass(subId, DateTime.Now.Date);
+                List<object[]> studentList = dbUser.SelectStudent();
+                for (int i = 0; i < studentList.Count; i++)
+                {
+                    string[] subIds = studentList[i].ElementAt((int)DB_User.FIELD.sub_ids).ToString().Split('_');
+                    bool isMyStudent = false;
+                    for (int j = 0; j < subIds.Length; j++)
+                    {
+                        if (subId == Convert.ToInt32(subIds[j]))
+                        {
+                            isMyStudent = true;
+                            break;
+                        }
+                    }
+                    if (isMyStudent)
+                    {
+                        dbAttendance.InsertStudentAttendance(studentList[i].ElementAt((int)DB_User.FIELD.user_id).ToString(), subId, 0);
+                    }
+                }
+            }
+            #endregion
 
             //makeRedGreenList();
             processTextBox = _processTextBox;

@@ -29,13 +29,14 @@ namespace Slim_professor.View
          public static int mCheck; // 1(출석) 2(지각) 3(결석)
          */
         public static object[] SelectSubjectInfo;
+        public static string DateValue = DateTime.Now.ToShortDateString();
         private ViewModelPageStudentState viewModelPageStudentState;
 
         public PageStudentState()
 		{
 			InitializeComponent();
             viewModelPageStudentState = new ViewModelPageStudentState(this);
-            viewModelPageStudentState.makeList(DateTime.Now.ToShortDateString());
+            viewModelPageStudentState.makeList(DateValue);
             //viewModelPageStudentState.makeList("2016-09-23");
             DataContext = viewModelPageStudentState;
 
@@ -46,9 +47,12 @@ namespace Slim_professor.View
 
         private void CalendarControl_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
-            //viewModelPageStudentState.makeList("2016-09-04");
+            // TODO: 위에 선택 날짜 표기하고 직접 새로고침 버튼 하나 표시
+            //새로운 날짜로 리스트 생성
+            DateValue = CalendarControl.SelectedDate.Value.ToShortDateString();
             CalendarControl.Visibility = System.Windows.Visibility.Hidden;
-            //ListBoxControl.UpdateLayout();
+            //새로고침
+            PageMainSubject.MainFrameObject.Refresh();
         }
 
      
