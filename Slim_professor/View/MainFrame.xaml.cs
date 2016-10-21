@@ -27,6 +27,8 @@ namespace Slim_professor.View
         private DB_Subject dbSubject;
         private const int FINISH_CLASS = 0;
 
+        //public static bool isLoaded = false;
+
         public MainFrame(object[] _userInfo)
 		{
             this.InitializeComponent();
@@ -40,7 +42,7 @@ namespace Slim_professor.View
            // this.Left = (SystemParameters.WorkArea.Width - Width) / 2.0 + SystemParameters.WorkArea.Left;
            // this.Height = (SystemParameters.WorkArea.Height - Height) / 2.0 + SystemParameters.WorkArea.Top;
 
-           
+            //isLoaded = true;
 		}
 
 		// 로그인 창과 호환되기 위한 함수

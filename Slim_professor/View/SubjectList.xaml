@@ -63,7 +63,7 @@
                     Height="24"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
-                    Background="#aa0000"
+                    Background="#FFDD4355"
                     Click="CloseBtn_Click">
                 <TextBlock Height="16"
                            HorizontalAlignment="Left"

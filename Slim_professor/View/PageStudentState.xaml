@@ -13,10 +13,10 @@
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Canvas HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="972" Background="#FFEADD8B">
+            <Canvas HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="972" Background="#FF87D6D3">
                 <TextBlock TextWrapping="Wrap" Text="학생현황" Canvas.Top="10" VerticalAlignment="Center" Canvas.Left="80" Height="20" Width="177" FontSize="14.667" FontWeight="Bold"/>
             </Canvas>
-            <Button Command="{Binding ShowCalendar1}" Grid.Row="0" HorizontalAlignment="Right" Margin="738,9,10,0" VerticalAlignment="Top" Width="100" Height="20" Content="날짜 선택" Visibility="Visible"/>
+            <Button Command="{Binding ShowCalendar1}" Grid.Row="0" HorizontalAlignment="Right" Margin="0,7,10,0" VerticalAlignment="Top" Width="100" Height="25" Content="날짜 선택" Visibility="Visible"/>
 
             <ListBox 
                 x:Name="ListBoxControl"

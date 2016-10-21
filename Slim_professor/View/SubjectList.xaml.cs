@@ -15,6 +15,7 @@ namespace Slim_professor.View
 {
 	public partial class SubjectList
 	{
+        //public static bool isLoaded = false;
        
 		public SubjectList()
 		{
@@ -22,7 +23,8 @@ namespace Slim_professor.View
 
             ViewModelSubjectList viewModelSubjectList = new ViewModelSubjectList(this);
             viewModelSubjectList.makeList();
-            DataContext = viewModelSubjectList; 
+            DataContext = viewModelSubjectList;
+            //isLoaded = true;
 		}
 
         private void CloseBtn_Click(object sender, RoutedEventArgs e)

@@ -28,8 +28,8 @@ namespace Slim_professor.View
 
         public void AutoClose(object sender, EventArgs e)
         {
-            MainFrame mf = new MainFrame(obj);
-            mf.Show();
+            MainFrame mainFrame = new MainFrame(obj);
+            mainFrame.Show();
             this.Close();
         }
     }
