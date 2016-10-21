@@ -13,6 +13,15 @@
                 <EasingColorKeyFrame KeyTime="0" Value="#FFEC5C5C"/>
             </ColorAnimationUsingKeyFrames>
         </Storyboard>
+        <Storyboard x:Key="OpeningStoryBoard">
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="grid">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:2" Value="1"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="logPanel">
+        		<EasingColorKeyFrame KeyTime="0:0:2" Value="#FFF3DF5A"/>
+        	</ColorAnimationUsingKeyFrames>
+        </Storyboard>
     </Window.Resources>
     <Window.Triggers>
         <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="CloseBtn">
@@ -21,18 +30,21 @@
         <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="CloseBtn">
             <BeginStoryboard Storyboard="{StaticResource CloseLeaveInBtn}"/>
         </EventTrigger>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+        	<BeginStoryboard Storyboard="{StaticResource OpeningStoryBoard}"/>
+        </EventTrigger>
     </Window.Triggers>
-    <Grid x:Name="logPanel" Background="#FFFFE406">
-        <Grid HorizontalAlignment="Center" Height="520" VerticalAlignment="Center" Width="425" Background="#FFFFFDF5" Margin="383.5,85,383.5,64">
-            <TextBlock x:Name="textBlock1" HorizontalAlignment="Center" TextWrapping="Wrap" Text="ID" VerticalAlignment="Top" Margin="44.369,340.83,306.835,0" Height="30" Width="73.796" FontWeight="Bold" FontSize="18.667" TextAlignment="Center"/>
-            <TextBlock x:Name="textBlock2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="PW" VerticalAlignment="Top" Margin="44.369,390.83,306.835,0" Height="30" Width="73.796" FontWeight="Bold" FontSize="18.667" TextAlignment="Center"/>
-            <TextBox Text="{Binding IDTextBox}" x:Name="IDTextBox" HorizontalAlignment="Left" Height="35" TextWrapping="Wrap" VerticalAlignment="Top" Width="193" Margin="130,336,0,0" BorderBrush="{x:Null}" FontSize="18.667" SelectionBrush="#FF97BADE" Background="#FFDEDCD8"/>
-            <PasswordBox x:Name="PWBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="193" Margin="130,386,0,0" Height="35" BorderBrush="{x:Null}" FontSize="18.667" Background="#FFDEDCD8">
+    <Grid x:Name="logPanel" Background="#FFFFE483"><!--FFFF9406-->
+        <Grid x:Name="grid" HorizontalAlignment="Center" Height="520" VerticalAlignment="Center" Width="424" Background="#FFFFFDF5" Margin="383.5,85,383.5,64">
+            <TextBlock x:Name="textBlock1" HorizontalAlignment="Center" TextWrapping="Wrap" Text="ID" VerticalAlignment="Top" Margin="15.5,337,334.5,0" Height="30" Width="74" FontWeight="Bold" FontSize="18.667" TextAlignment="Center"/>
+            <TextBlock x:Name="textBlock2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="PW" VerticalAlignment="Top" Margin="15.5,378,334.5,0" Height="30" Width="74" FontWeight="Bold" FontSize="18.667" TextAlignment="Center"/>
+            <TextBox Text="{Binding IDTextBox}" x:Name="IDTextBox" HorizontalAlignment="Left" Height="35" TextWrapping="Wrap" VerticalAlignment="Top" Width="193" Margin="89.5,333,0,0" BorderBrush="{x:Null}" FontSize="18.667" SelectionBrush="#FF97BADE" Background="#FFDEDCD8"/>
+            <PasswordBox x:Name="PWBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="192" Margin="89.5,373,0,0" Height="35" BorderBrush="{x:Null}" FontSize="18.667" Background="#FFDEDCD8">
                 <PasswordBox.InputBindings>
                     <KeyBinding Key="Enter" Command="{Binding LoginCommand}"/>
                 </PasswordBox.InputBindings>
             </PasswordBox>
-            <Border x:Name="border" BorderThickness="1" HorizontalAlignment="Left" Height="45.687" VerticalAlignment="Top" Width="126.605" Margin="270.225,451.27,0,0" CornerRadius="20" Background="#FFF7D8C2">
+            <Border x:Name="border" BorderThickness="1" HorizontalAlignment="Left" Height="75" VerticalAlignment="Top" Width="127" Margin="287,333,0,0"  CornerRadius="20" Background="#FFF7D8C2">
                 <Button Command="{Binding LoginCommand}" x:Name="loginBtn" Content="Login" Background="{x:Null}" BorderBrush="{x:Null}" FontFamily="/Slim_professor;component/Fonts/#Malgun Gothic" FontSize="21.333" FontWeight="Bold"/>
             </Border>
             <Canvas x:Name="LogoCanvas" Margin="70.369,42.83,74.919,0" RenderTransformOrigin="0.5,0.5" Height="278.75" VerticalAlignment="Top" Width="279.711">
@@ -54,7 +66,7 @@
                         </TransformGroup>
                     </Image.RenderTransform>
                 </Image>
-                <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="Slim" Canvas.Top="217.54" Width="275.856" Height="60.071" TextAlignment="Center" FontWeight="Bold" FontSize="42.667" Foreground="#FFE8A618" RenderTransformOrigin="0.5,0.5">
+                <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="SLIM" Canvas.Top="217.54" Width="275.856" Height="60.071" TextAlignment="Center" FontWeight="Bold" FontSize="42.667" Foreground="#FFE8A618" RenderTransformOrigin="0.5,0.5">
                     <TextBlock.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -75,7 +87,7 @@
         		Height="37.445"
         		FontSize="24"
         		Foreground="White"
-        		Text="Slim"
+        		Text="SLIM"
         		TextWrapping="Wrap" HorizontalAlignment="Center" />
             <Button x:Name="CloseBtn" HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="24" Background="#aa0000" Canvas.Left="1158" Canvas.Top="9" Click="CloseBtn_Click">
                 <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="X" VerticalAlignment="Top" Foreground="White" FontWeight="Bold" Height="16" TextAlignment="Center"/>
