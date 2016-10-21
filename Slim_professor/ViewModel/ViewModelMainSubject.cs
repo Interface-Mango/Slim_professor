@@ -19,11 +19,12 @@ namespace Slim_professor.ViewModel
     {
         private DBManager dbManager;
         public static ViewModelMainSubject MainSubjectObject;
-        private DB_OnetimeProgram dbOneTime;
+        private DB_OnetimeProgram dbOneTimeProgram;
         private DB_AllProgram dbAllProgram;
         private DB_Subject dbSubject;
         private DB_User dbUser;
         private DB_Attendance dbAttendance;
+
         private SubjectList _subjectlist;
         private TextBox processTextBox;
 
@@ -49,12 +50,11 @@ namespace Slim_professor.ViewModel
         public ViewModelMainSubject(SubjectList subjectlist, TextBox _processTextBox)
         {
             dbManager = new DBManager();
-            dbOneTime = new DB_OnetimeProgram(dbManager);
+            dbOneTimeProgram = new DB_OnetimeProgram(dbManager);
             dbAllProgram = new DB_AllProgram(dbManager);
             dbSubject = new DB_Subject(dbManager);
             dbUser = new DB_User(dbManager);
             dbAttendance = new DB_Attendance(dbManager);
-
 
             /*
              * 해당 수업을 듣는 학생들 구분하기
@@ -191,6 +191,7 @@ namespace Slim_professor.ViewModel
         {
             if (MessageBox.Show("종료하시겠습니까?", "종료", MessageBoxButton.YesNo) == MessageBoxResult.No) return;
 
+            dbOneTimeProgram.DeleteOneTime(Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)));
             dbSubject.UpdateIpaddr(Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)), string.Empty, 0);      // 수업 종료 DB 변경
             dbSubject.UpdateIsProcessing(Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)), FINISH_CLASS);   // 수업 종료 DB 변경
             MainFrame.Frame.Close();
@@ -265,6 +266,7 @@ namespace Slim_professor.ViewModel
         }
         private void GoHomeFunc(Object o)
         {
+            dbOneTimeProgram.DeleteOneTime(Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)));
             dbSubject.UpdateIpaddr(Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)), string.Empty, 0);      // 수업 종료 DB 변경
             dbSubject.UpdateIsProcessing(Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)), FINISH_CLASS);   // 수업 종료 DB 변경
             mainFrame = MainFrame.thisMainFrame();
@@ -322,20 +324,20 @@ namespace Slim_professor.ViewModel
 
             //현재 활성화 되어있는 process의 이름으로 cpu_Counter InstanceName에 대입
             cpu_Counter.InstanceName = ps.ProcessName;
-            ItemChcek=dbOneTime.SelectOneTimeList(ps.ProcessName);
+            ItemChcek=dbOneTimeProgram.SelectOneTimeList(ps.ProcessName);
 
 
 
             if (ItemChcek == null)
             {
-                dbOneTime.InsertOneTime(ps.ProcessName, Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)), Convert.ToString(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_name)), 1);
-                dbOneTime.UpdateOneTime(ps.ProcessName);
+                dbOneTimeProgram.InsertOneTime(ps.ProcessName, Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)), Convert.ToString(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_name)), 1);
+                dbOneTimeProgram.UpdateOneTime(ps.ProcessName);
             }
 
           
             else if (ItemChcek.Count > 0)
             {
-                dbOneTime.UpdateOneTime1(ps.ProcessName);
+                dbOneTimeProgram.UpdateOneTime1(ps.ProcessName);
             }
         }
 

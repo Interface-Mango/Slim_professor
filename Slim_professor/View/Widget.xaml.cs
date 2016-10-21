@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Slim_professor.Model;
 
 namespace Slim_professor.View
 {
@@ -19,10 +20,12 @@ namespace Slim_professor.View
     /// </summary>
     public partial class Widget : Window
     {
-        
+        DB_OnetimeProgram dbOnetimeProgram;
         public Widget()
         {
             InitializeComponent();
+
+            dbOnetimeProgram = new DB_OnetimeProgram(new DBManager());
 
             //위젯 창의 위치(왼쪽 위)
             this.Left = SystemParameters.WorkArea.Width - SystemParameters.WorkArea.Width;
@@ -34,6 +37,7 @@ namespace Slim_professor.View
         {
             if (MessageBox.Show("종료하시겠습니까?", "수업 종료", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
+                dbOnetimeProgram.DeleteOneTime(Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)));
                 MainFrame.Frame.Close();
                 this.Close();
             }

@@ -110,7 +110,30 @@ namespace Slim_professor.Model
 
         }
 
+        public bool DeleteOneTime(int sub_id)
+        {
+            string sql = "DELETE FROM onetime_program where sub_id=@arg1";
+            
+            try
+            {
+                db.Connection.Open();
+                using (MySqlCommand cmd = new MySqlCommand(sql, db.Connection))
+                {
+                    cmd.Parameters.AddWithValue("@arg1", sub_id);
+                    cmd.ExecuteNonQuery();
+                }
+                db.Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);  // For Debugging
+                return false;    // 제거 오류시 false 반환
+            }
 
+            return true;
+        }
+
+        //aaa - UpdateOneTime. UpdateOneTime1 둘다 sub_id를 받아서 수정하게끔!!!
         public bool UpdateOneTime(string process_name)
         {
             string sql = "UPDATE onetime_program SET check_field = 0 WHERE process_name != @arg1";
@@ -124,6 +147,7 @@ namespace Slim_professor.Model
                 using (MySqlCommand cmd = new MySqlCommand(sql, db.Connection))
                 {
                     cmd.Parameters.AddWithValue("@arg1", process_name);
+
                     cmd.ExecuteNonQuery();
                 }
                 db.Connection.Close();
