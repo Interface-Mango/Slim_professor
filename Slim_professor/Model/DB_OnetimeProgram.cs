@@ -134,19 +134,22 @@ namespace Slim_professor.Model
         }
 
         //aaa - UpdateOneTime. UpdateOneTime1 둘다 sub_id를 받아서 수정하게끔!!!
-        public bool UpdateOneTime(string process_name)
+        public bool UpdateOneTime(string process_name, int check_field, int sub_id)
         {
-            string sql = "UPDATE onetime_program SET check_field = 0 WHERE process_name != @arg1";
-            List<object> args = new List<object>();
-            args.Add(process_name);
+            string sql="";
+            if(check_field == 0)
+                sql = "UPDATE onetime_program SET check_field=@arg1 WHERE process_name!=@arg2 AND sub_id=@arg3";
+            else
+                sql = "UPDATE onetime_program SET check_field=@arg1 WHERE process_name=@arg2 AND sub_id=@arg3";
             
-
             try
             {
                 db.Connection.Open();
                 using (MySqlCommand cmd = new MySqlCommand(sql, db.Connection))
                 {
-                    cmd.Parameters.AddWithValue("@arg1", process_name);
+                    cmd.Parameters.AddWithValue("@arg1", check_field);
+                    cmd.Parameters.AddWithValue("@arg2", process_name);
+                    cmd.Parameters.AddWithValue("@arg3", sub_id);
 
                     cmd.ExecuteNonQuery();
                 }
@@ -161,31 +164,6 @@ namespace Slim_professor.Model
             return true;
         }
 
-        public bool UpdateOneTime1(string process_name)
-        {
-            string sql = "UPDATE onetime_program SET check_field = 1  WHERE process_name = @arg1";
-            List<object> args = new List<object>();
-            args.Add(process_name);
-
-
-            try
-            {
-                db.Connection.Open();
-                using (MySqlCommand cmd = new MySqlCommand(sql, db.Connection))
-                {
-                    cmd.Parameters.AddWithValue("@arg1", process_name);
-                    cmd.ExecuteNonQuery();
-                }
-                db.Connection.Close();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);  // For Debugging
-                return false;    // 제거 오류시 false 반환
-            }
-
-            return true;
-        }
     }
 
     

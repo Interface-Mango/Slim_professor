@@ -331,13 +331,13 @@ namespace Slim_professor.ViewModel
             if (ItemChcek == null)
             {
                 dbOneTimeProgram.InsertOneTime(ps.ProcessName, Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)), Convert.ToString(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_name)), 1);
-                dbOneTimeProgram.UpdateOneTime(ps.ProcessName);
+                dbOneTimeProgram.UpdateOneTime(ps.ProcessName, 0, Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)));
             }
 
           
             else if (ItemChcek.Count > 0)
             {
-                dbOneTimeProgram.UpdateOneTime1(ps.ProcessName);
+                dbOneTimeProgram.UpdateOneTime(ps.ProcessName, 1, Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)));
             }
         }
 
