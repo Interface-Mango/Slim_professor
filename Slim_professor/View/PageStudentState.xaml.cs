@@ -51,6 +51,7 @@ namespace Slim_professor.View
             //새로운 날짜로 리스트 생성
             DateValue = CalendarControl.SelectedDate.Value.ToShortDateString();
             CalendarControl.Visibility = System.Windows.Visibility.Hidden;
+            CalendarControl.Opacity = 0;
             //새로고침
             PageMainSubject.MainFrameObject.Refresh();
         }

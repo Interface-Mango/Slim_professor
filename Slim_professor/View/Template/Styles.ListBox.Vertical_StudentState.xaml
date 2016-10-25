@@ -1,6 +1,4 @@
-﻿<ResourceDictionary
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Style x:Key="LBXITEM_VERTICAL_STDSTATE" TargetType="ListBoxItem">
 
         <Setter Property="Background" Value="#ffffff" />
@@ -12,9 +10,9 @@
                     <Border Background="{TemplateBinding Background}"
                             BorderBrush="#e9e9e9"
                             BorderThickness="0 0 0 1">
-                        
+
                         <Grid>
-                       
+
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="10" />
                                 <ColumnDefinition Width="60" />
@@ -23,45 +21,52 @@
                                 <ColumnDefinition Width="50" />
 
                             </Grid.ColumnDefinitions>
-                            <!--TextBlock Grid.Row="0"
-                                       Grid.Column="0"
-                                       VerticalAlignment="Center"
-                                       HorizontalAlignment="Center"
-                                       Margin="2"
-                                       FontSize="20"
-                                       FontWeight="Bold"
-                                       Text="{Binding Id}" /-->
-                            
+                            <!--
+                                TextBlock Grid.Row="0"
+                                Grid.Column="0"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                Margin="2"
+                                FontSize="20"
+                                FontWeight="Bold"
+                                Text="{Binding Id}" /
+                            -->
+
                             <TextBlock Grid.Row="0"
                                        Grid.Column="1"
-                                       FontSize="16"
-                                         Margin="2"
+                                       Margin="2"
                                        VerticalAlignment="Center"
-                                       Text="{Binding Id}" 
-                                       Foreground="#FFC38311" />
-                            
+                                       FontFamily="NanumSquareOTF"
+                                       FontSize="16"
+                                       Foreground="#FFC38311"
+                                       Text="{Binding Id}" />
+
                             <TextBlock Grid.Row="0"
                                        Grid.Column="2"
-                                       FontSize="15"
                                        Margin="10"
                                        VerticalAlignment="Center"
-                                       Text="{Binding AttendStudentName}" 
-                                       Foreground="#FF2C2287" FontWeight="Bold" />
-                            
+                                       FontFamily="NanumSquareOTF"
+                                       FontSize="15"
+                                       FontWeight="Bold"
+                                       Foreground="#FF2C2287"
+                                       Text="{Binding AttendStudentName}" />
+
                             <TextBlock Grid.Row="0"
                                        Grid.Column="3"
-                                         Margin="10"
-                                       FontSize="14"
+                                       Margin="10"
                                        VerticalAlignment="Center"
-                                       Text="{Binding AttendTime}" 
-                                       Foreground="#FF9C8484" />
-                            
+                                       FontFamily="NanumSquareOTF"
+                                       FontSize="14"
+                                       Foreground="#FF9C8484"
+                                       Text="{Binding AttendTime}" />
+
                             <TextBlock Grid.Row="0"
                                        Grid.Column="4"
-                                       FontSize="16"  
                                        Margin="10"
-                                         FontWeight="Bold"
                                        VerticalAlignment="Center"
+                                       FontFamily="NanumSquareOTF"
+                                       FontSize="16"
+                                       FontWeight="Bold"
                                        Text="{Binding AttendCheck}" />
 
 
@@ -74,7 +79,7 @@
                         <Trigger Property="IsSelected" Value="True">
                             <Setter Property="Background" Value="#fff173" />
                         </Trigger>
-                    
+
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

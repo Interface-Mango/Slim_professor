@@ -35,7 +35,7 @@ namespace Slim_professor.View
         private Widget widget;
 
         private const int START_CLASS = 1;
-        private const int FINISH_CLASS = 0;
+        private const int FINISH_CLASS = 0;    
 
         public PageMainSubject(object[] param, SubjectList subjectlist)
         {

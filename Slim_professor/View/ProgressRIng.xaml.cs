@@ -17,12 +17,14 @@ namespace Slim_professor.View
     /// <summary>
     /// ProgressRIng.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class ProgressRIng : Window
+    public partial class ProgressRing : Window
     {
+        public static ProgressRing ProgressRingWindow;
         private object[] obj;
-        public ProgressRIng(object[] _obj)
+        public ProgressRing(object[] _obj)
         {
             InitializeComponent();
+            ProgressRingWindow = this;
             obj = _obj;
         }
 

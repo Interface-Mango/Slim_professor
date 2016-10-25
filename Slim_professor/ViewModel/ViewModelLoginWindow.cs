@@ -19,7 +19,7 @@ namespace Slim_professor.ViewModel
         private DBManager dbManager;
         private DB_User dbUser;
         private LoginWindow parentWindow;
-        private ProgressRIng prog;
+        private ProgressRing prog;
 
         public ViewModelLoginWindow(LoginWindow pWindow)
         {
@@ -67,10 +67,10 @@ namespace Slim_professor.ViewModel
             }                
             else
             {
-                prog = new ProgressRIng(obj);
+                prog = new ProgressRing(obj);
+                MainFrame mainFrame = new MainFrame(obj);
                 obj[(int)DB_User.FIELD.pw] = string.Empty;
                 prog.Show();
-
                 parentWindow.Close();
 
             }

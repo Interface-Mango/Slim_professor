@@ -39,20 +39,38 @@
     <Reference Include="Microsoft.Expression.Effects" />
     <Reference Include="Microsoft.Expression.Interactions" />
     <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="PresentationCore">
+      <HintPath>..\packages\Microsoft.Xaml.4.0.0.1\lib\PresentationCore.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <HintPath>..\packages\Microsoft.Xaml.4.0.0.1\lib\PresentationFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Design">
+      <HintPath>..\packages\Microsoft.Xaml.4.0.0.1\lib\System.Design.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Windows.Interactivity" />
+    <Reference Include="System.Xaml">
+      <HintPath>..\packages\Microsoft.Xaml.4.0.0.1\lib\System.Xaml.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xaml">
-      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    <Reference Include="UIAutomationProvider">
+      <HintPath>..\packages\Microsoft.Xaml.4.0.0.1\lib\UIAutomationProvider.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="WindowsBase" />
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsBase">
+      <HintPath>..\packages\Microsoft.Xaml.4.0.0.1\lib\WindowsBase.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -103,8 +121,8 @@
     <Compile Include="View\PageWriteNote.xaml.cs">
       <DependentUpon>PageWriteNote.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ProgressRIng.xaml.cs">
-      <DependentUpon>ProgressRIng.xaml</DependentUpon>
+    <Compile Include="View\ProgressRing.xaml.cs">
+      <DependentUpon>ProgressRing.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\SubjectList.xaml.cs">
       <DependentUpon>SubjectList.xaml</DependentUpon>
@@ -159,7 +177,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ProgressRIng.xaml">
+    <Page Include="View\ProgressRing.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -209,6 +227,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

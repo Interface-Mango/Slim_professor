@@ -32,6 +32,13 @@ namespace Slim_professor.View
         public MainFrame(object[] _userInfo)
 		{
             this.InitializeComponent();
+
+            //Thread progressRingThread = new Thread(new ThreadStart(ProgressFunction));
+            //progressRingThread.Start();
+
+            //ProgressRing prog = new ProgressRing();
+            //prog.Show();
+
             ResizeMode = ResizeMode.NoResize;
             Frame = this;
             UserInfo = _userInfo;
@@ -44,6 +51,11 @@ namespace Slim_professor.View
 
             //isLoaded = true;
 		}
+
+        public void ProgressFunction()
+        {
+            //ProgressRing prog = new ProgressRing();
+        }
 
 		// 로그인 창과 호환되기 위한 함수
 		protected override void OnClosed(EventArgs e)

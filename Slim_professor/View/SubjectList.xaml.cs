@@ -16,7 +16,7 @@ namespace Slim_professor.View
 	public partial class SubjectList
 	{
         //public static bool isLoaded = false;
-       
+
 		public SubjectList()
 		{
             InitializeComponent();
@@ -25,6 +25,8 @@ namespace Slim_professor.View
             viewModelSubjectList.makeList();
             DataContext = viewModelSubjectList;
             //isLoaded = true;
+
+            //ProgressRing.ProgressRingWindow.Close();
 		}
 
         private void CloseBtn_Click(object sender, RoutedEventArgs e)

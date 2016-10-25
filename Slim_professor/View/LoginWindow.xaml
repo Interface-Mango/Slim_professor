@@ -51,25 +51,25 @@
             <TextBlock x:Name="textBlock1"
                        Width="74"
                        Height="30"
-                       Margin="54,337,296,0"
+                       Margin="54,342,296,0"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Top"
                        FontSize="18.667"
                        FontWeight="Bold"
                        Text="ID"
                        TextAlignment="Center"
-                       TextWrapping="Wrap" />
+                       TextWrapping="Wrap" FontFamily="NanumSquareOTF Bold" />
             <TextBlock x:Name="textBlock2"
                        Width="74"
                        Height="30"
-                       Margin="54,378,296,0"
+                       Margin="54,383,296,0"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Top"
                        FontSize="18.667"
                        FontWeight="Bold"
                        Text="PW"
                        TextAlignment="Center"
-                       TextWrapping="Wrap" />
+                       TextWrapping="Wrap" FontFamily="NanumSquareOTF Bold" />
             <TextBox x:Name="IDTextBox"
                      Width="200"
                      Height="36"
@@ -81,7 +81,7 @@
                      FontSize="18.667"
                      SelectionBrush="#FF97BADE"
                      Text="{Binding IDTextBox}"
-                     TextWrapping="Wrap" />
+                     TextWrapping="Wrap" FontFamily="NanumSquareOTF" />
             <PasswordBox x:Name="PWBox"
                          Width="200"
                          Height="36"
@@ -90,7 +90,7 @@
                          VerticalAlignment="Top"
                          Background="#FFCFCFCF"
                          BorderBrush="{x:Null}"
-                         FontSize="18.667">
+                         FontSize="18.667" FontFamily="NanumSquareOTF">
                 <PasswordBox.InputBindings>
                     <KeyBinding Key="Enter" Command="{Binding LoginCommand}" />
                 </PasswordBox.InputBindings>
@@ -110,7 +110,7 @@
                            Height="24"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Top"
-                           FontFamily="HYkanB"
+                           FontFamily="NanumSquareOTF Bold"
                            FontSize="17.333"
                            Foreground="White"
                            LineHeight="10"
@@ -158,7 +158,7 @@
                            RenderTransformOrigin="0.5,0.5"
                            Text="SLIM"
                            TextAlignment="Center"
-                           TextWrapping="Wrap">
+                           TextWrapping="Wrap" FontFamily="NanumSquareOTF Bold">
                     <TextBlock.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform />
@@ -174,15 +174,15 @@
                 VerticalAlignment="Top"
                 Background="Black"
                 MouseLeftButtonDown="Canvas_MouseLeftButtonDown">
-            <TextBlock Canvas.Left="569.205"
-                       Canvas.Top="2.555"
-                       Width="54.473"
-                       Height="37.445"
+            <TextBlock Canvas.Left="569"
+                       Canvas.Top="3"
+                       Width="64"
+                       Height="37"
                        HorizontalAlignment="Center"
                        FontSize="24"
                        Foreground="White"
                        Text="SLIM"
-                       TextWrapping="Wrap" />
+                       TextWrapping="Wrap" FontFamily="NanumSquareOTF Bold" />
             <Button x:Name="CloseBtn"
                     Canvas.Left="1158"
                     Canvas.Top="9"

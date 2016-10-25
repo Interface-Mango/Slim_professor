@@ -31,12 +31,14 @@
                                        Margin="10"
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center"
+                                       FontFamily="NanumSquareOTF"
                                        FontSize="20"
                                        FontWeight="Bold"
                                        Text="{Binding Id}" />
                             <TextBlock Grid.Row="0"
                                        Grid.Column="1"
                                        VerticalAlignment="Center"
+                                       FontFamily="NanumSquareOTF"
                                        FontSize="16"
                                        Text="{Binding NoticeTitle}" />
 
@@ -49,6 +51,7 @@
                                     BorderBrush="{x:Null}"
                                     Command="{Binding NoticeModifyCommand}"
                                     Content="수정"
+                                    FontFamily="NanumSquareOTF"
                                     Foreground="Black" />
 
                             <Button Grid.Row="0"
@@ -60,9 +63,11 @@
                                     BorderBrush="{x:Null}"
                                     Command="{Binding NoticeDeleteCommand}"
                                     Content="삭제"
+                                    FontFamily="NanumSquareOTF"
                                     Foreground="Black" />
                             <TextBlock Grid.Row="1"
                                        Grid.Column="1"
+                                       FontFamily="NanumSquareOTF"
                                        Foreground="#FFC7A6A6"
                                        Text="{Binding NoticeDate}" />
                         </Grid>

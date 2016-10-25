@@ -1,30 +1,87 @@
-﻿<Page   x:Class="Slim_professor.View.PageStudentState"
-	    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-	    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-        mc:Ignorable="d"
-    	Width="972"
-        Height="629"
-        Title="PageStudentState">
-    <Grid >
+﻿<Page x:Class="Slim_professor.View.PageStudentState"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      Title="PageStudentState"
+      Width="972"
+      Height="629"
+      mc:Ignorable="d">
+    <Page.Resources>
+        <Storyboard x:Key="OnMouseLeftButtonDown1">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="CalendarControl" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0" />
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1" />
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="CalendarControl" Storyboard.TargetProperty="(UIElement.Visibility)">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}" />
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.1" Value="{x:Static Visibility.Visible}" />
+                <DiscreteObjectKeyFrame KeyTime="0:0:1" Value="{x:Static Visibility.Visible}" />
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+    </Page.Resources>
+    <Grid>
         <Grid Background="White">
             <Grid.RowDefinitions>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="40" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <Canvas HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="972" Background="#FF87D6D3">
-                <TextBlock TextWrapping="Wrap" Text="학생현황" Canvas.Top="10" VerticalAlignment="Center" Canvas.Left="80" Height="20" Width="177" FontSize="14.667" FontWeight="Bold"/>
+            <Canvas Width="972"
+                    Height="40"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Background="#FF355065">
+                <TextBlock Canvas.Left="453"
+                           Canvas.Top="10"
+                           Width="66"
+                           Height="20"
+                           VerticalAlignment="Center"
+                           FontFamily="NanumSquareOTF Bold"
+                           FontSize="14.667"
+                           Foreground="White"
+                           Text="학 생 현 황"
+                           TextWrapping="Wrap" />
             </Canvas>
-            <Button Command="{Binding ShowCalendar1}" Grid.Row="0" HorizontalAlignment="Right" Margin="0,7,10,0" VerticalAlignment="Top" Width="100" Height="25" Content="날짜 선택" Visibility="Visible"/>
 
-            <ListBox 
-                x:Name="ListBoxControl"
-                Grid.Row="1"
-                ItemsSource="{Binding AttendanceItemList}"
-                Style="{DynamicResource LBX_VERTICAL_STDSTATE}" BorderBrush="{x:Null}" Background="#FFFFFDF5" />
+            <Calendar Name="CalendarControl"
+                      Grid.RowSpan="2"
+                      Margin="678,3,0,0"
+                      HorizontalAlignment="Left"
+                      VerticalAlignment="Top"
+                      Panel.ZIndex="3"
+                      SelectedDatesChanged="CalendarControl_SelectedDatesChanged"
+                      Visibility="Hidden" />
+            <Canvas x:Name="canvas"
+                    Grid.Row="0"
+                    Width="100"
+                    Height="25"
+                    Margin="0,7,10,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Background="#FFD84558"
+                    Visibility="Visible">
+                <Canvas.InputBindings>
+                    <MouseBinding Command="{Binding ShowCalendar1}" MouseAction="LeftClick" />
+                </Canvas.InputBindings>
+                <TextBlock x:Name="textBlock"
+                           Width="100"
+                           Height="25"
+                           FontFamily="NanumSquareOTF BOLD"
+                           FontWeight="Bold"
+                           Foreground="White"
+                           Padding="6"
+                           Text="날짜 선택"
+                           TextAlignment="Center" />
+            </Canvas>
+            <!--  Button Command="{Binding ShowCalendar1}" Grid.Row="0" HorizontalAlignment="Right" Margin="0,7,10,0" VerticalAlignment="Top" Width="100" Height="25" Content="날짜 선택" Visibility="Visible"/  -->
 
-            <Calendar Name="CalendarControl" HorizontalAlignment="Left" Margin="678,10,0,0" VerticalAlignment="Top" Grid.RowSpan="2" Visibility="Hidden" SelectedDatesChanged="CalendarControl_SelectedDatesChanged"/>
+            <ListBox x:Name="ListBoxControl"
+                     Grid.Row="1"
+                     Background="#FFFFFDF5"
+                     BorderBrush="{x:Null}"
+                     FontFamily="NanumSquareOTF"
+                     ItemsSource="{Binding AttendanceItemList}"
+                     Style="{DynamicResource LBX_VERTICAL_STDSTATE}" />
         </Grid>
     </Grid>
 </Page>
