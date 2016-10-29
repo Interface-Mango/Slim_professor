@@ -67,6 +67,7 @@
                                        FontFamily="NanumSquareOTF"
                                        FontSize="16"
                                        FontWeight="Bold"
+                                       Foreground="{Binding AttendCheckColor}"
                                        Text="{Binding AttendCheck}" />
 
 

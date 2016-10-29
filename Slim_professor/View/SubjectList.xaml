@@ -91,7 +91,7 @@
                            Foreground="White"
                            Text="{Binding UserGroup}"
                            TextAlignment="Center"
-                           TextWrapping="Wrap" FontFamily="HYkanB" />
+                           TextWrapping="Wrap" FontFamily="NanumSquareOTF Bold" />
                 <TextBlock Canvas.Left="32"
                            Canvas.Top="41"
                            Width="132"
@@ -101,7 +101,7 @@
                            Foreground="White"
                            Text="{Binding UserName}"
                            TextAlignment="Center"
-                           TextWrapping="Wrap" FontFamily="HYkanB" />
+                           TextWrapping="Wrap" FontFamily="NanumSquareOTF Bold" />
             </Canvas>
             <Grid Canvas.Top="120"
                   Width="220"

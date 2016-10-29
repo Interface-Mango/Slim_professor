@@ -6,6 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 using Slim_professor.Model;
 using Slim_professor.View;
 
@@ -127,6 +131,8 @@ namespace Slim_professor.ViewModel
             public DateTime AttendTime { get; private set; }
             public string AttendCheck { get; private set; }
 
+            public Brush AttendCheckColor { get; private set; }
+
 
 
             public static List<AttendanceInfo> Data(List<object[]> items)
@@ -137,6 +143,7 @@ namespace Slim_professor.ViewModel
                 for (int i = 0; i < items.Count; i++)
                 {
                     string checkTemp = GetCheck(Convert.ToInt32(items[i].ElementAt((int)DB_Attendance.FIELD.check)));
+                    SolidColorBrush b = GetFontColor(Convert.ToInt32(items[i].ElementAt((int)DB_Attendance.FIELD.check)));
                     attendTemp = new AttendanceInfo
                     {
                         Id = items.Count - i,
@@ -145,12 +152,20 @@ namespace Slim_professor.ViewModel
                         AttendSubjectId = Convert.ToInt32(items[i].ElementAt((int)DB_Attendance.FIELD.sub_id)),
                         AttendStudentId = Convert.ToString(items[i].ElementAt((int)DB_Attendance.FIELD.std_id)),
                         AttendTime = Convert.ToDateTime(items[i].ElementAt((int)DB_Attendance.FIELD.date)),
-                        AttendCheck = checkTemp
+                        AttendCheck = checkTemp,
+                        AttendCheckColor = b
                     };
                     data.Add(attendTemp);
 
                 }
                 return data;
+            }
+
+            private static SolidColorBrush GetFontColor(int attCheck)
+            {
+                if (attCheck == 0)
+                    return Brushes.Red;
+                return Brushes.Blue;
             }
 
             //출석여부 받아오기 

@@ -312,18 +312,17 @@
                            Foreground="#FFFEFEFE"
                            Text="{Binding UserGroup}"
                            TextAlignment="Center"
-                           TextWrapping="Wrap" />
+                           TextWrapping="Wrap" FontFamily="NanumSquareOTF Bold" />
                 <TextBlock x:Name="ProfileName"
                            Canvas.Left="32"
                            Canvas.Top="41"
                            Width="131"
                            Height="26"
                            FontSize="20"
-                           FontWeight="Bold"
                            Foreground="#FFFEFEFE"
                            Text="{Binding UserName}"
                            TextAlignment="Center"
-                           TextWrapping="Wrap" />
+                           TextWrapping="Wrap" FontFamily="NanumSquareOTF Bold" />
             </Canvas>
         </Canvas>
         <Frame x:Name="FramePanel"
