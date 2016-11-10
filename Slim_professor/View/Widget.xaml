@@ -41,7 +41,7 @@
                 BorderThickness="1"
                 Content="?"
                 FontFamily="NanumSquareOTF"
-                Foreground="White" />
+                Foreground="White" Visibility="Hidden" />
         <Button Width="31"
                 Height="35"
                 Margin="149,12,0,0"
@@ -51,10 +51,10 @@
                 BorderBrush="Black"
                 Content="RED"
                 FontFamily="NanumSquareOTF"
-                Foreground="White" />
+                Foreground="White" Visibility="Hidden" />
         <Canvas Width="76"
                 Height="26"
-                Margin="16,15,0,0"
+                Margin="51,15,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top">
             <TextBlock x:Name="HT"
