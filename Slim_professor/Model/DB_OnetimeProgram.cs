@@ -20,11 +20,27 @@ namespace Slim_professor.Model
         {
             db = _dbm;
         }
-        public List<object[]> SelectOneTimeList(string process_name)
+
+        public List<object[]> SelectOneTimeListAll(int sub_id)
         {
-            string sql = "SELECT * FROM onetime_program WHERE process_name=@arg1";
+            string sql = "SELECT * FROM onetime_program WHERE sub_id=@arg1";
+            List<object> args = new List<object>();
+            args.Add(sub_id);
+
+            List<object[]> result = SearchDatas(sql, args);
+            if (result.Count == 0)
+                return null;
+            else
+                return result;
+        }
+
+        public List<object[]> SelectOneTimeList(string process_name, int sub_id)
+        {
+            string sql = "SELECT * FROM onetime_program WHERE process_name=@arg1 and sub_id=@arg2" ;
             List<object> args = new List<object>();
             args.Add(process_name);
+            args.Add(sub_id);
+
 
             List<object[]> result = SearchDatas(sql, args);
             if (result.Count == 0)

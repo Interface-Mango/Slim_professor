@@ -25,6 +25,8 @@ namespace Slim_professor.ViewModel
         private DB_User dbUser;
         private DB_Attendance dbAttendance;
 
+        private List<object[]> onetimeListAll;
+
         private SubjectList _subjectlist;
         private TextBox processTextBox;
 
@@ -55,7 +57,6 @@ namespace Slim_professor.ViewModel
             dbSubject = new DB_Subject(dbManager);
             dbUser = new DB_User(dbManager);
             dbAttendance = new DB_Attendance(dbManager);
-
             /*
              * 해당 수업을 듣는 학생들 구분하기
              * 1. 모든 학생 리스트 출력(attendance 테이블에 선생님이 그날 첫 로그인을 하면 해당 학생들 전부 insert시키기)
@@ -299,7 +300,7 @@ namespace Slim_professor.ViewModel
             System.Windows.Threading.DispatcherTimer TimerClock =
                 new System.Windows.Threading.DispatcherTimer();
 
-            TimerClock.Interval = new TimeSpan(0, 0, 0, 1);
+            TimerClock.Interval = new TimeSpan(0, 0, 0, 2);
             TimerClock.IsEnabled = true;
             TimerClock.Tick += new EventHandler(TimerClock_Tick);
 
@@ -313,34 +314,38 @@ namespace Slim_professor.ViewModel
 
             //if (cpu_Counter.NextValue() >= 2)
             //{
-                //임시 박스에 임시적으로...!
-                //_temp.AppendText(ps.ProcessName + Environment.NewLine);
+            //임시 박스에 임시적으로...!
+            //_temp.AppendText(ps.ProcessName + Environment.NewLine);
 
-                //현재 무슨 Process가 활성화 되는지 유저에게 인터페이스 제공
+            //현재 무슨 Process가 활성화 되는지 유저에게 인터페이스 제공
             processTextBox.Text = ps.ProcessName;
 
-                
+
             //}
 
             //현재 활성화 되어있는 process의 이름으로 cpu_Counter InstanceName에 대입
             cpu_Counter.InstanceName = ps.ProcessName;
-            ItemChcek=dbOneTimeProgram.SelectOneTimeList(ps.ProcessName);
+            ItemChcek = dbOneTimeProgram.SelectOneTimeList(ps.ProcessName, Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)));
 
 
 
-            if (ItemChcek == null)
-            {
+            onetimeListAll = dbOneTimeProgram.SelectOneTimeListAll(Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)));
+            if (onetimeListAll == null)
                 dbOneTimeProgram.InsertOneTime(ps.ProcessName, Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)), Convert.ToString(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_name)), 1);
-                dbOneTimeProgram.UpdateOneTime(ps.ProcessName, 0, Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)));
-            }
-
-          
-            else if (ItemChcek.Count > 0)
+            else
             {
-                dbOneTimeProgram.UpdateOneTime(ps.ProcessName, 1, Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)));
+                for (int i = 0; i < onetimeListAll.Count; i++) 
+                    //if(ps.ProcessName != Convert.ToString(onetimeListAll[i].ElementAt((int)DB_OnetimeProgram.FIELD.process_name)))
+                        dbOneTimeProgram.UpdateOneTime(Convert.ToString(onetimeListAll[i].ElementAt((int)DB_OnetimeProgram.FIELD.process_name)), 0, Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)));
+
+                if (ItemChcek == null)
+                    dbOneTimeProgram.InsertOneTime(ps.ProcessName, Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)), Convert.ToString(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_name)), 1);
+                
+                else if (ItemChcek.Count > 0)
+                    dbOneTimeProgram.UpdateOneTime(ps.ProcessName, 1, Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)));
+                
             }
         }
-
         #endregion
 
         #region Profile
