@@ -128,32 +128,32 @@ namespace Slim_professor.ViewModel
                         UI_Setting(typeState.DisConnecting);
 
 
-                            //Random random = new Random();
-                            //portNum = random.Next(1000) + 8124;
-                            //서버 세팅
-                            socketServer = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
-                            IPEndPoint ipepServer = new IPEndPoint(IPAddress.Any, portNum);
-                            socketServer.Bind(ipepServer);
-                            socketServer.Listen(20);
+                        //Random random = new Random();
+                        //portNum = random.Next(1000) + 8124;
+                        //서버 세팅
+                        socketServer = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
+                        IPEndPoint ipepServer = new IPEndPoint(IPAddress.Any, portNum);
+                        socketServer.Bind(ipepServer);
+                        socketServer.Listen(20);
 
 
-                            System.Net.Sockets.SocketAsyncEventArgs saeaUser = new System.Net.Sockets.SocketAsyncEventArgs();
-                            //유저가 연결되었을때 이벤트
-                            saeaUser.Completed += new EventHandler<System.Net.Sockets.SocketAsyncEventArgs>(Accept_Completed);
-                            //유저 접속 대기 시작
-                            socketServer.AcceptAsync(saeaUser);
+                        System.Net.Sockets.SocketAsyncEventArgs saeaUser = new System.Net.Sockets.SocketAsyncEventArgs();
+                        //유저가 연결되었을때 이벤트
+                        saeaUser.Completed += new EventHandler<System.Net.Sockets.SocketAsyncEventArgs>(Accept_Completed);
+                        //유저 접속 대기 시작
+                        socketServer.AcceptAsync(saeaUser);
 
 
-                            //유저 리스트 생성
-                            m_listUser = new List<SocketUser>();
-                            //서버 시작 로그 표시
-                            //pht.DisplayLog("* [ " + portNum + " ] ");
-                            pht.DisplayLog("* 채팅 시작 ");
+                        //유저 리스트 생성
+                        m_listUser = new List<SocketUser>();
+                        //서버 시작 로그 표시
+                        //pht.DisplayLog("* [ " + portNum + " ] ");
+                        pht.DisplayLog("* 채팅 시작 ");
 
-                            // ip와 포트 추가
-                            //dbSubject.UpdateIpaddr(Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)), getMyIp, portNum);
+                        // ip와 포트 추가
+                        //dbSubject.UpdateIpaddr(Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)), getMyIp, portNum);
 
-                            ServerConnectionFunction();
+                        ServerConnectionFunction();
                         break;
                     }
                 case typeState.DisConnecting:
@@ -424,7 +424,7 @@ namespace Slim_professor.ViewModel
                 //받음 보냄
                 m_socketMe.ReceiveAsync(saeaReceiveArgs);
 
-                pht.DisplayMsg("* [Server Starting] *");
+                pht.DisplayMsg("* [채팅 시작] *");
                 //서버 연결이 성공하면 id체크를 시작한다.
                 Login(NickName);
             }
@@ -574,8 +574,18 @@ namespace Slim_professor.ViewModel
             saeaServer.Completed += new EventHandler<SocketAsyncEventArgs>(Send_Completed);
             //보낼 데이터 설정
             saeaServer.UserToken = mdSendMsg;
+            try
+            {
             //보내기
             m_socketMe.SendAsync(saeaServer);
+            }
+            catch (NullReferenceException ex)
+            {//TODO: 예외처리..ㅠ
+                //UI_Setting(typeState.DisConnecting);
+
+                ServerConnectFunc(null);
+                Console.WriteLine(ex.Message);
+            }
         }
 
         /// 메시지 보내기 완료

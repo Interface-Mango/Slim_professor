@@ -15,184 +15,186 @@
     <Page.Resources>
         <Storyboard x:Key="MouseEnterInBtn">
             <ColorAnimationUsingKeyFrames Storyboard.TargetName="canvas" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-            	<EasingColorKeyFrame KeyTime="0:0:0.1" Value="White" />
+                <EasingColorKeyFrame KeyTime="0:0:0.1" Value="White" />
             </ColorAnimationUsingKeyFrames>
             <ObjectAnimationUsingKeyFrames Storyboard.TargetName="textBlock" Storyboard.TargetProperty="(TextElement.FontWeight)">
-            	<DiscreteObjectKeyFrame KeyTime="0:0:0.1">
-            		<DiscreteObjectKeyFrame.Value>
-            			<FontWeight>Bold</FontWeight>
-            		</DiscreteObjectKeyFrame.Value>
-            	</DiscreteObjectKeyFrame>
-            </ObjectAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="textBlock" Storyboard.TargetProperty="(TextElement.FontSize)">
-            	<EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="22.667" />
-            </DoubleAnimationUsingKeyFrames>
-            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="textBlock">
-            	<EasingColorKeyFrame KeyTime="0:0:0.1" Value="Black"/>
-            </ColorAnimationUsingKeyFrames>
-        </Storyboard>
-        <Storyboard x:Key="MouseLeaveInBtn">
-            <ColorAnimationUsingKeyFrames Storyboard.TargetName="canvas" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-            	<EasingColorKeyFrame KeyTime="0:0:0.1" Value="#FF355062" />
-            </ColorAnimationUsingKeyFrames>
-            <ColorAnimationUsingKeyFrames Storyboard.TargetName="textBlock" Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)">
-                <EasingColorKeyFrame KeyTime="0:0:0.1" Value="White"/>
-            </ColorAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.FontSize)" Storyboard.TargetName="textBlock">
-            	<EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="20"/>
-            </DoubleAnimationUsingKeyFrames>
-        </Storyboard>
-        <Storyboard x:Key="MouseEnterInBtn1">
-            <ColorAnimationUsingKeyFrames Storyboard.TargetName="canvas1" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-            	<EasingColorKeyFrame KeyTime="0:0:0.1" Value="White" />
-            </ColorAnimationUsingKeyFrames>
-            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="textBlock1">
-            	<EasingColorKeyFrame KeyTime="0:0:0.1" Value="Black"/>
-            </ColorAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.FontSize)" Storyboard.TargetName="textBlock1">
-            	<EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="22.667"/>
-            </DoubleAnimationUsingKeyFrames>
-        </Storyboard>
-        <Storyboard x:Key="MouseLeaveInBtn1">
-            <ColorAnimationUsingKeyFrames Storyboard.TargetName="canvas1" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-            	<EasingColorKeyFrame KeyTime="0:0:0.1" Value="#FF355062" />
-            </ColorAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="textBlock1" Storyboard.TargetProperty="(TextElement.FontSize)">
-            	<EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="20" />
-            </DoubleAnimationUsingKeyFrames>
-            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="textBlock1" Storyboard.TargetProperty="(TextElement.FontWeight)">
-            	<DiscreteObjectKeyFrame KeyTime="0:0:0.1">
-            		<DiscreteObjectKeyFrame.Value>
-            			<FontWeight>Normal</FontWeight>
-            		</DiscreteObjectKeyFrame.Value>
-            	</DiscreteObjectKeyFrame>
-            </ObjectAnimationUsingKeyFrames>
-            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="textBlock1">
-            	<EasingColorKeyFrame KeyTime="0:0:0.1" Value="White"/>
-            </ColorAnimationUsingKeyFrames>
-        </Storyboard>
-        <!--Storyboard x:Key="MouseEnterInBtn2">
-            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="canvas2">
-                <EasingColorKeyFrame KeyTime="0" Value="White"/>
-            </ColorAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.FontSize)" Storyboard.TargetName="textBlock2">
-                <EasingDoubleKeyFrame KeyTime="0" Value="22.667"/>
-            </DoubleAnimationUsingKeyFrames>
-            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.FontWeight)" Storyboard.TargetName="textBlock2">
-                <DiscreteObjectKeyFrame KeyTime="0">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.1">
                     <DiscreteObjectKeyFrame.Value>
                         <FontWeight>Bold</FontWeight>
                     </DiscreteObjectKeyFrame.Value>
                 </DiscreteObjectKeyFrame>
             </ObjectAnimationUsingKeyFrames>
-        </Storyboard>
-        <Storyboard x:Key="MouseLeaveInBtn2">
-            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="canvas2">
-                <EasingColorKeyFrame KeyTime="0" Value="#FFFFF8CA"/>
-            </ColorAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.FontSize)" Storyboard.TargetName="textBlock2">
-                <EasingDoubleKeyFrame KeyTime="0" Value="20"/>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="textBlock" Storyboard.TargetProperty="(TextElement.FontSize)">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="22.667" />
             </DoubleAnimationUsingKeyFrames>
-            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.FontWeight)" Storyboard.TargetName="textBlock2">
-                <DiscreteObjectKeyFrame KeyTime="0">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetName="textBlock" Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)">
+                <EasingColorKeyFrame KeyTime="0:0:0.1" Value="Black" />
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MouseLeaveInBtn">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetName="canvas" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
+                <EasingColorKeyFrame KeyTime="0:0:0.1" Value="#FF355062" />
+            </ColorAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetName="textBlock" Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)">
+                <EasingColorKeyFrame KeyTime="0:0:0.1" Value="White" />
+            </ColorAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="textBlock" Storyboard.TargetProperty="(TextElement.FontSize)">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="20" />
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="MouseEnterInBtn1">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetName="canvas1" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
+                <EasingColorKeyFrame KeyTime="0:0:0.1" Value="White" />
+            </ColorAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetName="textBlock1" Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)">
+                <EasingColorKeyFrame KeyTime="0:0:0.1" Value="Black" />
+            </ColorAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="textBlock1" Storyboard.TargetProperty="(TextElement.FontSize)">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="22.667" />
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MouseLeaveInBtn1">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetName="canvas1" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
+                <EasingColorKeyFrame KeyTime="0:0:0.1" Value="#FF355062" />
+            </ColorAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="textBlock1" Storyboard.TargetProperty="(TextElement.FontSize)">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="20" />
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="textBlock1" Storyboard.TargetProperty="(TextElement.FontWeight)">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.1">
                     <DiscreteObjectKeyFrame.Value>
                         <FontWeight>Normal</FontWeight>
                     </DiscreteObjectKeyFrame.Value>
                 </DiscreteObjectKeyFrame>
             </ObjectAnimationUsingKeyFrames>
-        </Storyboard-->
+            <ColorAnimationUsingKeyFrames Storyboard.TargetName="textBlock1" Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)">
+                <EasingColorKeyFrame KeyTime="0:0:0.1" Value="White" />
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="MouseEnterInBtn2">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetName="canvas6" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
+                <EasingColorKeyFrame KeyTime="0:0:0.1" Value="White" />
+            </ColorAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetName="textBlock6" Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)">
+                <EasingColorKeyFrame KeyTime="0:0:0.1" Value="Black" />
+            </ColorAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="textBlock6" Storyboard.TargetProperty="(TextElement.FontSize)">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="22.667" />
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MouseLeaveInBtn2">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetName="canvas6" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
+                <EasingColorKeyFrame KeyTime="0:0:0.1" Value="#FF355062" />
+            </ColorAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="textBlock6" Storyboard.TargetProperty="(TextElement.FontSize)">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="20" />
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="textBlock6" Storyboard.TargetProperty="(TextElement.FontWeight)">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.1">
+                    <DiscreteObjectKeyFrame.Value>
+                        <FontWeight>Normal</FontWeight>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetName="textBlock6" Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)">
+                <EasingColorKeyFrame KeyTime="0:0:0.1" Value="White" />
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+
         <Storyboard x:Key="MouseEnterInBtn3">
             <ColorAnimationUsingKeyFrames Storyboard.TargetName="canvas3" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-            	<EasingColorKeyFrame KeyTime="0:0:0.1" Value="White" />
+                <EasingColorKeyFrame KeyTime="0:0:0.1" Value="White" />
             </ColorAnimationUsingKeyFrames>
-            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="textBlock3">
-            	<EasingColorKeyFrame KeyTime="0:0:0.1" Value="Black"/>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetName="textBlock3" Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)">
+                <EasingColorKeyFrame KeyTime="0:0:0.1" Value="Black" />
             </ColorAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.FontSize)" Storyboard.TargetName="textBlock3">
-            	<EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="22.667"/>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="textBlock3" Storyboard.TargetProperty="(TextElement.FontSize)">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="22.667" />
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="MouseLeaveInBtn3">
             <ColorAnimationUsingKeyFrames Storyboard.TargetName="canvas3" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-            	<EasingColorKeyFrame KeyTime="0:0:0.1" Value="#FF355062" />
+                <EasingColorKeyFrame KeyTime="0:0:0.1" Value="#FF355062" />
             </ColorAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetName="textBlock3" Storyboard.TargetProperty="(TextElement.FontSize)">
-            	<EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="20" />
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="20" />
             </DoubleAnimationUsingKeyFrames>
             <ObjectAnimationUsingKeyFrames Storyboard.TargetName="textBlock3" Storyboard.TargetProperty="(TextElement.FontWeight)">
-            	<DiscreteObjectKeyFrame KeyTime="0:0:0.1">
-            		<DiscreteObjectKeyFrame.Value>
-            			<FontWeight>Normal</FontWeight>
-            		</DiscreteObjectKeyFrame.Value>
-            	</DiscreteObjectKeyFrame>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.1">
+                    <DiscreteObjectKeyFrame.Value>
+                        <FontWeight>Normal</FontWeight>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
             </ObjectAnimationUsingKeyFrames>
-            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="textBlock3">
-            	<EasingColorKeyFrame KeyTime="0:0:0.1" Value="White"/>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetName="textBlock3" Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)">
+                <EasingColorKeyFrame KeyTime="0:0:0.1" Value="White" />
             </ColorAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="MouseEnterInBtn4">
             <ColorAnimationUsingKeyFrames Storyboard.TargetName="WidgetBtn" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-            	<EasingColorKeyFrame KeyTime="0:0:0.1" Value="White" />
+                <EasingColorKeyFrame KeyTime="0:0:0.1" Value="White" />
             </ColorAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetName="textBlock4" Storyboard.TargetProperty="(TextElement.FontSize)">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="22.667"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="22.667" />
             </DoubleAnimationUsingKeyFrames>
-            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="textBlock4">
-            	<EasingColorKeyFrame KeyTime="0:0:0.1" Value="Black"/>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetName="textBlock4" Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)">
+                <EasingColorKeyFrame KeyTime="0:0:0.1" Value="Black" />
             </ColorAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="MouseLeaveInBtn4">
             <ColorAnimationUsingKeyFrames Storyboard.TargetName="WidgetBtn" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-            	<EasingColorKeyFrame KeyTime="0:0:0.1" Value="#FF355062" />
+                <EasingColorKeyFrame KeyTime="0:0:0.1" Value="#FF355062" />
             </ColorAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetName="textBlock4" Storyboard.TargetProperty="(TextElement.FontSize)">
-            	<EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="20" />
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="20" />
             </DoubleAnimationUsingKeyFrames>
             <ObjectAnimationUsingKeyFrames Storyboard.TargetName="textBlock4" Storyboard.TargetProperty="(TextElement.FontWeight)">
-            	<DiscreteObjectKeyFrame KeyTime="0:0:0.1">
-            		<DiscreteObjectKeyFrame.Value>
-            			<FontWeight>Normal</FontWeight>
-            		</DiscreteObjectKeyFrame.Value>
-            	</DiscreteObjectKeyFrame>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.1">
+                    <DiscreteObjectKeyFrame.Value>
+                        <FontWeight>Normal</FontWeight>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
             </ObjectAnimationUsingKeyFrames>
-            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="textBlock4">
-            	<EasingColorKeyFrame KeyTime="0:0:0.1" Value="White"/>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetName="textBlock4" Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)">
+                <EasingColorKeyFrame KeyTime="0:0:0.1" Value="White" />
             </ColorAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="MouseEnterInBtn5">
             <ColorAnimationUsingKeyFrames Storyboard.TargetName="HomeBtn" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-            	<EasingColorKeyFrame KeyTime="0:0:0.1" Value="White" />
+                <EasingColorKeyFrame KeyTime="0:0:0.1" Value="White" />
             </ColorAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetName="textBlock5" Storyboard.TargetProperty="(TextElement.FontSize)">
-            	<EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="22.667" />
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="22.667" />
             </DoubleAnimationUsingKeyFrames>
             <ObjectAnimationUsingKeyFrames Storyboard.TargetName="textBlock5" Storyboard.TargetProperty="(TextElement.FontWeight)">
-            	<DiscreteObjectKeyFrame KeyTime="0:0:0.1">
-            		<DiscreteObjectKeyFrame.Value>
-            			<FontWeight>Bold</FontWeight>
-            		</DiscreteObjectKeyFrame.Value>
-            	</DiscreteObjectKeyFrame>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.1">
+                    <DiscreteObjectKeyFrame.Value>
+                        <FontWeight>Bold</FontWeight>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
             </ObjectAnimationUsingKeyFrames>
-            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="textBlock5">
-            	<EasingColorKeyFrame KeyTime="0:0:0.1" Value="Black"/>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetName="textBlock5" Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)">
+                <EasingColorKeyFrame KeyTime="0:0:0.1" Value="Black" />
             </ColorAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="MouseLeaveInBtn5">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetName="textBlock5" Storyboard.TargetProperty="(TextElement.FontSize)">
-            	<EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="20" />
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="20" />
             </DoubleAnimationUsingKeyFrames>
             <ObjectAnimationUsingKeyFrames Storyboard.TargetName="textBlock5" Storyboard.TargetProperty="(TextElement.FontWeight)">
-            	<DiscreteObjectKeyFrame KeyTime="0:0:0.1">
-            		<DiscreteObjectKeyFrame.Value>
-            			<FontWeight>Normal</FontWeight>
-            		</DiscreteObjectKeyFrame.Value>
-            	</DiscreteObjectKeyFrame>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.1">
+                    <DiscreteObjectKeyFrame.Value>
+                        <FontWeight>Normal</FontWeight>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
             </ObjectAnimationUsingKeyFrames>
             <ColorAnimationUsingKeyFrames Storyboard.TargetName="HomeBtn" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
-            	<EasingColorKeyFrame KeyTime="0:0:0.1" Value="#FF355062" />
+                <EasingColorKeyFrame KeyTime="0:0:0.1" Value="#FF355062" />
             </ColorAnimationUsingKeyFrames>
-            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="textBlock5">
-            	<EasingColorKeyFrame KeyTime="0:0:0.1" Value="White"/>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetName="textBlock5" Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)">
+                <EasingColorKeyFrame KeyTime="0:0:0.1" Value="White" />
             </ColorAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="CloseEnterInBtn">
@@ -220,12 +222,12 @@
         <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="canvas1">
             <BeginStoryboard x:Name="MouseLeaveInBtn1_BeginStoryboard" Storyboard="{StaticResource MouseLeaveInBtn1}" />
         </EventTrigger>
-        <!--EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="canvas2">
-            <BeginStoryboard Storyboard="{StaticResource MouseEnterInBtn2}"/>
-        </>
-        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="canvas2">
-            <BeginStoryboard Storyboard="{StaticResource MouseLeaveInBtn2}"/>
-        </EventTrigger-->
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="canvas6">
+            <BeginStoryboard Storyboard="{StaticResource MouseEnterInBtn2}" />
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="canvas6">
+            <BeginStoryboard Storyboard="{StaticResource MouseLeaveInBtn2}" />
+        </EventTrigger>
         <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="canvas3">
             <BeginStoryboard Storyboard="{StaticResource MouseEnterInBtn3}" />
         </EventTrigger>
@@ -308,21 +310,23 @@
                            Canvas.Top="11"
                            Width="131"
                            Height="26"
+                           FontFamily="NanumSquareOTF Bold"
                            FontSize="20"
                            Foreground="#FFFEFEFE"
                            Text="{Binding UserGroup}"
                            TextAlignment="Center"
-                           TextWrapping="Wrap" FontFamily="NanumSquareOTF Bold" />
+                           TextWrapping="Wrap" />
                 <TextBlock x:Name="ProfileName"
                            Canvas.Left="32"
                            Canvas.Top="41"
                            Width="131"
                            Height="26"
+                           FontFamily="NanumSquareOTF Bold"
                            FontSize="20"
                            Foreground="#FFFEFEFE"
                            Text="{Binding UserName}"
                            TextAlignment="Center"
-                           TextWrapping="Wrap" FontFamily="NanumSquareOTF Bold" />
+                           TextWrapping="Wrap" />
             </Canvas>
         </Canvas>
         <Frame x:Name="FramePanel"
@@ -405,24 +409,6 @@
                            TextAlignment="Center"
                            TextWrapping="Wrap" />
             </Canvas>
-            <Canvas x:Name="WidgetBtn"
-                    Width="220"
-                    Height="70"
-                    HorizontalAlignment="Left"
-                    Background="#FF325166"
-                    MouseLeftButtonDown="WidgetBtn_MouseLeftButtonDown" Canvas.Top="243">
-                <TextBlock x:Name="textBlock4"
-                           Canvas.Top="20"
-                           Width="220"
-                           Height="30"
-                           FontFamily="NanumSquareOTF BOLD"
-                           FontSize="20"
-                           Foreground="#FFFEFEFE"
-                           Text="위젯 모드"
-                           TextAlignment="Center"
-                           TextWrapping="Wrap" />
-                <!--  글씨체 후보: Tw Cen MT Condensed Extra Bold  -->
-            </Canvas>
             <TextBox x:Name="processTextBox"
                      Width="200"
                      Height="23"
@@ -445,8 +431,46 @@
                        Text="실행 중인 프로세스 이름"
                        TextAlignment="Center"
                        TextWrapping="Wrap" />
-            <Canvas x:Name="HomeBtn"
+            <Canvas x:Name="canvas6"
+                    Canvas.Top="243"
+                    Width="220"
+                    Height="70"
+                    HorizontalAlignment="Left"
+                    Background="#FF325166">
+                <Canvas.InputBindings>
+                    <MouseBinding Command="{Binding GoManageProgram}" MouseAction="LeftClick" />
+                </Canvas.InputBindings>
+                <TextBlock x:Name="textBlock6"
+                           Canvas.Top="20"
+                           Width="220"
+                           Height="30"
+                           FontFamily="NanumSquareOTF BOLD"
+                           FontSize="20"
+                           Foreground="#FFFEFEFE"
+                           Text="프로그램 관리"
+                           TextAlignment="Center"
+                           TextWrapping="Wrap" />
+            </Canvas>
+            <Canvas x:Name="WidgetBtn"
                     Canvas.Top="313"
+                    Width="220"
+                    Height="70"
+                    HorizontalAlignment="Left"
+                    Background="#FF325166"
+                    MouseLeftButtonDown="WidgetBtn_MouseLeftButtonDown">
+                <TextBlock x:Name="textBlock4"
+                           Canvas.Top="20"
+                           Width="220"
+                           Height="30"
+                           FontFamily="NanumSquareOTF BOLD"
+                           FontSize="20"
+                           Foreground="#FFFEFEFE"
+                           Text="위젯 모드"
+                           TextAlignment="Center"
+                           TextWrapping="Wrap" />
+            </Canvas>
+            <Canvas x:Name="HomeBtn"
+                    Canvas.Top="383"
                     Width="220"
                     Height="70"
                     HorizontalAlignment="Left"

@@ -10,6 +10,9 @@
                 <ResourceDictionary Source="View/Template/Styles.ListBox.Vertical_Notice.xaml" />
                 <ResourceDictionary Source="View/Template/Styles.ListBox.Vertical_StudentState.xaml" />
                 <ResourceDictionary Source="View/Template/Styles.ListBox.Vertical_Statistic.xaml" />
+                <ResourceDictionary Source="View/Template/Styles.ListBox.Vertical_AllRedManageProgram.xaml" />
+                <ResourceDictionary Source="View/Template/Styles.ListBox.Vertical_AllGreenManageProgram.xaml" />
+                <ResourceDictionary Source="View/Template/Styles.ListBox.Vertical_OneManageProgram.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

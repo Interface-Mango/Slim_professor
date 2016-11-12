@@ -24,6 +24,14 @@ namespace Slim_professor.View
         public static object[] UserInfo;
         public static MainFrame Frame;
 
+        public static Uri UriStudentState;
+        public static Uri UriHiddenTalk;
+        public static Uri UriNotice;
+        public static Uri UriNoticeDetail;
+        public static Uri UriNoticeWrite;
+        public static Uri UriManageProgram;
+        public static Uri UriManageProgramAll;
+
         private DB_Subject dbSubject;
         private const int FINISH_CLASS = 0;
 
@@ -50,6 +58,14 @@ namespace Slim_professor.View
            // this.Height = (SystemParameters.WorkArea.Height - Height) / 2.0 + SystemParameters.WorkArea.Top;
 
             //isLoaded = true;
+
+            UriStudentState = new Uri("PageStudentState.xaml", UriKind.Relative);
+            UriHiddenTalk = new Uri("PageHiddenTalk.xaml", UriKind.Relative);            
+            UriManageProgram = new Uri("PageManageProgram.xaml", UriKind.Relative);
+            UriManageProgramAll = new Uri("PageManageProgramAll.xaml", UriKind.Relative);
+            UriNotice = new Uri("PageNotice.xaml", UriKind.Relative);
+            UriNoticeDetail = new Uri("PageNoticeDetail.xaml", UriKind.Relative);
+            UriNoticeWrite = new Uri("PageWriteNote.xaml", UriKind.Relative);
 		}
 
         public void ProgressFunction()

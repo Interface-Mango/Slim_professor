@@ -104,7 +104,7 @@ namespace Slim_professor.ViewModel
                 }
             }
 
-            ViewModelMainSubject.MainSubjectObject.FrameSource = new Uri("PageNotice.xaml", UriKind.Relative);
+            ViewModelMainSubject.MainSubjectObject.FrameSource = MainFrame.UriNotice;
         }
         #endregion
 
@@ -116,7 +116,7 @@ namespace Slim_professor.ViewModel
         }
         public void BackCommandFunc(Object o)
         {
-            ViewModelMainSubject.MainSubjectObject.FrameSource = new Uri("PageNotice.xaml", UriKind.Relative);
+            ViewModelMainSubject.MainSubjectObject.FrameSource = MainFrame.UriNotice;
         }
         #endregion
     }

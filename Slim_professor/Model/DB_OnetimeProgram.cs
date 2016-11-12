@@ -126,6 +126,29 @@ namespace Slim_professor.Model
 
         }
 
+        public bool DeleteOneTimeById(int id)
+        {
+            string sql = "DELETE FROM onetime_program where id=@arg1";
+
+            try
+            {
+                db.Connection.Open();
+                using (MySqlCommand cmd = new MySqlCommand(sql, db.Connection))
+                {
+                    cmd.Parameters.AddWithValue("@arg1", id);
+                    cmd.ExecuteNonQuery();
+                }
+                db.Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);  // For Debugging
+                return false;    // 제거 오류시 false 반환
+            }
+
+            return true;
+        }
+
         public bool DeleteOneTime(int sub_id)
         {
             string sql = "DELETE FROM onetime_program where sub_id=@arg1";

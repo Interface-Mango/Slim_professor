@@ -60,7 +60,7 @@ namespace Slim_professor.ViewModel
         {
             PageWriteNote.isInsertUpdate = true;
 
-            ViewModelMainSubject.MainSubjectObject.FrameSource = new Uri("PageWriteNote.xaml", UriKind.Relative);
+            ViewModelMainSubject.MainSubjectObject.FrameSource = MainFrame.UriNoticeWrite;
         }
         #endregion
 
@@ -151,7 +151,7 @@ namespace Slim_professor.ViewModel
                 PageNoticeDetail.mSubId = NoticeSubjectId;
                 PageNoticeDetail.mDate = NoticeDate;
 
-                ViewModelMainSubject.MainSubjectObject.FrameSource = new Uri("PageNoticeDetail.xaml", UriKind.Relative);
+                ViewModelMainSubject.MainSubjectObject.FrameSource = MainFrame.UriNoticeDetail;
             }
             #endregion
 
@@ -168,7 +168,7 @@ namespace Slim_professor.ViewModel
                 PageWriteNote.mContent = NoticeContent;
                 PageWriteNote.isInsertUpdate = false;
 
-                ViewModelMainSubject.MainSubjectObject.FrameSource = new Uri("PageWriteNote.xaml", UriKind.Relative);
+                ViewModelMainSubject.MainSubjectObject.FrameSource = MainFrame.UriNoticeWrite;
             }
             #endregion
 
@@ -183,7 +183,7 @@ namespace Slim_professor.ViewModel
                 if (MessageBox.Show("삭제하시겠습니까?", "삭제 경고", MessageBoxButton.YesNo) == MessageBoxResult.No) return;
                 dbNotice.DeleteNotice(NoticeId);
                 PageMainSubject.MainFrameObject.Refresh();
-                ViewModelMainSubject.MainSubjectObject.FrameSource = new Uri("PageNotice.xaml", UriKind.Relative);
+                ViewModelMainSubject.MainSubjectObject.FrameSource = MainFrame.UriNotice;
             }
             #endregion
         }

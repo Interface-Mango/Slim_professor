@@ -44,7 +44,7 @@ namespace Slim_professor.View
             DataContext = new ViewModelMainSubject(subjectlist, processTextBox);
 
             MainFrameObject = FramePanel;
-            ViewModelMainSubject.MainSubjectObject.FrameSource = new Uri("PageStudentState.xaml", UriKind.Relative);
+            ViewModelMainSubject.MainSubjectObject.FrameSource = MainFrame.UriStudentState;
             SubName.Text = SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_name).ToString();
             _subjectlist = subjectlist;
             widget = new Widget();

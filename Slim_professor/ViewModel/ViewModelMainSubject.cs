@@ -208,7 +208,7 @@ namespace Slim_professor.ViewModel
 
         private void GoStudentStateFunc(Object o)
         {
-            _FrameSource = new Uri("PageStudentState.xaml", UriKind.Relative);
+            _FrameSource = MainFrame.UriStudentState;
             Console.WriteLine(_FrameSource.OriginalString);
             OnPropertyChanged("FrameSource");
         }
@@ -223,13 +223,13 @@ namespace Slim_professor.ViewModel
 
         private void GoHiddenTalkFunc(Object o)
         {
-            _FrameSource = new Uri("PageHiddenTalk.xaml", UriKind.Relative);
+            _FrameSource = MainFrame.UriHiddenTalk;
             Console.WriteLine(_FrameSource.OriginalString);
             OnPropertyChanged("FrameSource");
         }
         #endregion
 
-        #region GoSubjectStatistic
+        #region 안쓰는 기능 -> GoSubjectStatistic
         private ICommand _GoSubjectStatistic;
         public ICommand GoSubjectStatistic
         {
@@ -253,7 +253,21 @@ namespace Slim_professor.ViewModel
 
         private void GoNoticeFunc(Object o)
         {
-            _FrameSource = new Uri("PageNotice.xaml", UriKind.Relative);
+            _FrameSource = MainFrame.UriNotice;
+            OnPropertyChanged("FrameSource");
+        }
+        #endregion
+
+        #region GoManageProgram
+        private ICommand _GoManageProgram;
+        public ICommand GoManageProgram
+        {
+            get { return _GoManageProgram ?? (_GoManageProgram = new AppCommand(GoManageProgramFunc)); }
+        }
+
+        private void GoManageProgramFunc(Object o)
+        {
+            _FrameSource = MainFrame.UriManageProgram;
             OnPropertyChanged("FrameSource");
         }
         #endregion
