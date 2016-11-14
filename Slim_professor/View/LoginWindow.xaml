@@ -6,7 +6,7 @@
         Width="1200"
         Height="700"
         WindowStartupLocation="CenterScreen"
-        WindowStyle="None">
+        WindowStyle="None" Icon="Images/SlimLogo.jpg">
     <Window.Resources>
         <Storyboard x:Key="BtnEnter">
             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="canvas">
@@ -58,6 +58,15 @@
             </ColorAnimationUsingKeyFrames>
         </Storyboard>
     </Window.Resources>
+    <Window.ContextMenu>
+        <ContextMenu/>
+    </Window.ContextMenu>
+    <Window.BindingGroup>
+        <BindingGroup/>
+    </Window.BindingGroup>
+    <Window.TaskbarItemInfo>
+        <TaskbarItemInfo/>
+    </Window.TaskbarItemInfo>
     <Window.Triggers>
         <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="canvas">
             <BeginStoryboard x:Name="BtnEnter_BeginStoryboard" Storyboard="{StaticResource BtnEnter}"/>

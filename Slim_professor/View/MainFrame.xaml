@@ -6,4 +6,4 @@
 	x:Name="Main"
 	Title="Slim"
 	Width="1200" Height="700" WindowStartupLocation="Manual" Background="{x:Null}" 
-    Source="SubjectList.xaml" WindowStyle="None" SizeToContent="WidthAndHeight" MouseLeftButtonDown="Main_MouseLeftButtonDown"/>
+    Source="SubjectList.xaml" WindowStyle="None" SizeToContent="WidthAndHeight" MouseLeftButtonDown="Main_MouseLeftButtonDown" Icon="Images/SlimLogo.jpg"/>
