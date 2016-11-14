@@ -143,7 +143,7 @@ namespace Slim_professor.ViewModel
             }
 
             #region OneRegistToAllCommand
-            private ICommand _OneRegistToAllCommand;
+            private ICommand _OneRegistToAllCommand;    //등록커맨드
             public ICommand OneRegistToAllCommand
             {
                 get { return _OneRegistToAllCommand ?? (_OneRegistToAllCommand = new AppCommand(OneRegistToAllCommandFunc)); }
@@ -178,7 +178,7 @@ namespace Slim_professor.ViewModel
             #endregion
 
             #region OneDeleteCommand
-            private ICommand _OneDeleteCommand;
+            private ICommand _OneDeleteCommand; // 삭제 커맨드
             public ICommand OneDeleteCommand
             {
                 get { return _OneDeleteCommand ?? (_OneDeleteCommand = new AppCommand(OneDeleteCommandFunc)); }

@@ -171,7 +171,7 @@ namespace Slim_professor.ViewModel
             }
 
             #region AllRedChangeCommand
-            private ICommand _AllRedChangeCommand;
+            private ICommand _AllRedChangeCommand;      // 변경 커맨드
             public ICommand AllRedChangeCommand
             {
                 get { return _AllRedChangeCommand ?? (_AllRedChangeCommand = new AppCommand(AllRedChangeCommandFunc)); }
@@ -190,8 +190,8 @@ namespace Slim_professor.ViewModel
             }
             #endregion
 
-            #region AllRedDeleteCommand
-            private ICommand _AllRedDeleteCommand;
+            #region AllRedDeleteCommand 
+            private ICommand _AllRedDeleteCommand;      // 삭제 커맨드
             public ICommand AllRedDeleteCommand
             {
                 get { return _AllRedDeleteCommand ?? (_AllRedDeleteCommand = new AppCommand(AllRedDeleteCommandFunc)); }
