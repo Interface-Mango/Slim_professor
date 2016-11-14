@@ -58,15 +58,6 @@
             </ColorAnimationUsingKeyFrames>
         </Storyboard>
     </Window.Resources>
-    <Window.ContextMenu>
-        <ContextMenu/>
-    </Window.ContextMenu>
-    <Window.BindingGroup>
-        <BindingGroup/>
-    </Window.BindingGroup>
-    <Window.TaskbarItemInfo>
-        <TaskbarItemInfo/>
-    </Window.TaskbarItemInfo>
     <Window.Triggers>
         <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="canvas">
             <BeginStoryboard x:Name="BtnEnter_BeginStoryboard" Storyboard="{StaticResource BtnEnter}"/>
