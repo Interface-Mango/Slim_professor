@@ -41,6 +41,16 @@
                            Foreground="White"
                            Text="학 생 현 황"
                            TextWrapping="Wrap" />
+                <TextBlock x:Name="TextBlockNowDate"
+                           Canvas.Left="762"
+                           Canvas.Top="13"
+                           Width="90"
+                           Height="13"
+                           VerticalAlignment="Center"
+                           FontFamily="NanumSquareOTF Bold"
+                           FontSize="12"
+                           Foreground="White"
+                           TextWrapping="Wrap" />
             </Canvas>
 
             <Calendar Name="CalendarControl"
@@ -81,7 +91,11 @@
                      BorderBrush="{x:Null}"
                      FontFamily="NanumSquareOTF"
                      ItemsSource="{Binding AttendanceItemList}"
-                     Style="{DynamicResource LBX_VERTICAL_STDSTATE}" />
+                     Style="{DynamicResource LBX_VERTICAL_STDSTATE}">
+                <ListBox.InputBindings>
+                    <MouseBinding Command="{Binding StudentStateRefresh}" MouseAction="LeftClick" />
+                </ListBox.InputBindings>
+            </ListBox>
         </Grid>
     </Grid>
 </Page>

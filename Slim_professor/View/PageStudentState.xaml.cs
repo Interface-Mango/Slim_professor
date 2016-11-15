@@ -39,7 +39,7 @@ namespace Slim_professor.View
             viewModelPageStudentState.makeList(DateValue);
             //viewModelPageStudentState.makeList("2016-09-23");
             DataContext = viewModelPageStudentState;
-
+            TextBlockNowDate.Text = DateTime.Today.Date.ToShortDateString();
 
 
             // 개체 만들기에 필요한 코드를 이 지점 아래에 삽입하십시오.
@@ -50,6 +50,7 @@ namespace Slim_professor.View
             // TODO: 위에 선택 날짜 표기하고 직접 새로고침 버튼 하나 표시
             //새로운 날짜로 리스트 생성
             DateValue = CalendarControl.SelectedDate.Value.ToShortDateString();
+            TextBlockNowDate.Text = DateValue.ToString();
             CalendarControl.Visibility = System.Windows.Visibility.Hidden;
             CalendarControl.Opacity = 0;
             //새로고침

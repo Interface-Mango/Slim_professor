@@ -41,7 +41,8 @@
                 BorderThickness="1"
                 Content="?"
                 FontFamily="NanumSquareOTF"
-                Foreground="White" Visibility="Hidden" />
+                Foreground="White"
+                Visibility="Hidden" />
         <Button Width="31"
                 Height="35"
                 Margin="149,12,0,0"
@@ -51,10 +52,25 @@
                 BorderBrush="Black"
                 Content="RED"
                 FontFamily="NanumSquareOTF"
-                Foreground="White" Visibility="Hidden" />
+                Foreground="White"
+                Visibility="Hidden" />
+        <Canvas Width="180"
+                Height="15"
+                Margin="6,16,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top">
+            <TextBlock x:Name="subTitle"
+                       Width="180"
+                       Height="15"
+                       FontFamily="NanumSquareOTF BOLD"
+                       FontSize="15"
+                       Foreground="White"
+                       TextAlignment="Center"
+                       TextWrapping="Wrap" />
+        </Canvas>
         <Canvas Width="76"
                 Height="26"
-                Margin="51,15,0,0"
+                Margin="62,31,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top">
             <TextBlock x:Name="HT"
@@ -108,10 +124,8 @@
                        TextWrapping="Wrap" />
         </Canvas>
         <Canvas x:Name="canvas"
-                Width="175"
                 Height="60"
-                Margin="194,0,-143,0"
-                HorizontalAlignment="Left"
+                Margin="194,0,-142,0"
                 VerticalAlignment="Top"
                 Background="#FFFEFEFE">
             <ed:BlockArrow Canvas.Left="10"
@@ -131,7 +145,7 @@
                     BorderBrush="Black"
                     Click="BtnFinish_Click"
                     Content="돌아가기"
-                    FontFamily="NanumSquareOTF"
+                    FontFamily="NanumSquareOTF BOLD"
                     Foreground="White" />
             <Button x:Name="BtnHome"
                     Canvas.Left="133"

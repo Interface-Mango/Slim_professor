@@ -13,7 +13,7 @@ namespace Slim_professor.Model
         DBManager db;
 
         public enum FIELD{
-            user_id, user_name, group, sub_ids, pw, auth, END
+            user_id, user_name, group, sub_ids, state, pw, auth, END
         }
 
         public DB_User(DBManager _dbm)

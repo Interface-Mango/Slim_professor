@@ -68,11 +68,6 @@ namespace Slim_professor.View
             UriNoticeWrite = new Uri("PageWriteNote.xaml", UriKind.Relative);
 		}
 
-        public void ProgressFunction()
-        {
-            //ProgressRing prog = new ProgressRing();
-        }
-
 		// 로그인 창과 호환되기 위한 함수
 		protected override void OnClosed(EventArgs e)
         {

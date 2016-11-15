@@ -31,6 +31,7 @@ namespace Slim_professor.ViewModel
 
     class ViewModelPageHiddenTalk : ViewModelBase
     {
+        public static bool IsChattingOn = false;
         /// 접속한 유저 리스트(로그인 완료전 포함)
         private List<SocketUser> m_listUser = null;
 
@@ -124,6 +125,7 @@ namespace Slim_professor.ViewModel
             {
                 case typeState.Connecting:
                     {
+                        IsChattingOn = true;
                         //UI 세팅
                         UI_Setting(typeState.DisConnecting);
 
@@ -158,6 +160,7 @@ namespace Slim_professor.ViewModel
                     }
                 case typeState.DisConnecting:
                     {
+                        IsChattingOn = false;
                         UI_Setting(typeState.Connecting);
                         //pht.DisplayLog("* [ " + portNum + " ] 채팅 종료 * \n");
                         pht.DisplayMsg("* [채팅이 종료되었습니다.] *\n");
@@ -170,7 +173,7 @@ namespace Slim_professor.ViewModel
                         socketServer.Close();
                         m_listUser.Clear();
 
-                        dbSubject.UpdateIpaddr(Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)), "", 0);
+                        //dbSubject.UpdateIpaddr(Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)), "", 0);
                         break;
                     }
             }
@@ -576,8 +579,8 @@ namespace Slim_professor.ViewModel
             saeaServer.UserToken = mdSendMsg;
             try
             {
-            //보내기
-            m_socketMe.SendAsync(saeaServer);
+                //보내기
+                m_socketMe.SendAsync(saeaServer);
             }
             catch (NullReferenceException ex)
             {//TODO: 예외처리..ㅠ

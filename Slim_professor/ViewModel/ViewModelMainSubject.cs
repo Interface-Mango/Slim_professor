@@ -117,7 +117,7 @@ namespace Slim_professor.ViewModel
             _subjectlist = subjectlist;
             MainSubjectObject = this;
 
-            Clock();
+            //Clock();
             cpu_Counter = new PerformanceCounter("Process", "% User Time", Process.GetCurrentProcess().ProcessName);
         }
 
@@ -208,9 +208,12 @@ namespace Slim_professor.ViewModel
 
         private void GoStudentStateFunc(Object o)
         {
-            _FrameSource = MainFrame.UriStudentState;
-            Console.WriteLine(_FrameSource.OriginalString);
-            OnPropertyChanged("FrameSource");
+            if (ViewModelPageHiddenTalk.IsChattingOn && FrameSource == MainFrame.UriHiddenTalk)
+            {
+                MessageBox.Show("페이지 이동을 위해 채팅을 종료해주세요.");
+                return;
+            }
+            FrameSource = MainFrame.UriStudentState;
         }
         #endregion
 
@@ -223,9 +226,8 @@ namespace Slim_professor.ViewModel
 
         private void GoHiddenTalkFunc(Object o)
         {
-            _FrameSource = MainFrame.UriHiddenTalk;
-            Console.WriteLine(_FrameSource.OriginalString);
-            OnPropertyChanged("FrameSource");
+            if (FrameSource != MainFrame.UriHiddenTalk)
+                FrameSource = MainFrame.UriHiddenTalk;
         }
         #endregion
 
@@ -253,8 +255,12 @@ namespace Slim_professor.ViewModel
 
         private void GoNoticeFunc(Object o)
         {
-            _FrameSource = MainFrame.UriNotice;
-            OnPropertyChanged("FrameSource");
+            if (ViewModelPageHiddenTalk.IsChattingOn && FrameSource == MainFrame.UriHiddenTalk)
+            {
+                MessageBox.Show("페이지 이동을 위해 채팅을 종료해주세요.");
+                return;
+            }
+            FrameSource = MainFrame.UriNotice;
         }
         #endregion
 
@@ -267,8 +273,12 @@ namespace Slim_professor.ViewModel
 
         private void GoManageProgramFunc(Object o)
         {
-            _FrameSource = MainFrame.UriManageProgram;
-            OnPropertyChanged("FrameSource");
+            if (ViewModelPageHiddenTalk.IsChattingOn && FrameSource == MainFrame.UriHiddenTalk)
+            {
+                MessageBox.Show("페이지 이동을 위해 채팅을 종료해주세요.");
+                return;
+            }
+            FrameSource = MainFrame.UriManageProgram;
         }
         #endregion
 
@@ -281,6 +291,11 @@ namespace Slim_professor.ViewModel
         }
         private void GoHomeFunc(Object o)
         {
+            if (ViewModelPageHiddenTalk.IsChattingOn && FrameSource == MainFrame.UriHiddenTalk)
+            {
+                MessageBox.Show("페이지 이동을 위해 채팅을 종료해주세요.");
+                return;
+            }
             dbOneTimeProgram.DeleteOneTime(Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)));
             dbSubject.UpdateIpaddr(Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)), string.Empty, 0);      // 수업 종료 DB 변경
             dbSubject.UpdateIsProcessing(Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)), FINISH_CLASS);   // 수업 종료 DB 변경
@@ -321,7 +336,7 @@ namespace Slim_professor.ViewModel
         }
 
         public void TimerClock_Tick(object sender, EventArgs e)
-        {
+        {            
             handle = GetForegroundWindow();        // 활성화 윈도우
             GetWindowThreadProcessId(handle, out pid); // 핸들로 프로세스아이디 얻어옴 
             ps = Process.GetProcessById((int)pid); // 프로세스아이디로 프로세스 검색

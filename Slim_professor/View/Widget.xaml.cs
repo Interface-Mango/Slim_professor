@@ -20,23 +20,28 @@ namespace Slim_professor.View
     /// </summary>
     public partial class Widget : Window
     {
-        DB_OnetimeProgram dbOnetimeProgram;
+        private const int FINISH_CLASS = 0;
+        private DB_OnetimeProgram dbOnetimeProgram;
+        private DB_Subject dbSubject;
         public Widget()
         {
             InitializeComponent();
 
             dbOnetimeProgram = new DB_OnetimeProgram(new DBManager());
+            dbSubject = new DB_Subject(new DBManager());
 
             //위젯 창의 위치(왼쪽 위)
             this.Left = SystemParameters.WorkArea.Width - SystemParameters.WorkArea.Width;
             this.Top = SystemParameters.WorkArea.Height - (SystemParameters.WorkArea.Height);
-
+            subTitle.Text = Convert.ToString(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_name));
         }
 
         private void BtnHome_Click(object sender, RoutedEventArgs e)
         {
             if (MessageBox.Show("종료하시겠습니까?", "수업 종료", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
+                dbSubject.UpdateIpaddr(Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)), string.Empty, 0);      // 수업 종료 DB 변경
+                dbSubject.UpdateIsProcessing(Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)), FINISH_CLASS);   // 수업 종료 DB 변경
                 dbOnetimeProgram.DeleteOneTime(Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)));
                 MainFrame.Frame.Close();
                 this.Close();

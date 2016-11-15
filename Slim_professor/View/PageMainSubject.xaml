@@ -279,6 +279,25 @@
                        Foreground="White"
                        TextAlignment="Center"
                        TextWrapping="Wrap" />
+            <Button x:Name="MinimizeBtn"
+                    Canvas.Left="1130"
+                    Canvas.Top="9"
+                    Width="24"
+                    Height="24"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Background="#555"
+                    Click="MinimizeBtn_Click">
+                <TextBlock Height="16"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Top"
+                           FontFamily="NanumSquareOTF BOLD"
+                           FontWeight="Bold"
+                           Foreground="White"
+                           Text="__"
+                           TextAlignment="Center"
+                           TextWrapping="Wrap" />
+            </Button>
             <Button x:Name="CloseBtn"
                     Canvas.Left="1158"
                     Canvas.Top="9"

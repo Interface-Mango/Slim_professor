@@ -40,5 +40,10 @@ namespace Slim_professor.View
             this.Close();
         }
 
+        private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = System.Windows.WindowState.Minimized;
+        }
+
     }
 }

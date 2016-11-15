@@ -55,6 +55,19 @@ namespace Slim_professor.ViewModel
         }
         #endregion
 
+        #region StudentStateRefresh
+        private ICommand _StudentStateRefresh;
+        public ICommand StudentStateRefresh
+        {
+            get { return _StudentStateRefresh ?? (_StudentStateRefresh = new AppCommand(StudentStateRefreshFunc)); }
+        }
+
+        public void StudentStateRefreshFunc(Object o)
+        {
+            PageMainSubject.MainFrameObject.Refresh();
+        }
+        #endregion
+
         #region StudentStateItemList
         private List<AttendanceInfo> _AttendanceItemList;
         public List<AttendanceInfo> AttendanceItemList
@@ -128,7 +141,7 @@ namespace Slim_professor.ViewModel
             public string AttendStudentName { get; private set; } //user 에서 가져옴
             public int AttendSubjectId { get; private set; }
             public string AttendStudentId { get; private set; }
-            public DateTime AttendTime { get; private set; }
+            public string AttendTime { get; private set; }
             public string AttendCheck { get; private set; }
 
             public Brush AttendCheckColor { get; private set; }
@@ -144,6 +157,10 @@ namespace Slim_professor.ViewModel
                 {
                     string checkTemp = GetCheck(Convert.ToInt32(items[i].ElementAt((int)DB_Attendance.FIELD.check)));
                     SolidColorBrush b = GetFontColor(Convert.ToInt32(items[i].ElementAt((int)DB_Attendance.FIELD.check)));
+                    string date = "";
+                    if(Convert.ToInt32(items[i].ElementAt((int)DB_Attendance.FIELD.check)) == 1)
+                        date = Convert.ToString(items[i].ElementAt((int)DB_Attendance.FIELD.date));
+
                     attendTemp = new AttendanceInfo
                     {
                         Id = items.Count - i,
@@ -151,7 +168,7 @@ namespace Slim_professor.ViewModel
                         AttendStudentName = Convert.ToString(items[i].ElementAt(5)),
                         AttendSubjectId = Convert.ToInt32(items[i].ElementAt((int)DB_Attendance.FIELD.sub_id)),
                         AttendStudentId = Convert.ToString(items[i].ElementAt((int)DB_Attendance.FIELD.std_id)),
-                        AttendTime = Convert.ToDateTime(items[i].ElementAt((int)DB_Attendance.FIELD.date)),
+                        AttendTime = date,
                         AttendCheck = checkTemp,
                         AttendCheckColor = b
                     };
@@ -181,7 +198,6 @@ namespace Slim_professor.ViewModel
 
                 return checkTemp;
             }
-
 
             internal static object Data()
             {
