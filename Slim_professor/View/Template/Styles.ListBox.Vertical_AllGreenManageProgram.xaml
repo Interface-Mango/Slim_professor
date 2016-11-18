@@ -44,7 +44,7 @@
                                     Background="#7F49AE56"
                                     BorderBrush="{x:Null}"
                                     Command="{Binding AllGreenChangeCommand}"
-                                    Content="등록"
+                                    Content="변경"
                                     FontFamily="NanumSquareOTF"
                                     Foreground="Black" />
 
