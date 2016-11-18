@@ -173,11 +173,41 @@ namespace Slim_professor.Model
         }
 
         //aaa - UpdateOneTime. UpdateOneTime1 둘다 sub_id를 받아서 수정하게끔!!!
+        public bool UpdateOneTime(int id, int sub_id)
+        {
+            string sql = "";
+            sql = "UPDATE onetime_program SET check_field = CASE WHEN id=@arg1 THEN 1 WHEN id<>@arg1 THEN 0 END WHERE sub_id=@arg2";
+            /*
+            if (check_field == 0)
+                sql = "UPDATE onetime_program SET check_field=@arg1 WHERE id<>@arg2";
+            else
+                sql = "UPDATE onetime_program SET check_field=@arg1 WHERE id=@arg2";
+            */
+            try
+            {
+                db.Connection.Open();
+                using (MySqlCommand cmd = new MySqlCommand(sql, db.Connection))
+                {
+                    cmd.Parameters.AddWithValue("@arg1", id);
+                    cmd.Parameters.AddWithValue("@arg2", sub_id);
+
+                    cmd.ExecuteNonQuery();
+                }
+                db.Connection.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);  // For Debugging
+                return false;    // 제거 오류시 false 반환
+            }
+
+            return true;
+        }
         public bool UpdateOneTime(string process_name, int check_field, int sub_id)
         {
             string sql="";
             if(check_field == 0)
-                sql = "UPDATE onetime_program SET check_field=@arg1 WHERE process_name!=@arg2 AND sub_id=@arg3";
+                sql = "UPDATE onetime_program SET check_field=@arg1 WHERE process_name<>@arg2 AND sub_id=@arg3";
             else
                 sql = "UPDATE onetime_program SET check_field=@arg1 WHERE process_name=@arg2 AND sub_id=@arg3";
             

@@ -117,7 +117,7 @@ namespace Slim_professor.ViewModel
             _subjectlist = subjectlist;
             MainSubjectObject = this;
 
-            //Clock();
+            Clock();
             cpu_Counter = new PerformanceCounter("Process", "% User Time", Process.GetCurrentProcess().ProcessName);
         }
 
@@ -363,16 +363,24 @@ namespace Slim_professor.ViewModel
                 dbOneTimeProgram.InsertOneTime(ps.ProcessName, Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)), Convert.ToString(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_name)), 1);
             else
             {
-                for (int i = 0; i < onetimeListAll.Count; i++) 
-                    //if(ps.ProcessName != Convert.ToString(onetimeListAll[i].ElementAt((int)DB_OnetimeProgram.FIELD.process_name)))
-                        dbOneTimeProgram.UpdateOneTime(Convert.ToString(onetimeListAll[i].ElementAt((int)DB_OnetimeProgram.FIELD.process_name)), 0, Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)));
+                int id = 0;
+                try
+                {
+                    id = Convert.ToInt32(ItemChcek[0].ElementAt((int)DB_OnetimeProgram.FIELD.id));
+                }
+                catch (NullReferenceException ) { }
 
+                //for (int i = 0; i < onetimeListAll.Count; i++) // onetime 테이블의 check_field를 모두 0으로 바꾼다.
+                    //if(ps.ProcessName != Convert.ToString(onetimeListAll[i].ElementAt((int)DB_OnetimeProgram.FIELD.process_name)))
+                //{
+                    dbOneTimeProgram.UpdateOneTime(id, Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)));
+                    //dbOneTimeProgram.UpdateOneTime(temp, 0, Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)));
+                //}
                 if (ItemChcek == null)
                     dbOneTimeProgram.InsertOneTime(ps.ProcessName, Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)), Convert.ToString(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_name)), 1);
                 
-                else if (ItemChcek.Count > 0)
-                    dbOneTimeProgram.UpdateOneTime(ps.ProcessName, 1, Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)));
-                
+                //else if (ItemChcek.Count > 0)
+                    //dbOneTimeProgram.UpdateOneTime(ps.ProcessName, 1, Convert.ToInt32(PageMainSubject.SubjectInfo.ElementAt((int)DB_Subject.FIELD.sub_id)));
             }
         }
         #endregion
